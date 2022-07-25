@@ -1,6 +1,11 @@
-﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="NyvaProdBC.About" %>
+﻿<%@ Page Title="Про фірму" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="NyvaProdBC.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <h2><%: Title %>.</h2>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed cursus ligula. Integer bibendum erat at nisl eleifend fringilla. Mauris auctor quam ut velit lacinia, ut consectetur nunc suscipit. Integer molestie varius justo, id porta enim dapibus ut. Praesent vulputate tortor vitae enim efficitur tristique. Duis ac neque in est ornare aliquam. Mauris ac porta leo. Aenean ligula est, sollicitudin quis ligula vel, rutrum mollis quam. Quisque et est leo. Donec in posuere ex.
+    </p>
+    <br />
     <table style="height: 800px; width: 100%">
         <tr style="height: 100%">
             <td style="width: 10%">
@@ -38,12 +43,12 @@
         <tr>
             <td></td>
             <td>
-                <table style="width:100%; background-color:indianred">
+                <table style="width: 100%; background-color: indianred">
                     <tr>
-                        <td style="width:20%">
+                        <td style="width: 20%">
                             <asp:Button runat="server" ID="btnOrderCurrent" CssClass="gridItem" />
                         </td>
-                        <td style="width:80%">
+                        <td style="width: 80%">
                             <asp:TextBox runat="server" ID="tbGoodAmount" CssClass="gridItem" />
                         </td>
                     </tr>

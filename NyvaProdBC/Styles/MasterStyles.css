@@ -1,14 +1,29 @@
 ﻿body {
 }
 
-.pageTable
-{
-    background-color: darkseagreen
+.pageTable {
+    background-color: darkseagreen;
+}
+
+.pageContainer {
+    background-color: indianred;
+}
+
+.pageCell {
+    background-color: cadetblue;
+    padding: 20px;
+}
+
+.basketCell {
+    padding: 5px;
+    background-color: darkcyan;
+    width: 10%;
 }
 
 .basket {
-    background-color: cornflowerblue
+    background-color: cornflowerblue;
 }
+
 .main {
     background-color: cornflowerblue
 }

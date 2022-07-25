@@ -19,13 +19,20 @@ namespace NyvaProdBC
                 img.ImageUrl = urls[new Random().Next(0, urls.Count - 1)];
                 img.Height = 100;
                 img.Width = 100;
-                TableCell tc = new TableCell();
-                tc.Controls.Add(img);
+                TableCell tc1 = new TableCell();
+                Label lblItemName = new Label();
+                tc1.CssClass = "tableCell";
+                lblItemName.Text = "#" + i.ToString();
+                tc1.Controls.Add(lblItemName);
+                TableCell tc2 = new TableCell();
+                tc2.CssClass = "tableCell";
+                tc2.Controls.Add(img);
                 TableRow tr = new TableRow();
                 tr.BorderStyle = BorderStyle.Solid;
                 tr.BorderColor = System.Drawing.Color.Green;
                 tr.BorderWidth = 3;
-                tr.Cells.Add(tc);
+                tr.Cells.Add(tc1);
+                tr.Cells.Add(tc2);
                 tblGoods.Rows.Add(tr);
             }
         }

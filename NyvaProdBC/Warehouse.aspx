@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Склад" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Warehouse.aspx.cs" Inherits="NyvaProdBC.Warehouse" %>
+﻿<%@ Page Title="Товари на складі" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Warehouse.aspx.cs" Inherits="NyvaProdBC.Warehouse" %>
+
 <%@ MasterType VirtualPath="~/Site.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -9,8 +10,11 @@
         <link rel="stylesheet" type="text/css" href="Styles/WarehouseStyles.css" />
     </head>
     <body>
+        <h1><%:Title %></h1>
+        <br />
         <asp:Table runat="server" CssClass="goodTable" ID="tblGoods">
-<%--            <asp:TableRow>
+            <%--            
+                <asp:TableRow>
                 <asp:TableCell CssClass="colorDiv1"></asp:TableCell>
                 <asp:TableCell CssClass="colorDiv2"></asp:TableCell>
             </asp:TableRow>--%>
