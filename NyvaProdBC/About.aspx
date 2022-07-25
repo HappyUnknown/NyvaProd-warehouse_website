@@ -1,0 +1,55 @@
+﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="NyvaProdBC.About" %>
+
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <table style="height: 800px; width: 100%">
+        <tr style="height: 100%">
+            <td style="width: 10%">
+                <asp:Button runat="server" ID="btnPrev" />
+            </td>
+            <td style="width: 80%">
+                <table style="width: 100%">
+                    <tr style="background-color: aquamarine">
+                        <td style="text-align: center">
+                            <br />
+                            <asp:Label runat="server" Text="HELLO" />
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                    <tr style="background-color: aqua; height: 50%">
+                        <td>
+                            <img src="https://www.world-grain.com/ext/resources/Article-Images/2018/11--November/wholegrains_shutterstock_Nov-2014_E.jpg?t=1541686313&width=1080" />
+                        </td>
+                    </tr>
+                    <tr style="background-color: aquamarine">
+                        <td style="text-align: center">
+                            <br />
+                            <asp:Label runat="server" Text="HELLO" />
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="width: 10%">
+                <asp:Button runat="server" ID="btnNext" />
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <table style="width:100%; background-color:indianred">
+                    <tr>
+                        <td style="width:20%">
+                            <asp:Button runat="server" ID="btnOrderCurrent" CssClass="gridItem" />
+                        </td>
+                        <td style="width:80%">
+                            <asp:TextBox runat="server" ID="tbGoodAmount" CssClass="gridItem" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</asp:Content>

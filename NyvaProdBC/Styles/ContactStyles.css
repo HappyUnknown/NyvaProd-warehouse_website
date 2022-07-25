@@ -1,0 +1,40 @@
+﻿body {
+}
+
+.gridItem {
+    margin: 5px;
+}
+
+.gridLableDiv {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.wraper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.button {
+    background-color: #e7e7e7;
+    color: black;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+    .button:hover {
+        background-color: #c9c9c9;
+    }
+
+.entryNeutral {
+    border: none;
+    border-bottom: 2px solid gray;
+}
+
+.entryInvalid {
+    border: none;
+    border-bottom: 2px solid crimson;
+}
