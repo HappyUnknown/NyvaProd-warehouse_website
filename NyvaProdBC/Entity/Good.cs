@@ -13,17 +13,19 @@ namespace NyvaProdBC.Entity
         public double OrderPrice { get; set; } = 0;
         public double SellPrice { get; set; } = 0;
         public double WeightKg { get; set; } = 0;
+        public int InWare { get; set; } = 0;
         public string ImageUrl { get; set; } = "IMAGE_DEFAULT";
         public DateTime ProductionDate { get; set; } = DateTime.MinValue;
         public DateTime ConsumedUntil { get; set; } = DateTime.MaxValue;
         public Barcode Barcode { get; set; } = new Barcode();
         public Good() { }
-        public Good(string name, double orderPrice, double sellPrice, double weightKg, string imageUrl, Barcode barcode = null)
+        public Good(string name, double orderPrice, double sellPrice, double weightKg, int inware, string imageUrl, Barcode barcode = null)
         {
             Name = name;
             OrderPrice = orderPrice;
             SellPrice = sellPrice;
             WeightKg = weightKg;
+            InWare = inware;
             ImageUrl = imageUrl;
             if (barcode != null)
             {
@@ -33,13 +35,14 @@ namespace NyvaProdBC.Entity
                 Barcode.RegionCode = barcode.RegionCode;
             }
         }
-        public Good(int id, string name, double orderPrice, double sellPrice, double weightKg, string imageUrl, Barcode barcode = null)
+        public Good(int id, string name, double orderPrice, double sellPrice, double weightKg, int inware, string imageUrl, Barcode barcode = null)
         {
             Id = id;
             Name = name;
             OrderPrice = orderPrice;
             SellPrice = sellPrice;
             WeightKg = weightKg;
+            InWare = inware;
             ImageUrl = imageUrl;
             if (barcode != null)
             {
@@ -49,25 +52,27 @@ namespace NyvaProdBC.Entity
                 Barcode.RegionCode = barcode.RegionCode;
             }
         }
-        public Good(string name, double orderPrice, double sellPrice, double weightKg, string imageUrl, int regionCode, int producerCode, int goodCode, int controlDigit)
+        public Good(string name, double orderPrice, double sellPrice, double weightKg, int inware, string imageUrl, int regionCode, int producerCode, int goodCode, int controlDigit)
         {
             Name = name;
             OrderPrice = orderPrice;
             SellPrice = sellPrice;
             WeightKg = weightKg;
+            InWare = inware;
             ImageUrl = imageUrl;
             if (regionCode != NUMBER_DEFAULT) Barcode.RegionCode = regionCode;
             if (producerCode != NUMBER_DEFAULT) Barcode.ProducerCode = producerCode;
             if (goodCode != NUMBER_DEFAULT) Barcode.GoodCode = goodCode;
             if (controlDigit != NUMBER_DEFAULT) Barcode.ControlDigit = controlDigit;
         }
-        public Good(int id, string name, double orderPrice, double sellPrice, double weightKg, string imageUrl, int regionCode, int producerCode, int goodCode, int controlDigit)
+        public Good(int id, string name, double orderPrice, double sellPrice, double weightKg, int inware, string imageUrl, int regionCode, int producerCode, int goodCode, int controlDigit)
         {
             Id = id;
             Name = name;
             OrderPrice = orderPrice;
             SellPrice = sellPrice;
             WeightKg = weightKg;
+            InWare = inware;
             ImageUrl = imageUrl;
             if (regionCode != NUMBER_DEFAULT) Barcode.RegionCode = regionCode;
             if (producerCode != NUMBER_DEFAULT) Barcode.ProducerCode = producerCode;

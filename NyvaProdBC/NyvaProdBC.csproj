@@ -192,6 +192,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\GoodUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -216,7 +217,6 @@
     </Compile>
     <Compile Include="Warehouse.aspx.cs">
       <DependentUpon>Warehouse.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Warehouse.aspx.designer.cs">
       <DependentUpon>Warehouse.aspx</DependentUpon>

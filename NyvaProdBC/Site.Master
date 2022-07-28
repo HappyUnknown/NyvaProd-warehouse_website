@@ -70,7 +70,8 @@
                         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
                     </asp:TableCell>
                     <asp:TableCell CssClass="basketCell">
-                        <asp:Panel runat="server" CssClass="basket">OOOOOHMYGOD</asp:Panel>
+                        <%--<asp:Panel runat="server" CssClass="basket">OOOOOHMYGOD</asp:Panel>--%>
+                        <asp:ListBox runat="server" ID="liBasket" Width="100" />
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>

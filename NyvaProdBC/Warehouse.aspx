@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Товари на складі" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Warehouse.aspx.cs" Inherits="NyvaProdBC.Warehouse" %>
-
+<%@ Register TagPrefix="mp" TagName="MyMP" Src="~/Site.Master" %>
 <%@ MasterType VirtualPath="~/Site.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">

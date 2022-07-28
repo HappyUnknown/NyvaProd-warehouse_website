@@ -69,7 +69,6 @@ E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\bin\ru\System.Web.Optimization.resources.dll
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\bin\ru\Microsoft.AspNet.FriendlyUrls.resources.dll
-E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.csproj.AssemblyReference.cache
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.csproj.CoreCompileInputs.cache
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.csproj.CopyComplete
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.dll
