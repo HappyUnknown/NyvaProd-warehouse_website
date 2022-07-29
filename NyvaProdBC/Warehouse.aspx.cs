@@ -253,6 +253,13 @@ namespace NyvaProdBC
             }
             else
             {
+                if (AppState.Ordered)
+                {
+                    selectors.Clear();
+                    goods.Clear();
+                    Basket.Clear();
+                    AppState.Ordered = !AppState.Ordered;
+                }
                 /*
                 List<string> urls = new List<string>() {
                     "https://i.pinimg.com/564x/2d/b7/d8/2db7d8c53b818ce838ad8bf6a4768c71.jpg",

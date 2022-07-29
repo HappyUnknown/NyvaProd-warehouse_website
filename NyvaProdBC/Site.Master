@@ -70,8 +70,24 @@
                         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
                     </asp:TableCell>
                     <asp:TableCell CssClass="basketCell">
+                        <asp:Table runat="server">
+                            <asp:TableRow Width="80%">
+                                <asp:TableCell>
+                                    <asp:ListBox runat="server" ID="liBasket" Width="100%" />
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell>
+                                    <asp:TextBox runat="server" ID="tbShipper" Width="100%" />
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow Height="10%">
+                                <asp:TableCell>
+                                    <asp:Button runat="server" ID="btnOrder" OnClick="btnOrder_Click" Text="Замовити" />
+                                </asp:TableCell>
+                            </asp:TableRow>
+                        </asp:Table>
                         <%--<asp:Panel runat="server" CssClass="basket">OOOOOHMYGOD</asp:Panel>--%>
-                        <asp:ListBox runat="server" ID="liBasket" Width="100" />
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
