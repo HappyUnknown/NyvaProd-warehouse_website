@@ -69,6 +69,8 @@ namespace NyvaProdBC
             string launcherPass = GlobalValues.HOST_PASSWORD;
             string bridgeAddr = GlobalValues.BRIDGE_ADDR;
             int bridgePort = GlobalValues.BRIDGE_PORT;
+            if (liBasket.Items.Count == 0) { ResponseAlert("Не обрано товарів для замовлення. Оберіть товари."); return; }
+            try { MailAddress address = new MailAddress(reciever); } catch { ResponseAlert($"\"{reciever}\" не є дійсною електронною адресою. Уведіть дійсну адресу замовника."); return; }
             using (MailMessage mail = new MailMessage(launcher, reciever, subject, text))
             {
                 using (SmtpClient bridge = new SmtpClient(bridgeAddr, bridgePort))

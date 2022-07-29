@@ -243,13 +243,7 @@ namespace NyvaProdBC
             {
                 Basket.Clear(); //In case session continues after window closing
                 selectors = new List<Button>();
-                goods = new List<Good>()
-                {
-                    new Good(5,"Salt",1,2,3,0,"https://i.pinimg.com/564x/2d/b7/d8/2db7d8c53b818ce838ad8bf6a4768c71.jpg"),
-                    new Good(99,"Sugar",2,3,4,0,"https://i.pinimg.com/564x/59/1b/23/591b232ca14c99ad3b4bbf98b0b340f5.jpg"),
-                    new Good(41,"Pepper",3,4,5,0,"https://i.pinimg.com/564x/c1/74/2d/c1742d01ea1d5d501c9d9736bbfe9504.jpg"),
-                    new Good(16,"Lemonpowder",4,5,6,0,"https://i.pinimg.com/564x/76/f1/dc/76f1dcf48d7aa03f0baa46a4f283b023.jpg")
-                };
+                goods = GlobalValues.goods;
             }
             else
             {
