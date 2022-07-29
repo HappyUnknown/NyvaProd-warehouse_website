@@ -57,6 +57,10 @@ namespace NyvaProdBC
             }
             return -1;
         }
+        public static void Clear()
+        {
+            BaseArray = new Button[0];
+        }
     }
     public partial class Warehouse : System.Web.UI.Page
     {
@@ -237,6 +241,7 @@ namespace NyvaProdBC
         {
             if (!Page.IsPostBack)
             {
+                Basket.Clear(); //In case session continues after window closing
                 selectors = new List<Button>();
                 goods = new List<Good>()
                 {
