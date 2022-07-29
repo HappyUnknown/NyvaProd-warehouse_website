@@ -123,6 +123,7 @@ namespace NyvaProdBC
             }
             catch (Exception ex) { ResponseAlert("GS: " + goods.Count + " == SL:" + selectors.Count + " => " + ex.Message); }
             ResponseAlert("basket: " + Basket.BaseArray.Length);
+            RefreshBasketUI();
         }
         void RefreshTableUI()
         {
@@ -265,7 +266,6 @@ namespace NyvaProdBC
                 */
             }
             RefreshTableUI();
-            RefreshBasketUI();
         }
     }
 }
