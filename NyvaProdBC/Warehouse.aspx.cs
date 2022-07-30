@@ -126,8 +126,12 @@ namespace NyvaProdBC
                 }
             }
             catch (Exception ex) { ResponseAlert("GS: " + goods.Count + " == SL:" + selectors.Count + " => " + ex.Message); }
-            ResponseAlert("basket: " + Basket.BaseArray.Length);
             RefreshBasketUI();
+        }
+        void RefreshButtonUI()
+        {
+            for (int i = 0; i < selectors.Count; i++)
+                selectors[i].BackColor = idleColor;
         }
         void RefreshTableUI()
         {
@@ -239,6 +243,14 @@ namespace NyvaProdBC
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            string orderKey = Request.QueryString["order"];
+            if (orderKey == "yes")
+            {
+                ResponseAlert("STATE: ORDERED");
+                selectors.Clear();
+                Basket.Clear();
+                Response.Redirect("/Warehouse.aspx");///Inconfidence - You need to press button to reset request: need returning on a page with no request
+            }
             if (!Page.IsPostBack)
             {
                 Basket.Clear(); //In case session continues after window closing
@@ -247,13 +259,6 @@ namespace NyvaProdBC
             }
             else
             {
-                if (AppState.Ordered)
-                {
-                    selectors.Clear();
-                    //goods.Clear();
-                    Basket.Clear();
-                    AppState.Ordered = !AppState.Ordered;
-                }
                 /*
                 List<string> urls = new List<string>() {
                     "https://i.pinimg.com/564x/2d/b7/d8/2db7d8c53b818ce838ad8bf6a4768c71.jpg",

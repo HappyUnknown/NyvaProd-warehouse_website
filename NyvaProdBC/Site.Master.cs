@@ -60,17 +60,12 @@ namespace NyvaProdBC
             string order = string.Join("\n", basketLines).TrimEnd('\n');
             return order;
         }
-        protected void btnOrder_Click(object sender, EventArgs e)
+        void SendMail(string reciever, string subject, string text)
         {
-            string launcher = GlobalValues.HOST_EMAIL;
-            string reciever = tbShipper.Text;
-            string subject = $@"New order by {reciever}";
-            string text = FormedOrder();
-            string launcherPass = GlobalValues.HOST_PASSWORD;
             string bridgeAddr = GlobalValues.BRIDGE_ADDR;
             int bridgePort = GlobalValues.BRIDGE_PORT;
-            if (liBasket.Items.Count == 0) { ResponseAlert("Не обрано товарів для замовлення. Оберіть товари."); return; }
-            try { MailAddress address = new MailAddress(reciever); } catch { ResponseAlert($"\"{reciever}\" не є дійсною електронною адресою. Уведіть дійсну адресу замовника."); return; }
+            string launcher = GlobalValues.HOST_EMAIL;
+            string launcherPass = GlobalValues.HOST_PASSWORD;
             using (MailMessage mail = new MailMessage(launcher, reciever, subject, text))
             {
                 using (SmtpClient bridge = new SmtpClient(bridgeAddr, bridgePort))
@@ -81,11 +76,24 @@ namespace NyvaProdBC
                     bridge.Send(mail);
                 }
             }
+        }
+        protected void btnOrder_Click(object sender, EventArgs e)
+        {
+            string launcher = GlobalValues.HOST_EMAIL;
+            string reciever = tbShipper.Text;
+            string admsubject = $@"New order by {reciever}";
+            string admtext = FormedOrder();
+            string usersubject = $@"Ваше замовлення прийняте.";
+            string usertext = $@"{reciever}, ваше замовлення було отримане. Очікуйте відповіді від офіційного представника на дану поштову скриньку.";
+            if (liBasket.Items.Count == 0) { ResponseAlert("Не обрано товарів для замовлення. Оберіть товари."); return; }
+            try { MailAddress address = new MailAddress(reciever); } catch { ResponseAlert($"\"{reciever}\" не є дійсною електронною адресою. Уведіть дійсну адресу замовника."); return; }
+            SendMail(launcher, admsubject, admtext);
+            SendMail(reciever, usersubject, usertext);
             liBasket.Items.Clear();
             tbShipper.Text = string.Empty;
             AppState.Ordered = true;
             ResponseAlert("Очікуйте відповіді від власника за своєю адресою.");
-            //Response.Redirect("/Default.aspx");
+            Response.Redirect("/Warehouse.aspx?order=yes");
         }
     }
 }

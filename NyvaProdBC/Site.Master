@@ -81,7 +81,7 @@
                             </asp:TableRow>
                             <asp:TableRow Height="10%">
                                 <asp:TableCell>
-                                    <asp:Button runat="server" ID="btnOrder" OnClick="btnOrder_Click" Text="Замовити" />
+                                    <asp:Button runat="server" ID="btnOrder" OnClick="btnOrder_Click" Text="Замовити" CssClass="btn btn-dark" Style="width: 100%" />
                                 </asp:TableCell>
                             </asp:TableRow>
                         </asp:Table>
