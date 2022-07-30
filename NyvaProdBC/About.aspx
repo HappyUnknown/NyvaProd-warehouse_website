@@ -40,21 +40,5 @@
                 <asp:Button runat="server" ID="btnNext" />
             </td>
         </tr>
-        <tr>
-            <td></td>
-            <td>
-                <table style="width: 100%; background-color: indianred">
-                    <tr>
-                        <td style="width: 20%">
-                            <asp:Button runat="server" ID="btnOrderCurrent" CssClass="gridItem" />
-                        </td>
-                        <td style="width: 80%">
-                            <asp:TextBox runat="server" ID="tbGoodAmount" CssClass="gridItem" />
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td></td>
-        </tr>
     </table>
 </asp:Content>
