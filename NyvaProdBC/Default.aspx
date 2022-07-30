@@ -45,11 +45,7 @@
                 <asp:Table runat="server">
                     <asp:TableRow>
                         <asp:TableCell>
-                            <asp:UpdatePanel runat="server">
-                                <ContentTemplate>
-                                    <asp:Button runat="server" ID="btnPrevMedia" OnClick="btnPrevMedia_Click" Width="100%" />
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
+                            <asp:Button runat="server" ID="btnPrevMedia" OnClick="btnPrevMedia_Click" Width="100%" />
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:Image runat="server" ID="imgCarousel" Width="100%" />

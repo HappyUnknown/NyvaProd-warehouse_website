@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Товари на складі" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Warehouse.aspx.cs" Inherits="NyvaProdBC.Warehouse" %>
+
 <%@ Register TagPrefix="mp" TagName="MyMP" Src="~/Site.Master" %>
 <%@ MasterType VirtualPath="~/Site.Master" %>
 
@@ -12,7 +13,7 @@
     <body>
         <h1><%:Title %></h1>
         <br />
-        <asp:Table runat="server" CssClass="goodTable" ID="tblGoods">
+        <asp:Table runat="server" CssClass="goodTable table table-dark" ID="tblGoods">
             <%--            
                 <asp:TableRow>
                 <asp:TableCell CssClass="colorDiv1"></asp:TableCell>
