@@ -24,6 +24,15 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.Button btnPrev;
 
         /// <summary>
+        /// lblUpTitle элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUpTitle;
+
+        /// <summary>
         /// imgCarousel элемент управления.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace NyvaProdBC
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgCarousel;
+
+        /// <summary>
+        /// lblDownTitle элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDownTitle;
 
         /// <summary>
         /// btnNext элемент управления.

@@ -18,7 +18,7 @@
                             <tr style="background-color: aquamarine">
                                 <td style="text-align: center">
                                     <br />
-                                    <asp:Label runat="server" Text="HELLO" />
+                                    <asp:Label runat="server" ID="lblUpTitle" Text="HELLO" />
                                     <br />
                                     <br />
                                 </td>
@@ -31,7 +31,7 @@
                             <tr style="background-color: aquamarine">
                                 <td style="text-align: center">
                                     <br />
-                                    <asp:Label runat="server" Text="HELLO" />
+                                    <asp:Label runat="server" ID="lblDownTitle" Text="HELLO" />
                                     <br />
                                     <br />
                                 </td>
