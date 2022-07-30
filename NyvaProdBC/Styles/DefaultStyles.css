@@ -1,0 +1,47 @@
+﻿body {
+}
+
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+.gridItem {
+    margin: 5px;
+}
+
+.gridLableDiv {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.wraper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.button {
+    background-color: #e7e7e7;
+    color: black;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    height:400px;
+    width:100%;
+}
+
+    .button:hover {
+        background-color: #c9c9c9;
+    }
+
+.entryNeutral {
+    border: none;
+    border-bottom: 2px solid gray;
+}
+
+.entryInvalid {
+    border: none;
+    border-bottom: 2px solid crimson;
+}
