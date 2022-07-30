@@ -239,11 +239,11 @@ namespace NyvaProdBC
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            goods = GlobalValues.goods;
             if (!Page.IsPostBack)
             {
                 Basket.Clear(); //In case session continues after window closing
                 selectors = new List<Button>();
-                goods = GlobalValues.goods;
             }
             else
             {
