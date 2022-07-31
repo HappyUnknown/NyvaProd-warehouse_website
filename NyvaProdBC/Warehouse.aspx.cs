@@ -77,6 +77,8 @@ namespace NyvaProdBC
     public static class Ware
     {
         public static List<Good> Goods;
+        public static List<Models.SelectorPair> Selectors;
+
     }
     //static class StrExt
     //{
@@ -93,15 +95,14 @@ namespace NyvaProdBC
     {
         static readonly System.Drawing.Color selectColor = System.Drawing.Color.CornflowerBlue;
         static readonly System.Drawing.Color idleColor = System.Drawing.Color.LightGray;
-        static List<Models.SelectorPair> selectors;
 
         Good GoodByButton(SelectorPair pair)
         {
             try
             {
-                for (int i = 0; i < selectors.Count; i++)
+                for (int i = 0; i < Ware.Selectors.Count; i++)
                 {
-                    if (selectors[i].selector.UniqueID == pair.selector.UniqueID)
+                    if (Ware.Selectors[i].selector.UniqueID == pair.selector.UniqueID)
                     {
                         return Ware.Goods[i];
                     }
@@ -123,16 +124,16 @@ namespace NyvaProdBC
         {
             try
             {
-                for (int i = 0; i < selectors.Count; i++)
+                for (int i = 0; i < Ware.Selectors.Count; i++)
                 {
-                    if (selectors[i].selector == (Button)sender)
+                    if (Ware.Selectors[i].selector == (Button)sender)
                     {
-                        Basket.Add(selectors[i]);
-                        selectors[i].counter.Text = (int.Parse(selectors[i].counter.Text) + 1).ToString();
+                        Basket.Add(Ware.Selectors[i]);
+                        Ware.Selectors[i].counter.Text = (int.Parse(Ware.Selectors[i].counter.Text) + 1).ToString();
                     }
-                    else if (selectors[i].selector.BackColor != selectColor)
+                    else if (Ware.Selectors[i].selector.BackColor != selectColor)
                     {
-                        selectors[i].selector.BackColor = idleColor;
+                        Ware.Selectors[i].selector.BackColor = idleColor;
                     }
                 }
                 for (int i = 0; i < Basket.BaseArray.Length; i++)
@@ -148,7 +149,7 @@ namespace NyvaProdBC
                     }
                 }
             }
-            catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods + " == SL:" + selectors.Count + " => " + ex.Message); }
+            catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
             RefreshBasketUI();
         }
         private void UnselectorButton_Click(object sender, EventArgs e)
@@ -158,35 +159,35 @@ namespace NyvaProdBC
 
             try
             {
-                for (int i = 0; i < selectors.Count; i++)
+                for (int i = 0; i < Ware.Selectors.Count; i++)
                 {
-                    if (selectors[i].unselector == (Button)sender)
+                    if (Ware.Selectors[i].unselector == (Button)sender)
                     {
-                        int counter = int.Parse(selectors[i].counter.Text);
-                        if (counter > 0) selectors[i].counter.Text = (counter - 1).ToString();
+                        int counter = int.Parse(Ware.Selectors[i].counter.Text);
+                        if (counter > 0) Ware.Selectors[i].counter.Text = (counter - 1).ToString();
                         else ResponseAlert("Неможливо замовити менше нуля одиниць товару.");
-                        int removeAt = Basket.IndexOf(selectors[i]);//-1
+                        int removeAt = Basket.IndexOf(Ware.Selectors[i]);//-1
                         string rmsg = Basket.RemoveAt(removeAt);
                         if (rmsg != string.Empty) ResponseAlert(rmsg);
                         break;
                     }
-                    else if (selectors[i].selector.BackColor != selectColor)
+                    else if (Ware.Selectors[i].selector.BackColor != selectColor)
                     {
-                        selectors[i].selector.BackColor = idleColor;
+                        Ware.Selectors[i].selector.BackColor = idleColor;
                     }
                 }
             }
-            catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods.Count + " == SL:" + selectors.Count + " => " + ex.Message); }
+            catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods.Count + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
             RefreshBasketUI();
         }
         void RefreshButtonUI()
         {
-            for (int i = 0; i < selectors.Count; i++)
-                selectors[i].selector.BackColor = idleColor;
+            for (int i = 0; i < Ware.Selectors.Count; i++)
+                Ware.Selectors[i].selector.BackColor = idleColor;
         }
         void RefreshTableUI()
         {
-            selectors.Clear();//Preventing selector-button duplicating
+            Ware.Selectors.Clear();//Preventing selector-button duplicating
             for (int i = 0; i < Ware.Goods.Count; i++)
             {
                 System.Threading.Thread.Sleep(1);
@@ -280,7 +281,7 @@ namespace NyvaProdBC
                 unselectorButton.Click += UnselectorButton_Click;
                 unselectorButton.Text = "✓";
                 tcUnselector.Controls.Add(unselectorButton);
-                selectors.Add(new SelectorPair(unselectorButton, counterField, selectorButton));
+                Ware.Selectors.Add(new SelectorPair(unselectorButton, counterField, selectorButton));
 
                 TableRow tr = new TableRow();
                 tr.Cells.Add(tcId);
@@ -316,14 +317,14 @@ namespace NyvaProdBC
             if (orderKey == "yes")
             {
                 ResponseAlert("STATE: ORDERED");
-                selectors.Clear();
+                Ware.Selectors.Clear();
                 Basket.Clear();
                 Response.Redirect("/Warehouse.aspx");///Inconfidence - You need to press button to reset request: need returning on a page with no request
             }
             if (!Page.IsPostBack)
             {
                 Basket.Clear(); //In case session continues after window closing
-                selectors = new List<Models.SelectorPair>();
+                Ware.Selectors = new List<Models.SelectorPair>();
                 Ware.Goods = GlobalValues.goods;
             }
             else
