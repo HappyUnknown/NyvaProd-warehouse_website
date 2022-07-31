@@ -74,6 +74,10 @@ namespace NyvaProdBC
             BaseArray = new SelectorPair[0];
         }
     }
+    public static class Ware
+    {
+        public static List<Good> Goods;
+    }
     //static class StrExt
     //{
     //    public static int CompareTo(this string str1, string str2)
@@ -90,7 +94,6 @@ namespace NyvaProdBC
         static readonly System.Drawing.Color selectColor = System.Drawing.Color.CornflowerBlue;
         static readonly System.Drawing.Color idleColor = System.Drawing.Color.LightGray;
         static List<Models.SelectorPair> selectors;
-        static List<Good> goods;
 
         Good GoodByButton(SelectorPair pair)
         {
@@ -100,7 +103,7 @@ namespace NyvaProdBC
                 {
                     if (selectors[i].selector.UniqueID == pair.selector.UniqueID)
                     {
-                        return goods[i];
+                        return Ware.Goods[i];
                     }
                 }
                 ResponseAlert("No good on button");
@@ -145,7 +148,7 @@ namespace NyvaProdBC
                     }
                 }
             }
-            catch (Exception ex) { ResponseAlert("GS: " + goods.Count + " == SL:" + selectors.Count + " => " + ex.Message); }
+            catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods + " == SL:" + selectors.Count + " => " + ex.Message); }
             RefreshBasketUI();
         }
         private void UnselectorButton_Click(object sender, EventArgs e)
@@ -173,7 +176,7 @@ namespace NyvaProdBC
                     }
                 }
             }
-            catch (Exception ex) { ResponseAlert("GS: " + goods.Count + " == SL:" + selectors.Count + " => " + ex.Message); }
+            catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods.Count + " == SL:" + selectors.Count + " => " + ex.Message); }
             RefreshBasketUI();
         }
         void RefreshButtonUI()
@@ -184,41 +187,41 @@ namespace NyvaProdBC
         void RefreshTableUI()
         {
             selectors.Clear();//Preventing selector-button duplicating
-            for (int i = 0; i < goods.Count; i++)
+            for (int i = 0; i < Ware.Goods.Count; i++)
             {
                 System.Threading.Thread.Sleep(1);
                 Image img = new Image();
-                img.ImageUrl = goods[i].ImageUrl;
+                img.ImageUrl = Ware.Goods[i].ImageUrl;
                 img.Height = 100;
                 img.Width = 100;
 
                 TableCell tcId = new TableCell();
                 Label lblItemId = new Label();
-                lblItemId.Text = "#" + goods[i].Id.ToString();
+                lblItemId.Text = "#" + Ware.Goods[i].Id.ToString();
                 tcId.CssClass = "tableCell";
                 tcId.Controls.Add(lblItemId);
 
                 TableCell tcName = new TableCell();
                 Label lblItemName = new Label();
-                lblItemName.Text = goods[i].Name.ToString();
+                lblItemName.Text = Ware.Goods[i].Name.ToString();
                 tcName.CssClass = "tableCell";
                 tcName.Controls.Add(lblItemName);
 
                 TableCell tcOrderPrice = new TableCell();
                 Label lblOrderPrice = new Label();
-                lblOrderPrice.Text = goods[i].OrderPrice.ToString();
+                lblOrderPrice.Text = Ware.Goods[i].OrderPrice.ToString();
                 tcOrderPrice.CssClass = "tableCell";
                 tcOrderPrice.Controls.Add(lblOrderPrice);
 
                 TableCell tcSellPrice = new TableCell();
                 Label lblSellPrice = new Label();
-                lblSellPrice.Text = goods[i].SellPrice.ToString();
+                lblSellPrice.Text = Ware.Goods[i].SellPrice.ToString();
                 tcSellPrice.CssClass = "tableCell";//TROUBLE
                 tcSellPrice.Controls.Add(lblSellPrice);
 
                 TableCell tcWeightKg = new TableCell();
                 Label lblWeightKg = new Label();
-                lblWeightKg.Text = goods[i].WeightKg.ToString();
+                lblWeightKg.Text = Ware.Goods[i].WeightKg.ToString();
                 tcWeightKg.CssClass = "tableCell";
                 tcWeightKg.Controls.Add(lblWeightKg);
 
@@ -226,31 +229,31 @@ namespace NyvaProdBC
                 Image image = new Image();
                 image.Height = 100;
                 image.Width = 100;
-                image.ImageUrl = goods[i].ImageUrl.ToString();
+                image.ImageUrl = Ware.Goods[i].ImageUrl.ToString();
                 tcImage.CssClass = "tableCell";
                 tcImage.Controls.Add(image);
 
                 TableCell tcRegionCode = new TableCell();
                 Label lblRegionCode = new Label();
-                lblRegionCode.Text = goods[i].Barcode.RegionCode.ToString();
+                lblRegionCode.Text = Ware.Goods[i].Barcode.RegionCode.ToString();
                 tcRegionCode.CssClass = "tableCell";
                 tcRegionCode.Controls.Add(lblRegionCode);
 
                 TableCell tcProducerCode = new TableCell();
                 Label lblProducerCode = new Label();
-                lblProducerCode.Text = goods[i].Barcode.ProducerCode.ToString();
+                lblProducerCode.Text = Ware.Goods[i].Barcode.ProducerCode.ToString();
                 tcProducerCode.CssClass = "tableCell";
                 tcProducerCode.Controls.Add(lblProducerCode);
 
                 TableCell tcGoodCode = new TableCell();
                 Label lblGoodCode = new Label();
-                lblGoodCode.Text = goods[i].Barcode.GoodCode.ToString();
+                lblGoodCode.Text = Ware.Goods[i].Barcode.GoodCode.ToString();
                 tcGoodCode.CssClass = "tableCell";
                 tcGoodCode.Controls.Add(lblGoodCode);
 
                 TableCell tcControlDigit = new TableCell();
                 Label lblControlDigit = new Label();
-                lblControlDigit.Text = goods[i].Barcode.ControlDigit.ToString();
+                lblControlDigit.Text = Ware.Goods[i].Barcode.ControlDigit.ToString();
                 tcControlDigit.CssClass = "tableCell";
                 tcControlDigit.Controls.Add(lblControlDigit);
 
@@ -321,7 +324,7 @@ namespace NyvaProdBC
             {
                 Basket.Clear(); //In case session continues after window closing
                 selectors = new List<Models.SelectorPair>();
-                goods = GlobalValues.goods;
+                Ware.Goods = GlobalValues.goods;
             }
             else
             {
