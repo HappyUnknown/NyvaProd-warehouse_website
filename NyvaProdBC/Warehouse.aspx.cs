@@ -1,4 +1,5 @@
 ﻿using NyvaProdBC.Entity;
+using NyvaProdBC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,15 @@ namespace NyvaProdBC
 {
     public static class Basket
     {
-        public static Button[] BaseArray = new Button[0];
-        public static void Add(Button b)
+        public static SelectorPair[] BaseArray = new SelectorPair[0];
+        public static void Add(SelectorPair b)
         {
-            Button[] temp = new Button[BaseArray.Length];
+            SelectorPair[] temp = new SelectorPair[BaseArray.Length];
             for (int i = 0; i < temp.Length; i++)
             {
                 temp[i] = BaseArray[i];
             }
-            BaseArray = new Button[temp.Length + 1];
+            BaseArray = new SelectorPair[temp.Length + 1];
             for (int i = 0; i < temp.Length; i++)
             {
                 BaseArray[i] = temp[i];
@@ -31,10 +32,10 @@ namespace NyvaProdBC
             int j = 0;
             try
             {
-                Button[] temp = new Button[BaseArray.Length];
+                SelectorPair[] temp = new SelectorPair[BaseArray.Length];
                 for (i = 0; i < temp.Length; i++)
                     temp[i] = BaseArray[i];
-                BaseArray = new Button[temp.Length - 1];
+                BaseArray = new SelectorPair[temp.Length - 1];
                 for (j = 0; j < index; j++)
                     BaseArray[j] = temp[j];
                 for (j = index + 1; j < temp.Length; j++)
@@ -46,11 +47,22 @@ namespace NyvaProdBC
             }
             return string.Empty;
         }
-        public static int IndexOf(Button b)
+        public static int IndexOf(SelectorPair b)
         {
             for (int i = 0; i < BaseArray.Length; i++)
             {
-                if (BaseArray[i].UniqueID == b.UniqueID)
+                if (BaseArray[i].selector.UniqueID == b.selector.UniqueID)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        public static int IndexOfUnselector(SelectorPair b)
+        {
+            for (int i = 0; i < BaseArray.Length; i++)
+            {
+                if (BaseArray[i].selector.UniqueID == b.unselector.UniqueID)
                 {
                     return i;
                 }
@@ -59,23 +71,23 @@ namespace NyvaProdBC
         }
         public static void Clear()
         {
-            BaseArray = new Button[0];
+            BaseArray = new SelectorPair[0];
         }
     }
     public partial class Warehouse : System.Web.UI.Page
     {
         static readonly System.Drawing.Color selectColor = System.Drawing.Color.CornflowerBlue;
         static readonly System.Drawing.Color idleColor = System.Drawing.Color.LightGray;
-        static List<Button> selectors;
+        static List<Models.SelectorPair> selectors;
         static List<Good> goods;
 
-        Good GoodByButton(Button button)
+        Good GoodByButton(SelectorPair pair)
         {
             try
             {
                 for (int i = 0; i < selectors.Count; i++)
                 {
-                    if (selectors[i].UniqueID == button.UniqueID)
+                    if (selectors[i].selector.UniqueID == pair.selector.UniqueID)
                     {
                         return goods[i];
                     }
@@ -102,26 +114,47 @@ namespace NyvaProdBC
             {
                 for (int i = 0; i < selectors.Count; i++)
                 {
-                    if (selectors[i] == (Button)sender)
+                    if (selectors[i].selector == (Button)sender)
                     {
-                        if (selectors[i].BackColor == idleColor)
+                        if (selectors[i].selector.BackColor == idleColor)
                         {
-                            selectors[i].BackColor = selectColor;
+                            selectors[i].selector.BackColor = selectColor;
                             //basket.Add(new GoodUI(goods[i], selectors[i], 1)); //Bug with removing is not refreshing indexes: need references instead of variables
                             Basket.Add(selectors[i]);
                         }
-                        else
+                    }
+                    else if (selectors[i].selector.BackColor != selectColor)
+                    {
+                        selectors[i].selector.BackColor = idleColor;
+                    }
+                }
+            }
+            catch (Exception ex) { ResponseAlert("GS: " + goods.Count + " == SL:" + selectors.Count + " => " + ex.Message); }
+            RefreshBasketUI();
+        }
+        private void UnselectorButton_Click(object sender, EventArgs e)
+        {
+            //for (int i = 0; i < selectors.Count; i++)
+            //    selectors[i].BackColor = idleColor;
+
+            try
+            {
+                for (int i = 0; i < selectors.Count; i++)
+                {
+                    if (selectors[i].unselector == (Button)sender)
+                    {
+                        if (selectors[i].selector.BackColor == selectColor)
                         {
-                            selectors[i].BackColor = idleColor;
+                            selectors[i].selector.BackColor = idleColor;
                             int removeAt = Basket.IndexOf(selectors[i]);//-1
                             string rmsg = Basket.RemoveAt(removeAt);
                             if (rmsg != string.Empty) ResponseAlert(rmsg);
                             break;
                         }
                     }
-                    else if (selectors[i].BackColor != selectColor)
+                    else if (selectors[i].selector.BackColor != selectColor)
                     {
-                        selectors[i].BackColor = idleColor;
+                        selectors[i].selector.BackColor = idleColor;
                     }
                 }
             }
@@ -131,7 +164,7 @@ namespace NyvaProdBC
         void RefreshButtonUI()
         {
             for (int i = 0; i < selectors.Count; i++)
-                selectors[i].BackColor = idleColor;
+                selectors[i].selector.BackColor = idleColor;
         }
         void RefreshTableUI()
         {
@@ -213,7 +246,14 @@ namespace NyvaProdBC
                 selectorButton.Click += SelectorButton_Click;
                 selectorButton.Text = "✓";
                 tcSelector.Controls.Add(selectorButton);
-                selectors.Add(selectorButton);
+                TableCell tcUnselector = new TableCell();
+                tcUnselector.CssClass = "tableCell";
+                Button unselectorButton = new Button();
+                unselectorButton.BackColor = idleColor;
+                unselectorButton.Click += UnselectorButton_Click;
+                unselectorButton.Text = "✓";
+                tcUnselector.Controls.Add(unselectorButton);
+                selectors.Add(new SelectorPair(selectorButton, unselectorButton));
 
                 TableRow tr = new TableRow();
                 tr.Cells.Add(tcId);
@@ -227,6 +267,7 @@ namespace NyvaProdBC
                 tr.Cells.Add(tcGoodCode);
                 tr.Cells.Add(tcControlDigit);
                 tr.Cells.Add(tcSelector);
+                tr.Cells.Add(tcUnselector);
                 tblGoods.Rows.Add(tr);
             }
         }
@@ -254,7 +295,7 @@ namespace NyvaProdBC
             if (!Page.IsPostBack)
             {
                 Basket.Clear(); //In case session continues after window closing
-                selectors = new List<Button>();
+                selectors = new List<Models.SelectorPair>();
                 goods = GlobalValues.goods;
             }
             else
