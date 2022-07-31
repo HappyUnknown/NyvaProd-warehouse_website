@@ -257,7 +257,7 @@ namespace NyvaProdBC
                 unselectorButton.Click += UnselectorButton_Click;
                 unselectorButton.Text = "✓";
                 tcUnselector.Controls.Add(unselectorButton);
-                selectors.Add(new SelectorPair(selectorButton, counterField, unselectorButton));
+                selectors.Add(new SelectorPair(unselectorButton, counterField, selectorButton));
 
                 TableRow tr = new TableRow();
                 tr.Cells.Add(tcId);
@@ -270,9 +270,9 @@ namespace NyvaProdBC
                 tr.Cells.Add(tcProducerCode);
                 tr.Cells.Add(tcGoodCode);
                 tr.Cells.Add(tcControlDigit);
-                tr.Cells.Add(tcSelector);
-                tr.Cells.Add(tcCounter);
                 tr.Cells.Add(tcUnselector);
+                tr.Cells.Add(tcCounter);
+                tr.Cells.Add(tcSelector);
                 tblGoods.Rows.Add(tr);
             }
         }
