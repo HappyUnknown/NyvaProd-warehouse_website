@@ -74,6 +74,17 @@ namespace NyvaProdBC
             BaseArray = new SelectorPair[0];
         }
     }
+    //static class StrExt
+    //{
+    //    public static int CompareTo(this string str1, string str2)
+    //    {
+    //        int minLen = (str1.Length > str2.Length ? str1 : str2).Length;
+    //        for (int i = 0; i < minLen; i++)
+    //            if (str1[i] > str2[i]) return 1;
+    //            else if (str1[i] < str2[i]) return -1;
+    //        return 0;
+    //    }
+    //}
     public partial class Warehouse : System.Web.UI.Page
     {
         static readonly System.Drawing.Color selectColor = System.Drawing.Color.CornflowerBlue;
@@ -107,9 +118,6 @@ namespace NyvaProdBC
         }
         private void SelectorButton_Click(object sender, EventArgs e)
         {
-            //for (int i = 0; i < selectors.Count; i++)
-            //    selectors[i].BackColor = idleColor;
-
             try
             {
                 for (int i = 0; i < selectors.Count; i++)
@@ -122,6 +130,18 @@ namespace NyvaProdBC
                     else if (selectors[i].selector.BackColor != selectColor)
                     {
                         selectors[i].selector.BackColor = idleColor;
+                    }
+                }
+                for (int i = 0; i < Basket.BaseArray.Length; i++)
+                {
+                    for (int j = i; j < Basket.BaseArray.Length; j++)
+                    {
+                        if (GoodByButton(Basket.BaseArray[i]).Name.CompareTo(GoodByButton(Basket.BaseArray[j]).Name) == 1)//Caller goes second, but first in queue
+                        {
+                            SelectorPair temp = Basket.BaseArray[i];
+                            Basket.BaseArray[i] = Basket.BaseArray[j];
+                            Basket.BaseArray[j] = temp;
+                        }
                     }
                 }
             }
