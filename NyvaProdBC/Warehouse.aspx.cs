@@ -116,12 +116,8 @@ namespace NyvaProdBC
                 {
                     if (selectors[i].selector == (Button)sender)
                     {
-                        if (selectors[i].selector.BackColor == idleColor)
-                        {
-                            selectors[i].selector.BackColor = selectColor;
-                            //basket.Add(new GoodUI(goods[i], selectors[i], 1)); //Bug with removing is not refreshing indexes: need references instead of variables
-                            Basket.Add(selectors[i]);
-                        }
+                        Basket.Add(selectors[i]);
+                        selectors[i].counter.Text = (int.Parse(selectors[i].counter.Text) + 1).ToString();
                     }
                     else if (selectors[i].selector.BackColor != selectColor)
                     {
@@ -143,14 +139,13 @@ namespace NyvaProdBC
                 {
                     if (selectors[i].unselector == (Button)sender)
                     {
-                        if (selectors[i].selector.BackColor == selectColor)
-                        {
-                            selectors[i].selector.BackColor = idleColor;
-                            int removeAt = Basket.IndexOf(selectors[i]);//-1
-                            string rmsg = Basket.RemoveAt(removeAt);
-                            if (rmsg != string.Empty) ResponseAlert(rmsg);
-                            break;
-                        }
+                        int counter = int.Parse(selectors[i].counter.Text);
+                        if (counter > 0) selectors[i].counter.Text = (counter - 1).ToString();
+                        else ResponseAlert("Неможливо замовити менше нуля одиниць товару.");
+                        int removeAt = Basket.IndexOf(selectors[i]);//-1
+                        string rmsg = Basket.RemoveAt(removeAt);
+                        if (rmsg != string.Empty) ResponseAlert(rmsg);
+                        break;
                     }
                     else if (selectors[i].selector.BackColor != selectColor)
                     {
@@ -246,6 +241,15 @@ namespace NyvaProdBC
                 selectorButton.Click += SelectorButton_Click;
                 selectorButton.Text = "✓";
                 tcSelector.Controls.Add(selectorButton);
+
+                TableCell tcCounter = new TableCell();
+                tcSelector.CssClass = "tableCell";
+                TextBox counterField = new TextBox();
+                counterField.Height = 20;
+                counterField.BackColor = idleColor;
+                counterField.Text = "0";
+                tcCounter.Controls.Add(counterField);
+
                 TableCell tcUnselector = new TableCell();
                 tcUnselector.CssClass = "tableCell";
                 Button unselectorButton = new Button();
@@ -253,7 +257,7 @@ namespace NyvaProdBC
                 unselectorButton.Click += UnselectorButton_Click;
                 unselectorButton.Text = "✓";
                 tcUnselector.Controls.Add(unselectorButton);
-                selectors.Add(new SelectorPair(selectorButton, unselectorButton));
+                selectors.Add(new SelectorPair(selectorButton, counterField, unselectorButton));
 
                 TableRow tr = new TableRow();
                 tr.Cells.Add(tcId);
@@ -267,6 +271,7 @@ namespace NyvaProdBC
                 tr.Cells.Add(tcGoodCode);
                 tr.Cells.Add(tcControlDigit);
                 tr.Cells.Add(tcSelector);
+                tr.Cells.Add(tcCounter);
                 tr.Cells.Add(tcUnselector);
                 tblGoods.Rows.Add(tr);
             }
