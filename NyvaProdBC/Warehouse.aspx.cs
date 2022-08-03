@@ -345,6 +345,7 @@ namespace NyvaProdBC
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             string orderKey = Request.QueryString["order"];
             if (orderKey == "yes")
             {
@@ -357,7 +358,16 @@ namespace NyvaProdBC
             {
                 Basket.Clear(); //In case session continues after window closing
                 Ware.Selectors = new List<Models.SelectorPair>();
-                Ware.Goods = GlobalValues.goods;
+                using (Entity.Contexts.GoodContext db = new Entity.Contexts.GoodContext())
+                {
+                    if (db.Goods.Count() == 0)
+                    {
+                        for (int i = 0; i < GlobalValues.goods.Count; i++)
+                            db.Goods.Add(GlobalValues.goods[i]);
+                        db.SaveChanges();
+                    }
+                    Ware.Goods = db.Goods.ToList();
+                }
             }
             else
             {

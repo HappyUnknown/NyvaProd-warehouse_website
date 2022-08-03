@@ -73,3 +73,12 @@ E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.csproj.CopyComplete
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.dll
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.pdb
+E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\bin\EntityFramework.dll
+E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\bin\EntityFramework.SqlServer.dll
+E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\bin\EntityFramework.xml
+E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\bin\EntityFramework.SqlServer.xml
+E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.csproj.AssemblyReference.cache
+E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.Migrations.init.resources
+E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.csproj.GenerateResource.cache
+E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.Migrations.RemoveError1.resources
+E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.Migrations.RemoveError11.resources

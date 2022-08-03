@@ -5,6 +5,7 @@ using System.Web;
 
 namespace NyvaProdBC.Entity
 {
+    [System.ComponentModel.DataAnnotations.Schema.Table("NyvaProdGoods")]
     public class Good
     {
         private const int NUMBER_DEFAULT = 0;
@@ -16,8 +17,8 @@ namespace NyvaProdBC.Entity
         public int InWare { get; set; } = 0;
         public string ImageUrl { get; set; } = "IMAGE_DEFAULT";
         public string Description { get; set; } = "NO_DESCRIPTION";
-        public DateTime ProductionDate { get; set; } = DateTime.MinValue;
-        public DateTime ConsumedUntil { get; set; } = DateTime.MaxValue;
+        public string ProductionDate { get; set; } = "01.01.0000";
+        public string ConsumedUntil { get; set; } = "01.01.0000";
         public Barcode Barcode { get; set; } = new Barcode();
         public Good() { }
         public Good(string name, string description, double orderPrice, double sellPrice, double weightKg, int inware, string imageUrl, Barcode barcode = null)
