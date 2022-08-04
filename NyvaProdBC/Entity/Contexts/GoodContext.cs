@@ -12,7 +12,7 @@ namespace NyvaProdBC.Entity.Contexts
      */
     public class GoodContext : System.Data.Entity.DbContext
     {
-        public GoodContext() : base("SomeeMangaConnection") { }
+        public GoodContext() : base("DefaultConnection") { }
         public System.Data.Entity.DbSet<Good> Goods { get; set; }
     }
 }

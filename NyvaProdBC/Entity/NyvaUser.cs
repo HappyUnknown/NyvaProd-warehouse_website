@@ -5,7 +5,7 @@ using System.Web;
 
 namespace NyvaProdBC.Entity
 {
-    [System.ComponentModel.DataAnnotations.Schema.Table("NyvaUsers")]
+    [System.ComponentModel.DataAnnotations.Schema.Table("NyvaProdUsers")]
     public class NyvaUser
     {
         [System.ComponentModel.DataAnnotations.Key]
@@ -15,8 +15,9 @@ namespace NyvaProdBC.Entity
         public string FatherName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
+        public string Password { get; set; }
         public NyvaUser() { }
-        public NyvaUser(int id, string firstName, string lastName, string fatherName, string email, string phone) 
+        public NyvaUser(int id, string firstName, string lastName, string fatherName, string email, string phone)
         {
             Id = id;
             FirstName = firstName;
@@ -24,8 +25,8 @@ namespace NyvaProdBC.Entity
             FatherName = fatherName;
             Email = email;
             Phone = phone;
-        }        
-        public NyvaUser(string firstName, string lastName, string fatherName, string email, string phone) 
+        }
+        public NyvaUser(string firstName, string lastName, string fatherName, string email, string phone)
         {
             FirstName = firstName;
             LastName = lastName;

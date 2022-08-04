@@ -16,6 +16,7 @@ namespace NyvaProdBC
             // Код, выполняемый при запуске приложения
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            System.Data.Entity.Database.SetInitializer<Entity.Contexts.NyvaUserContext>(null);
         }
     }
 }

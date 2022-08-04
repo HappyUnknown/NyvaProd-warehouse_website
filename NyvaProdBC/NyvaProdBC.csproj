@@ -222,6 +222,14 @@
     <Compile Include="Migrations\202208021505299_RemoveError11.designer.cs">
       <DependentUpon>202208021505299_RemoveError11.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208031306335_EmptyPrePassword.cs" />
+    <Compile Include="Migrations\202208031306335_EmptyPrePassword.designer.cs">
+      <DependentUpon>202208031306335_EmptyPrePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208031308035_UserPasswordField.cs" />
+    <Compile Include="Migrations\202208031308035_UserPasswordField.designer.cs">
+      <DependentUpon>202208031308035_UserPasswordField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GoodUI.cs" />
     <Compile Include="Models\SelectorPair.cs" />
@@ -291,6 +299,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202208021505299_RemoveError11.resx">
       <DependentUpon>202208021505299_RemoveError11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208031306335_EmptyPrePassword.resx">
+      <DependentUpon>202208031306335_EmptyPrePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208031308035_UserPasswordField.resx">
+      <DependentUpon>202208031308035_UserPasswordField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

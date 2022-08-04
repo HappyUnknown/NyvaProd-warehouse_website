@@ -52,7 +52,7 @@ namespace NyvaProdBC
         {
             Entity.NyvaUser nyvaUser = GetUserData();
             bool mailClone = MailClone(nyvaUser);
-            Entity.NyvaUser lastNyvaUser = db.Users.ToList()[db.Users.Count() - 1];
+            Entity.NyvaUser lastNyvaUser = db.Users.Count() == 0 ? new Entity.NyvaUser() : db.Users.ToList()[db.Users.Count() - 1];// new() != default
             string userStr = "Email:" + lastNyvaUser.Email;
             if (mailClone)
                 Response.Write("<script>alert('Mail duplicate. Last e-mail: " + userStr + "');</script>");

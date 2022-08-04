@@ -1,0 +1,10 @@
+﻿create table NyvaProdUsers
+(
+	Id int primary key identity,
+	FirstName nvarchar(max),
+	LastName nvarchar(max),
+	FatherName nvarchar(max),
+	Email nvarchar(max),
+	Phone nvarchar(max),
+	[Password] nvarchar(max)
+)

@@ -7,7 +7,7 @@ namespace NyvaProdBC.Entity.Contexts
 {
     public class NyvaUserContext : System.Data.Entity.DbContext
     {
-        public NyvaUserContext() : base("SomeeMangaConnection") { }
+        public NyvaUserContext() : base("DefaultConnection") { }
         public System.Data.Entity.DbSet<NyvaUser> Users { get; set; }
     }
 }

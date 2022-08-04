@@ -8,7 +8,7 @@ namespace NyvaProdBC.Entity
     [System.ComponentModel.DataAnnotations.Schema.Table("NyvaProdGoods")]
     public class Good
     {
-        private const int NUMBER_DEFAULT = 0;
+        [System.ComponentModel.DataAnnotations.Key]
         public int Id { get; set; } = 0;
         public string Name { get; set; } = "NAME_DEFAULT";
         public double OrderPrice { get; set; } = 0;
@@ -59,30 +59,31 @@ namespace NyvaProdBC.Entity
         public Good(string name, string description, double orderPrice, double sellPrice, double weightKg, int inware, string imageUrl, int regionCode, int producerCode, int goodCode, int controlDigit)
         {
             Name = name;
+            Description = description;
             OrderPrice = orderPrice;
             SellPrice = sellPrice;
             WeightKg = weightKg;
             InWare = inware;
             ImageUrl = imageUrl;
-            Description = description;
-            if (regionCode != NUMBER_DEFAULT) Barcode.RegionCode = regionCode;
-            if (producerCode != NUMBER_DEFAULT) Barcode.ProducerCode = producerCode;
-            if (goodCode != NUMBER_DEFAULT) Barcode.GoodCode = goodCode;
-            if (controlDigit != NUMBER_DEFAULT) Barcode.ControlDigit = controlDigit;
+            if (regionCode != 0) Barcode.RegionCode = regionCode;
+            if (producerCode != 0) Barcode.ProducerCode = producerCode;
+            if (goodCode != 0) Barcode.GoodCode = goodCode;
+            if (controlDigit != 0) Barcode.ControlDigit = controlDigit;
         }
         public Good(int id, string name, string description, double orderPrice, double sellPrice, double weightKg, int inware, string imageUrl,  int regionCode, int producerCode, int goodCode, int controlDigit)
         {
             Id = id;
             Name = name;
+            Description = description;
             OrderPrice = orderPrice;
             SellPrice = sellPrice;
             WeightKg = weightKg;
             InWare = inware;
             ImageUrl = imageUrl;
-            if (regionCode != NUMBER_DEFAULT) Barcode.RegionCode = regionCode;
-            if (producerCode != NUMBER_DEFAULT) Barcode.ProducerCode = producerCode;
-            if (goodCode != NUMBER_DEFAULT) Barcode.GoodCode = goodCode;
-            if (controlDigit != NUMBER_DEFAULT) Barcode.ControlDigit = controlDigit;
+            if (regionCode != 0) Barcode.RegionCode = regionCode;
+            if (producerCode != 0) Barcode.ProducerCode = producerCode;
+            if (goodCode != 0) Barcode.GoodCode = goodCode;
+            if (controlDigit != 0) Barcode.ControlDigit = controlDigit;
         }
     }
 }
