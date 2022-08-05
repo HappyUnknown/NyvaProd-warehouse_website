@@ -22,6 +22,10 @@
             <br />
             <asp:TextBox runat="server" ID="tbPhone" placeholder="Номер телефону" />
             <br />
+            <asp:TextBox runat="server" ID="tbPassword" placeholder="Пароль" />
+            <br />
+            <asp:TextBox runat="server" ID="tbPasswordVerifiy" placeholder="Підтвердження паролю" />
+            <br />
             <asp:Button runat="server" ID="btnRegisterUser" OnClick="btnRegisterUser_Click" Text="Зареєструватись" />
             <br />
             <asp:Button runat="server" ID="btnCheckRegistration" OnClick="btnCheckRegistration_Click" Text="Перевірити" />

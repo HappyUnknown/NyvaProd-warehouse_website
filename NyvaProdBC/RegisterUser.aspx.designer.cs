@@ -78,6 +78,24 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.TextBox tbPhone;
 
         /// <summary>
+        /// tbPassword элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbPassword;
+
+        /// <summary>
+        /// tbPasswordVerifiy элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbPasswordVerifiy;
+
+        /// <summary>
         /// btnRegisterUser элемент управления.
         /// </summary>
         /// <remarks>
