@@ -9,7 +9,7 @@ namespace NyvaProdBC
 {
     public static class RegexCheck
     {
-        public const string cellPattern = @"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
+        public const string cellPattern = @"^\+(?:[0-9]●?){6,14}[0-9]$";
 
         public static bool IsCellNumber(string line)
         {
@@ -61,19 +61,51 @@ namespace NyvaProdBC
             bool passwordConfirmed = tbPassword.Text == tbPasswordVerifiy.Text;
             bool passwordValid = lengthValid && passwordConfirmed;
 
-            bool mailClone = MailClone(nyvaUser);
-            bool mailExists = RegexCheck.IsEmail(nyvaUser.Email);
-            bool mailValid = mailClone && mailExists;
+            bool mailUnique = !MailClone(nyvaUser);
+            bool mailSyntaxed = RegexCheck.IsEmail(nyvaUser.Email);
+            bool mailValid = mailUnique && mailSyntaxed;
 
             bool phoneValid = RegexCheck.IsCellNumber(nyvaUser.Phone);
 
-            if (!mailClone && passwordValid && mailValid && phoneValid)
+            if (passwordValid && mailValid && phoneValid)
             {
                 Response.Write("<script>alert('Registration done');</script>");
                 db.Users.Add(nyvaUser);
                 db.SaveChanges();
             }
-            else Response.Write("<script>alert('Invalid registration input');</script>");
+            else
+            {
+                if (!phoneValid)
+                {
+                    Response.Write("<script>alert('Phone invalid');</script>");
+                }
+                else if (!mailValid)
+                {
+                    if (!mailUnique)
+                    {
+                        Response.Write("<script>alert('Mail already used');</script>");
+                    }
+                    else if (!mailSyntaxed)
+                    {
+                        Response.Write("<script>alert('Mail syntax check fail');</script>");
+                    }
+                }
+                else if (!passwordValid)
+                {
+                    if (!passwordConfirmed)
+                    {
+                        Response.Write($"<script>alert('Password confirmation fails');</script>");
+                    }
+                    else if (!lengthValid)
+                    {
+                        Response.Write($"<script>alert('Password length restricted: must be longer than {MIN_PASSWORD_LENGTH}');</script>");
+                    }
+                }
+                else
+                {
+                    Response.Write("<script>alert('Invalid registration input');</script>");
+                }
+            }
         }
 
         protected void btnCheckRegistration_Click(object sender, EventArgs e)
