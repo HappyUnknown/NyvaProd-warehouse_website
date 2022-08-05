@@ -29,9 +29,11 @@ namespace NyvaProdBC
         {
         }
 
-        Entity.NyvaUser GetUserData()
+        Entity.NyvaUser GetUserInput()
         {
-            return new Entity.NyvaUser(tbFirstName.Text, tbLastName.Text, tbFatherName.Text, tbEmail.Text, tbPhone.Text);
+            int id;
+            int.TryParse(tbId.Text, out id);
+            return new Entity.NyvaUser(id, tbFirstName.Text, tbLastName.Text, tbFatherName.Text, tbEmail.Text, tbPhone.Text, tbPassword.Text);
         }
 
         bool MailClone(Entity.NyvaUser nyvaUser)
@@ -55,7 +57,7 @@ namespace NyvaProdBC
         {
             const int MIN_PASSWORD_LENGTH = 6;
 
-            Entity.NyvaUser nyvaUser = GetUserData();
+            Entity.NyvaUser nyvaUser = GetUserInput();
 
             bool lengthValid = tbPassword.Text.Length >= MIN_PASSWORD_LENGTH;
             bool passwordConfirmed = tbPassword.Text == tbPasswordVerifiy.Text;
@@ -110,7 +112,7 @@ namespace NyvaProdBC
 
         protected void btnCheckRegistration_Click(object sender, EventArgs e)
         {
-            Entity.NyvaUser nyvaUser = GetUserData();
+            Entity.NyvaUser nyvaUser = GetUserInput();
             bool mailClone = MailClone(nyvaUser);
             Entity.NyvaUser lastNyvaUser = db.Users.Count() == 0 ? new Entity.NyvaUser() : db.Users.ToList()[db.Users.Count() - 1];// new() != default
             string userStr = lastNyvaUser.Email;
@@ -118,6 +120,36 @@ namespace NyvaProdBC
                 Response.Write("<script>alert('Mail known. Last e-mail: " + userStr + "');</script>");
             else
                 Response.Write("<script>alert('New mail. Last e-mail: " + userStr + "');</script>");
+        }
+
+        protected void btnLoginUser_Click(object sender, EventArgs e)
+        {
+            List<Entity.NyvaUser> users = new Entity.Contexts.NyvaUserContext().Users.ToList();
+            for (int i = 0; i < users.Count; i++)
+            {
+                Entity.NyvaUser userInput = GetUserInput();
+                if (users[i].Email == GetUserInput().Email && users[i].Password == GetUserInput().Password)
+                {
+                    Application["user_data"] = users[i];
+                    Response.Write("<script>alert('User logged in as " + users[i].Email + ": " + users[i].Password.ToString() + "==" + userInput.Password + "');</script>");
+                    return;
+                }
+                else
+                {
+                    Response.Write("<script>alert('" + users[i].Email + "==" + userInput.Email + " | " + users[i].Password.ToString() + "==" + userInput.Password + "');</script>");
+                }
+            }
+            Response.Write("<script>alert('Cannot log in');</script>");
+        }
+
+        protected void btnCurrentUser_Click(object sender, EventArgs e)
+        {
+            Response.Write("<script>alert('User is: " + ((Entity.NyvaUser)Application["user_data"]).Email + "');</script>");
+        }
+
+        protected void btnGoBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Warehouse.aspx");
         }
     }
 }

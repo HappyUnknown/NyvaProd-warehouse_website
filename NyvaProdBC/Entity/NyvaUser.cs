@@ -17,7 +17,7 @@ namespace NyvaProdBC.Entity
         public string Phone { get; set; }
         public string Password { get; set; }
         public NyvaUser() { }
-        public NyvaUser(int id, string firstName, string lastName, string fatherName, string email, string phone)
+        public NyvaUser(int id, string firstName, string lastName, string fatherName, string email, string phone, string password)
         {
             Id = id;
             FirstName = firstName;
@@ -25,14 +25,16 @@ namespace NyvaProdBC.Entity
             FatherName = fatherName;
             Email = email;
             Phone = phone;
+            Password = password;
         }
-        public NyvaUser(string firstName, string lastName, string fatherName, string email, string phone)
+        public NyvaUser(string firstName, string lastName, string fatherName, string email, string phone, string password)
         {
             FirstName = firstName;
             LastName = lastName;
             FatherName = fatherName;
             Email = email;
             Phone = phone;
+            Password = password;
         }
     }
 }

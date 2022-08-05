@@ -390,5 +390,6 @@ namespace NyvaProdBC
             }
             RefreshTableUI();
         }
+
     }
 }
