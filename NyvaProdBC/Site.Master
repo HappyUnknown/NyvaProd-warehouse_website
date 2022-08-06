@@ -56,7 +56,25 @@
                     <li><a runat="server" href="/Contact">Зв'язок</a></li>
                     <li><a runat="server" href="/Warehouse">Склад</a></li>
                     <li><a runat="server" href="/RegisterPage">Реєстрація</a></li>
+                    <li><a runat="server" href="/LoginPage">Вхід</a></li>
+                    <li><a runat="server" href="/LogoutPage">Вихід</a></li>
                     <li><a runat="server" href="/RegisterUser">Тестова</a></li>
+                    <li>
+                        <%
+                            if (CurrentEmail.Length == 0)
+                            {
+                        %>
+                        <a runat="server" href="/RegisterUser">Не зареєстровано</a>
+                        <%
+                            }
+                            else
+                            {
+                        %>
+                        <a runat="server" href="#"><%=CurrentEmail %></a>
+                        <%
+                            }
+                        %>
+                    </li>
                 </ul>
             </div>
         </div>

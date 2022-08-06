@@ -135,6 +135,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="LoginPage.aspx" />
+    <Content Include="LogoutPage.aspx" />
     <Content Include="NewGoodForm.aspx" />
     <Content Include="RegisterPage.aspx" />
     <Content Include="RegisterUser.aspx" />
@@ -212,6 +214,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalValues.cs" />
+    <Compile Include="LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogoutPage.aspx.cs">
+      <DependentUpon>LogoutPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogoutPage.aspx.designer.cs">
+      <DependentUpon>LogoutPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202208020903151_init.cs" />
     <Compile Include="Migrations\202208020903151_init.designer.cs">
       <DependentUpon>202208020903151_init.cs</DependentUpon>

@@ -25,6 +25,11 @@ namespace NyvaProdBC
                 lblWebEcho.Text = value;
             }
         }
+        public string CurrentEmail
+        {
+            get;
+            set;
+        }
         public void BasketAdd(string text)
         {
             ListItem li = new ListItem();
@@ -47,7 +52,15 @@ namespace NyvaProdBC
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            object currentUser = Application["user_data"];
+            if (currentUser != null)
+            {
+                CurrentEmail = currentUser.ToString();
+            }
+            else 
+            {
+                CurrentEmail = string.Empty;
+            }
         }
         public string FormedOrder()
         {

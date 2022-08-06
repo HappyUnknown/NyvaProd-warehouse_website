@@ -36,5 +36,9 @@ namespace NyvaProdBC.Entity
             Phone = phone;
             Password = password;
         }
+        public override string ToString()
+        {
+            return Email;
+        }
     }
 }
