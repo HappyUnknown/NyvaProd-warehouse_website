@@ -54,13 +54,9 @@ namespace NyvaProdBC
         {
             object currentUser = Application["user_data"];
             if (currentUser != null)
-            {
                 CurrentEmail = currentUser.ToString();
-            }
-            else 
-            {
+            else
                 CurrentEmail = string.Empty;
-            }
         }
         public string FormedOrder()
         {

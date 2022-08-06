@@ -39,8 +39,61 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="navbar-brand" runat="server" href="/">NyvaProd</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Головна</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/About">Інформація</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Contact">Контакти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Warehouse">Склад</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mx-auto order-0">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <%
+                        if (CurrentEmail.Length == 0)
+                        {
+                    %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/RegisterPage">Реєстрація</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/LoginPage">Вхід</a>
+                    </li>
+                    <%
+                        }
+                        else
+                        {
+                    %>
+                    <li class="nav-item">
+                        <a runat="server" href="#" class="nav-link"><%=CurrentEmail %></a>
+                    </li>
+                    <li class="nav-item">
+                        <a runat="server" href="/LogoutPage" class="nav-link">Вихід</a>
+                    </li>
+                    <%
+                        }
+                    %>
+                </ul>
+            </div>
+        </nav>
+        <%--       <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -55,6 +108,8 @@
                     <li><a runat="server" href="/About">Інформація</a></li>
                     <li><a runat="server" href="/Contact">Зв'язок</a></li>
                     <li><a runat="server" href="/Warehouse">Склад</a></li>
+                </ul>
+                <ul class="nav nav">
                     <li><a runat="server" href="/RegisterPage">Реєстрація</a></li>
                     <li><a runat="server" href="/LoginPage">Вхід</a></li>
                     <li><a runat="server" href="/LogoutPage">Вихід</a></li>
@@ -77,7 +132,8 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div>--%>
+
         <div class="container body-content">
             <br />
             <asp:Label runat="server" ID="lblWebEcho" />
