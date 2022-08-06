@@ -1,16 +1,13 @@
 ﻿namespace NyvaProdBC
 {
-    public partial class SiteMaster
+    class GoodInBasket
     {
-        struct GoodInBasket
+        public string GoodName { get; set; }
+        public int Count { get; set; }
+        public GoodInBasket(string goodName, int count)
         {
-            public string GoodName { get; set; }
-            public int Count { get; set; }
-            public GoodInBasket(string goodName, int count)
-            {
-                GoodName = goodName;
-                Count = count;
-            }
+            GoodName = goodName;
+            Count = count;
         }
     }
 }

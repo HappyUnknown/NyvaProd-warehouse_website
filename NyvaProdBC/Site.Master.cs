@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NyvaProdBC.Entity;
+using NyvaProdBC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
@@ -30,6 +32,57 @@ namespace NyvaProdBC
             get;
             set;
         }
+        public int CountUniques(Good[] goods, string name)
+        {
+            int counter = 0;
+            for (int i = 0; i < goods.Length; i++)
+                if (goods[i].Name == name)
+                    counter++;
+            return counter;
+        }
+        Good GoodByButton(SelectorPair pair)
+        {
+            try
+            {
+                for (int i = 0; i < Ware.Selectors.Count; i++)
+                {
+                    if (Ware.Selectors[i].selector.UniqueID == pair.selector.UniqueID)
+                    {
+                        return Ware.Goods[i];
+                    }
+                }
+                ResponseAlert("No good on button");
+            }
+            catch (Exception ex) { ResponseAlert(ex.Message); }
+            return default;
+        }
+        public void RefreshBasketUI()
+        {
+            BasketClear();
+            SelectorPair[] basket = (SelectorPair[])Application["basket"];
+            if (basket != null)
+            {
+                #region Display wrapped (counted) basket goods
+                Good[] basketGoods = new Good[basket.Length];//Creating good array for basket goods
+                for (int i = 0; i < basket.Length; i++)
+                    basketGoods[i] = GoodByButton(basket[i]);//Translating every basket element into respective good by selector-button
+                List<string> uniqueNames = new List<string>();//Array to store unique names - they will be used to wrap element group into 1 line
+                List<int> counters = new List<int>();//Array to store unique names' respective counters - they will be used to wrap element group into 1 line without user losing count
+                for (int i = 0; i < basketGoods.Length; i++)//For every basket good, translated from button
+                    if (!uniqueNames.Contains(basketGoods[i].Name))//We look if its' name is not already being stored inside of unique names' array
+                    {
+                        uniqueNames.Add(basketGoods[i].Name);//Only then we add the name
+                        counters.Add(CountUniques(basketGoods, uniqueNames[uniqueNames.Count - 1]));//And respective counter, calculated by searching for last unique name in the good-list
+                    }
+                List<GoodInBasket> basketGoodCount = new List<GoodInBasket>();//Array to join counter-arrays, created earlier
+                for (int i = 0; i < uniqueNames.Count; i++)//For every counter element
+                    basketGoodCount.Add(new GoodInBasket(uniqueNames[i], counters[i]));//Add this counter element into shared basket
+                for (int i = 0; i < basketGoodCount.Count; i++)//For every grouped basket good bunch
+                    BasketAdd(basketGoodCount[i].Count + "x" + basketGoodCount[i].GoodName);//Add this bunch as a UI-basket element 
+                #endregion
+            }
+        }
+
         public void BasketAdd(string text)
         {
             ListItem li = new ListItem();
@@ -57,6 +110,7 @@ namespace NyvaProdBC
                 CurrentEmail = currentUser.ToString();
             else
                 CurrentEmail = string.Empty;
+            RefreshBasketUI();//In order to display everywhere
         }
         public string FormedOrder()
         {

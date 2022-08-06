@@ -54,9 +54,24 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Contact">Контакти</a>
                     </li>
+                    <%
+                        if (CurrentEmail.Length > 0)
+                        {
+                    %>
                     <li class="nav-item">
                         <a class="nav-link" href="/Warehouse">Склад</a>
                     </li>
+                    <%
+                        }
+                        else
+                        {
+                    %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="pointer-events: none" title="Увійдіть, аби отримати доступ">Склад</a>
+                    </li>
+                    <%
+                        }
+                    %>
                 </ul>
             </div>
             <div class="mx-auto order-0">
