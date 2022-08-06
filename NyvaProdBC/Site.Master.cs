@@ -86,9 +86,9 @@ namespace NyvaProdBC
             string admtext = FormedOrder();
             string usersubject = $@"Ваше замовлення прийняте.";
             string usertext = $@"{reciever}, ваше замовлення було отримане. Очікуйте відповіді від офіційного представника на дану поштову скриньку.";
-            if (liBasket.Items.Count == 0) { ResponseAlert("Не обрано товарів для замовлення. Оберіть товари."); return; }
             if (reciever != null)
             {
+                if (liBasket.Items.Count == 0) { ResponseAlert("Не обрано товарів для замовлення. Оберіть товари."); return; }
                 try { MailAddress address = new MailAddress(reciever.Email); } catch { ResponseAlert($"\"{reciever}\" не є дійсною електронною адресою. Уведіть дійсну адресу замовника."); return; }
                 SendMail(launcher, admsubject, admtext);
                 SendMail(reciever.Email, usersubject, usertext);
