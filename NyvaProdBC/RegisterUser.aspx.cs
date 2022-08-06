@@ -71,41 +71,41 @@ namespace NyvaProdBC
 
             if (passwordValid && mailValid && phoneValid)
             {
-                Response.Write("<script>alert('Registration done');</script>");
                 db.Users.Add(nyvaUser);
                 db.SaveChanges();
+                Response.Write("<script>alert('Користувача зареєстровано.');</script>");
             }
             else
             {
                 if (!phoneValid)
                 {
-                    Response.Write("<script>alert('Phone invalid');</script>");
+                    Response.Write("<script>alert('Синтаксичну перевірку телефону не складено.');</script>");
                 }
                 else if (!mailValid)
                 {
                     if (!mailUnique)
                     {
-                        Response.Write("<script>alert('Mail already used');</script>");
+                        Response.Write("<script>alert('Пошту вже зайнято.');</script>");
                     }
                     else if (!mailSyntaxed)
                     {
-                        Response.Write("<script>alert('Mail syntax check fail');</script>");
+                        Response.Write("<script>alert('Синтаксичну перевірку пошти не складено.');</script>");
                     }
                 }
                 else if (!passwordValid)
                 {
                     if (!passwordConfirmed)
                     {
-                        Response.Write($"<script>alert('Password confirmation fails');</script>");
+                        Response.Write($"<script>alert('Підтвердження не співпадає з паролем.');</script>");
                     }
                     else if (!lengthValid)
                     {
-                        Response.Write($"<script>alert('Password length restricted: must be longer than {MIN_PASSWORD_LENGTH}');</script>");
+                        Response.Write($"<script>alert('Довжину паролю обмежено: повинна бути більшою за {MIN_PASSWORD_LENGTH}');</script>");
                     }
                 }
                 else
                 {
-                    Response.Write("<script>alert('Invalid registration input');</script>");
+                    Response.Write("<script>alert('Невірні вхідні дані реєстрації');</script>");
                 }
             }
         }
@@ -113,13 +113,18 @@ namespace NyvaProdBC
         protected void btnCheckRegistration_Click(object sender, EventArgs e)
         {
             Entity.NyvaUser nyvaUser = GetUserInput();
-            bool mailClone = MailClone(nyvaUser);
             Entity.NyvaUser lastNyvaUser = db.Users.Count() == 0 ? new Entity.NyvaUser() : db.Users.ToList()[db.Users.Count() - 1];// new() != default
-            string userStr = lastNyvaUser.Email;
-            if (mailClone)
-                Response.Write("<script>alert('Mail known. Last e-mail: " + userStr + "');</script>");
+            if (RegexCheck.IsEmail(nyvaUser.Email))
+            {
+                bool mailClone = MailClone(nyvaUser);
+                string userStr = lastNyvaUser.Email;
+                if (mailClone)
+                    Response.Write("<script>alert('Пошта відома. Остання: " + userStr + "');</script>");
+                else
+                    Response.Write("<script>alert('Нова пошта. Остання: " + userStr + "');</script>");
+            }
             else
-                Response.Write("<script>alert('New mail. Last e-mail: " + userStr + "');</script>");
+                Response.Write("<script>alert('Це не пошта. Остання: " + lastNyvaUser.Email + "');</script>");
         }
 
         protected void btnLoginUser_Click(object sender, EventArgs e)
@@ -131,7 +136,7 @@ namespace NyvaProdBC
                 if (users[i].Email == GetUserInput().Email && users[i].Password == GetUserInput().Password)
                 {
                     Application["user_data"] = users[i];
-                    Response.Write("<script>alert('User logged in as " + users[i].Email + ": " + users[i].Password.ToString() + "==" + userInput.Password + "');</script>");
+                    Response.Write("<script>alert('Користувач увійшов як " + users[i].Email + ": " + users[i].Password.ToString() + "==" + userInput.Password + "');</script>");
                     return;
                 }
                 else
@@ -139,17 +144,34 @@ namespace NyvaProdBC
                     Response.Write("<script>alert('" + users[i].Email + "==" + userInput.Email + " | " + users[i].Password.ToString() + "==" + userInput.Password + "');</script>");
                 }
             }
-            Response.Write("<script>alert('Cannot log in');</script>");
+            Response.Write("<script>alert('Користувач з такими даними не існує.');</script>");
         }
 
         protected void btnCurrentUser_Click(object sender, EventArgs e)
         {
-            Response.Write("<script>alert('User is: " + ((Entity.NyvaUser)Application["user_data"]).Email + "');</script>");
+            if (Application["user_data"] != null)
+                Response.Write("<script>alert('Поточний користувач: " + ((Entity.NyvaUser)Application["user_data"]).Email + "');</script>");
+            else
+                Response.Write("<script>alert('Для перевірки необхідно увійти.');</script>");
         }
 
         protected void btnGoBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Warehouse.aspx");
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            if (((Entity.NyvaUser)Application["user_data"]) != null)
+            {
+                Response.Write($"<script>alert('Вдалий вихід з акаунту: {((Entity.NyvaUser)Application["user_data"]).Email}');</script>");//Не відображається
+                Application["user_data"] = null;
+            }
+            else
+            {
+                Response.Write("<script>alert('Неможливо вийти - користувач не увійшов до акаунту.');</script>");
+            }
+
         }
     }
 }

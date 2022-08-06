@@ -29,11 +29,13 @@
             <br />
             <asp:Button runat="server" ID="btnRegisterUser" OnClick="btnRegisterUser_Click" Text="Зареєструватись" />
             <br />
-            <asp:Button runat="server" ID="btnCheckRegistration" OnClick="btnCheckRegistration_Click" Text="Перевірити" />
+            <asp:Button runat="server" ID="btnCheckRegistration" OnClick="btnCheckRegistration_Click" Text="Перевірити реєстрацію пошти" />
             <br />
             <asp:Button runat="server" ID="btnLoginUser" OnClick="btnLoginUser_Click" Text="Увійти" />
             <br />
             <asp:Button runat="server" ID="btnCurrentUser" OnClick="btnCurrentUser_Click" Text="Поточний користувач" />
+            <br />
+            <asp:Button runat="server" ID="btnLogout" OnClick="btnLogout_Click" Text="Вийти" />
         </div>
     </form>
 </body>
