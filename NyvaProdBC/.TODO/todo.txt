@@ -1,0 +1,4 @@
+﻿Global basket render
+Email sending reachable only if account has been created
+Forgot password
+Encode password
