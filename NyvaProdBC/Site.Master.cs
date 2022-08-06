@@ -102,7 +102,6 @@ namespace NyvaProdBC
                 SendMail(launcher, admsubject, admtext);
                 SendMail(reciever.Email, usersubject, usertext);
                 liBasket.Items.Clear();
-                tbShipper.Text = string.Empty;
                 AppState.Ordered = true;
                 ResponseAlert("Очікуйте відповіді від власника за своєю адресою.");
                 Response.Redirect("/Warehouse.aspx?order=yes");

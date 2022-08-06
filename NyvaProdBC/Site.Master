@@ -143,16 +143,21 @@
                     <asp:TableCell CssClass="pageCell">
                         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
                     </asp:TableCell>
-                    <asp:TableCell CssClass="basketCell">
-                        <asp:Table runat="server">
+                    <asp:TableCell CssClass="basketCell" Style="text-align: center">
+                        <%
+                            if (CurrentEmail.Length == 0)
+                            {
+                        %>
+                        <asp:Label runat="server" Text="Зареєструйтесь, щоб замовити" />
+                        <%
+                            }
+                            else
+                            {
+                        %>
+                        <asp:Table runat="server" Width="100%">
                             <asp:TableRow Width="80%">
                                 <asp:TableCell>
                                     <asp:ListBox runat="server" ID="liBasket" Width="100%" />
-                                </asp:TableCell>
-                            </asp:TableRow>
-                            <asp:TableRow>
-                                <asp:TableCell>
-                                    <asp:TextBox runat="server" ID="tbShipper" Width="100%" />
                                 </asp:TableCell>
                             </asp:TableRow>
                             <asp:TableRow Height="10%">
@@ -161,6 +166,9 @@
                                 </asp:TableCell>
                             </asp:TableRow>
                         </asp:Table>
+                        <%
+                            }
+                        %>
                         <%--<asp:Panel runat="server" CssClass="basket">OOOOOHMYGOD</asp:Panel>--%>
                     </asp:TableCell>
                 </asp:TableRow>
