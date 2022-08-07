@@ -124,6 +124,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Entity\Queries\NyvaProdUsers.txt" />
+    <Content Include="Entity\Queries\PasswordSessions.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -141,6 +142,8 @@
     <Content Include="NewGoodForm.aspx" />
     <Content Include="RegisterPage.aspx" />
     <Content Include="RegisterUser.aspx" />
+    <Content Include="RequestRestorePassword.aspx" />
+    <Content Include="RestorePassword.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -209,8 +212,10 @@
     <Compile Include="Entity\Barcode.cs" />
     <Compile Include="Entity\Contexts\GoodContext.cs" />
     <Compile Include="Entity\Contexts\NyvaUserContext.cs" />
+    <Compile Include="Entity\Contexts\PasswordRestoreSessionContext.cs" />
     <Compile Include="Entity\Good.cs" />
     <Compile Include="Entity\NyvaUser.cs" />
+    <Compile Include="Entity\PasswordRestoreSession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,6 +257,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GoodUI.cs" />
+    <Compile Include="Models\Mailer.cs" />
     <Compile Include="Models\SelectorPair.cs" />
     <Compile Include="NewGoodForm.aspx.cs">
       <DependentUpon>NewGoodForm.aspx</DependentUpon>
@@ -275,6 +281,20 @@
     </Compile>
     <Compile Include="RegisterUser.aspx.designer.cs">
       <DependentUpon>RegisterUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RequestRestorePassword.aspx.cs">
+      <DependentUpon>RequestRestorePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequestRestorePassword.aspx.designer.cs">
+      <DependentUpon>RequestRestorePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RestorePassword.aspx.cs">
+      <DependentUpon>RestorePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RestorePassword.aspx.designer.cs">
+      <DependentUpon>RestorePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

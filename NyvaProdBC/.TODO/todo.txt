@@ -1,4 +1,4 @@
-﻿Global basket render
-Email sending reachable only if account has been created
-Forgot password
+﻿Forgot password
 Encode password
+Good CRUD forms
+?: Email sending reachable only if account has been created

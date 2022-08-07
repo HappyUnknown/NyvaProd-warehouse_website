@@ -123,23 +123,6 @@ namespace NyvaProdBC
             string order = string.Join("\n", basketLines).TrimEnd('\n');
             return order;
         }
-        void SendMail(string reciever, string subject, string text)
-        {
-            string bridgeAddr = GlobalValues.BRIDGE_ADDR;
-            int bridgePort = GlobalValues.BRIDGE_PORT;
-            string launcher = GlobalValues.HOST_EMAIL;
-            string launcherPass = GlobalValues.HOST_PASSWORD;
-            using (MailMessage mail = new MailMessage(launcher, reciever, subject, text))
-            {
-                using (SmtpClient bridge = new SmtpClient(bridgeAddr, bridgePort))
-                {
-                    bridge.UseDefaultCredentials = true;
-                    bridge.EnableSsl = true;
-                    bridge.Credentials = new System.Net.NetworkCredential(launcher, launcherPass);//HARDER PASSWORD, Secured acc
-                    bridge.Send(mail);
-                }
-            }
-        }
         protected void btnOrder_Click(object sender, EventArgs e)
         {
             string launcher = GlobalValues.HOST_EMAIL;
@@ -153,8 +136,8 @@ namespace NyvaProdBC
             {
                 if (liBasket.Items.Count == 0) { ResponseAlert("Не обрано товарів для замовлення. Оберіть товари."); return; }
                 try { MailAddress address = new MailAddress(reciever.Email); } catch { ResponseAlert($"\"{reciever}\" не є дійсною електронною адресою. Уведіть дійсну адресу замовника."); return; }
-                SendMail(launcher, admsubject, admtext);
-                SendMail(reciever.Email, usersubject, usertext);
+                Mailer.SendMail(launcher, admsubject, admtext);
+                Mailer.SendMail(reciever.Email, usersubject, usertext);
                 liBasket.Items.Clear();
                 AppState.Ordered = true;
                 ResponseAlert("Очікуйте відповіді від власника за своєю адресою.");
