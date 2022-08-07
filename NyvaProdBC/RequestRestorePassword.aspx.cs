@@ -11,6 +11,7 @@ namespace NyvaProdBC
 {
     public partial class RequestRestorePassword : System.Web.UI.Page
     {
+        public bool Submited { get; set; } = false;
         const int ACCESS_MINUTES = 30;
         //const string DT_PATTERN = "yy-MM-dd/hh:mm:ss:fff";
         protected void Page_Load(object sender, EventArgs e)
@@ -40,6 +41,7 @@ namespace NyvaProdBC
                     db.SaveChanges();
                     Mailer.SendMail(tbUserEmail.Text, "Password change", $"https://localhost:44332/RestorePassword?restore_key={guid}");
                     ResponseAlert("Session added. Change password untill: " + finishStr);
+                    Submited = true;
                 }
                 else
                     ResponseAlert("Password restoring is on cooldown");

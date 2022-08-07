@@ -50,8 +50,10 @@ namespace NyvaProdBC
                     var theUser = users.Where(x => x.Id == theSession.UID).FirstOrDefault();
                     int userIndex = users.IndexOf(theUser);
                     users[userIndex].Password = tbNewPassword.Text;
+                    sessions[sessionIndex].DateClosed = DateTime.UtcNow.ToString();
                     userDB.SaveChanges();
-                    Response.Redirect("/Login");
+                    sessionDB.SaveChanges();
+                    Response.Redirect("/LoginPage");
                 }
                 else ResponseAlert("Passwords do not match");
             }
