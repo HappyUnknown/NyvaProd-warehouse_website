@@ -36,5 +36,10 @@ namespace NyvaProdBC
             }
             Response.Write("<script>alert('Користувач з такими даними не існує.');</script>");
         }
+
+        protected void btnRestore_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/RequestRestorePassword");
+        }
     }
 }

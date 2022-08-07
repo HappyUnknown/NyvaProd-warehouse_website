@@ -4,8 +4,8 @@
     <%if (!Submited)
         {
     %>
-    <asp:TextBox runat="server" ID="tbUserEmail" />
-    <asp:Button runat="server" ID="btnRequestRestore" Text="Request restoration" OnClick="btnRequestRestore_Click" />
+    <asp:TextBox runat="server" ID="tbUserEmail" placeholder="E-mail" />
+    <asp:Button runat="server" ID="btnRequestRestore" Text="Запит на відновлення" OnClick="btnRequestRestore_Click" CssClass="btn-dark"/>
     <%
         }
         else

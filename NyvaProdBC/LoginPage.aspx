@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="NyvaProdBC.LoginPage" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -16,6 +17,10 @@
             <br />
             <br />
             <asp:Button runat="server" ID="btnLogin" Text="Увійти" OnClick="btnLogin_Click" CssClass="btn-dark" />
+            <br />
+            <br />
+            <br />
+            <asp:Button runat="server" ID="btnRestore" Text="Відновити пароль" OnClick="btnRestore_Click" CssClass="btn-dark" />
         </div>
     </body>
     </html>
