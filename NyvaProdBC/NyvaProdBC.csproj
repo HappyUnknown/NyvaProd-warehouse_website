@@ -116,6 +116,7 @@
   <ItemGroup>
     <Content Include=".TODO\todo.txt" />
     <Content Include="About.aspx" />
+    <Content Include="AddGood.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -123,6 +124,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Entity\Queries\NyvaProdGoods.txt" />
     <Content Include="Entity\Queries\NyvaProdUsers.txt" />
     <Content Include="Entity\Queries\PasswordSessions.txt" />
     <Content Include="favicon.ico" />
@@ -185,6 +187,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddGood.aspx.cs">
+      <DependentUpon>AddGood.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddGood.aspx.designer.cs">
+      <DependentUpon>AddGood.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AppState.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">

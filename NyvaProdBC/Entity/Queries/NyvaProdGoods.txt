@@ -1,0 +1,20 @@
+﻿create table NyvaProdGoods
+(
+   Id int primary key identity,
+   [Name] nvarchar(max),
+   [Description] nvarchar(max),
+   InWare int,
+   OrderPrice float,
+   SellPrice float,
+   WeightKg float,
+   ImagesUrl nvarchar(max) not null,
+   ProductionDate nvarchar(max),
+   ConsumedUntil nvarchar(max)
+);
+update NyvaProdGoods set ImageUrl = 'https://i.pinimg.com/564x/2d/b7/d8/2db7d8c53b818ce838ad8bf6a4768c71.jpg' where Id=1;
+update NyvaProdGoods set ImageUrl = 'https://i.pinimg.com/564x/59/1b/23/591b232ca14c99ad3b4bbf98b0b340f5.jpg' where Id=2;
+update NyvaProdGoods set ImageUrl = 'https://i.pinimg.com/564x/c1/74/2d/c1742d01ea1d5d501c9d9736bbfe9504.jpg' where Id=3;
+update NyvaProdGoods set ImageUrl = 'https://i.pinimg.com/564x/76/f1/dc/76f1dcf48d7aa03f0baa46a4f283b023.jpg' where Id=4;
+update NyvaProdGoods set ImageUrl = 'https://i.pinimg.com/564x/32/a5/fe/32a5fec188101ec9499f9106d61636f4.jpg' where Id=5;
+select * from NyvaProdGoods;
+SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE';

@@ -7,4 +7,6 @@
 	Email nvarchar(max),
 	Phone nvarchar(max),
 	[Password] nvarchar(max)
-)
+);
+select * from NyvaProdUsers;
+SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE';
