@@ -117,6 +117,7 @@
     <Content Include=".TODO\todo.txt" />
     <Content Include="About.aspx" />
     <Content Include="AddGood.aspx" />
+    <Content Include="AdminGoods.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -139,6 +140,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="GoodDeletion.aspx" />
+    <Content Include="GoodEdition.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="LogoutPage.aspx" />
     <Content Include="NewGoodForm.aspx" />
@@ -180,6 +183,7 @@
     <Content Include="Styles\DefaultStyles.css" />
     <Content Include="Styles\MasterStyles.css" />
     <Content Include="Styles\WarehouseStyles.css" />
+    <Content Include="ViewGood.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Warehouse.aspx" />
     <Content Include="Web.config" />
@@ -193,6 +197,13 @@
     </Compile>
     <Compile Include="AddGood.aspx.designer.cs">
       <DependentUpon>AddGood.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminGoods.aspx.cs">
+      <DependentUpon>AdminGoods.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminGoods.aspx.designer.cs">
+      <DependentUpon>AdminGoods.aspx</DependentUpon>
     </Compile>
     <Compile Include="AppState.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -229,6 +240,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalValues.cs" />
+    <Compile Include="GoodDeletion.aspx.cs">
+      <DependentUpon>GoodDeletion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GoodDeletion.aspx.designer.cs">
+      <DependentUpon>GoodDeletion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GoodEdition.aspx.cs">
+      <DependentUpon>GoodEdition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GoodEdition.aspx.designer.cs">
+      <DependentUpon>GoodEdition.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GoodInBasket.cs" />
     <Compile Include="LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
@@ -318,6 +343,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ViewGood.aspx.cs">
+      <DependentUpon>ViewGood.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewGood.aspx.designer.cs">
+      <DependentUpon>ViewGood.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

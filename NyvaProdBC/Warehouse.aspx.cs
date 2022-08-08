@@ -93,9 +93,6 @@ namespace NyvaProdBC
     //}
     public partial class Warehouse : System.Web.UI.Page
     {
-        static readonly System.Drawing.Color selectColor = System.Drawing.Color.CornflowerBlue;
-        static readonly System.Drawing.Color idleColor = System.Drawing.Color.LightGray;
-
         Good GoodByButton(SelectorPair pair)
         {
             try
@@ -139,9 +136,9 @@ namespace NyvaProdBC
                         Basket.Add(Ware.Selectors[i]);
                         Ware.Selectors[i].counter.Text = (int.Parse(Ware.Selectors[i].counter.Text) + 1).ToString();
                     }
-                    else if (Ware.Selectors[i].selector.BackColor != selectColor)
+                    else if (Ware.Selectors[i].selector.BackColor != GlobalValues.selectColor)
                     {
-                        Ware.Selectors[i].selector.BackColor = idleColor;
+                        Ware.Selectors[i].selector.BackColor = GlobalValues.idleColor;
                     }
                 }
                 for (int i = 0; i < Basket.BaseArray.Length; i++)
@@ -179,9 +176,9 @@ namespace NyvaProdBC
                         if (rmsg != string.Empty) ResponseAlert(rmsg);
                         break;
                     }
-                    else if (Ware.Selectors[i].selector.BackColor != selectColor)
+                    else if (Ware.Selectors[i].selector.BackColor != GlobalValues.selectColor)
                     {
-                        Ware.Selectors[i].selector.BackColor = idleColor;
+                        Ware.Selectors[i].selector.BackColor = GlobalValues.idleColor;
                     }
                 }
             }
@@ -191,7 +188,7 @@ namespace NyvaProdBC
         void RefreshButtonUI()
         {
             for (int i = 0; i < Ware.Selectors.Count; i++)
-                Ware.Selectors[i].selector.BackColor = idleColor;
+                Ware.Selectors[i].selector.BackColor = GlobalValues.idleColor;
         }
         void RefreshTableUI()
         {
@@ -269,7 +266,7 @@ namespace NyvaProdBC
                 TableCell tcSelector = new TableCell();
                 tcSelector.CssClass = "tableCell";
                 Button selectorButton = new Button();
-                selectorButton.BackColor = idleColor;
+                selectorButton.BackColor = GlobalValues.idleColor;
                 selectorButton.Click += SelectorButton_Click;
                 selectorButton.Text = "✓";
                 tcSelector.Controls.Add(selectorButton);
@@ -278,14 +275,14 @@ namespace NyvaProdBC
                 tcSelector.CssClass = "tableCell";
                 TextBox counterField = new TextBox();
                 counterField.Height = 20;
-                counterField.BackColor = idleColor;
+                counterField.BackColor = GlobalValues.idleColor;
                 counterField.Text = "0";
                 tcCounter.Controls.Add(counterField);
 
                 TableCell tcUnselector = new TableCell();
                 tcUnselector.CssClass = "tableCell";
                 Button unselectorButton = new Button();
-                unselectorButton.BackColor = idleColor;
+                unselectorButton.BackColor = GlobalValues.idleColor;
                 unselectorButton.Click += UnselectorButton_Click;
                 unselectorButton.Text = "✓";
                 tcUnselector.Controls.Add(unselectorButton);
