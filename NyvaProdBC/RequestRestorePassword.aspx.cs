@@ -39,7 +39,7 @@ namespace NyvaProdBC
                     var db = new PasswordRestoreSessionContext();
                     db.PasswordSessions.Add(session);
                     db.SaveChanges();
-                    Mailer.SendMail(tbUserEmail.Text, "Password change", $"https://localhost:44332/RestorePassword?restore_key={guid}");
+                    Mailer.SendMail(tbUserEmail.Text, "Password change", $"{Request.Url.Scheme}://{Request.Url.Authority}/RestorePassword?restore_key={guid}");
                     ResponseAlert("Session added. Change password untill: " + finishStr);
                     Submited = true;
                 }
