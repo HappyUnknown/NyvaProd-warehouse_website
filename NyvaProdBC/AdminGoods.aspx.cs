@@ -37,6 +37,7 @@ namespace NyvaProdBC
             var goods = db.Goods.ToList();
             for (int i = 0; i < goods.Count; i++)
             {
+                System.Threading.Thread.Sleep(1);
                 Image img = new Image();
                 img.ImageUrl = Ware.Goods[i].ImageUrl;
                 img.Height = 100;
