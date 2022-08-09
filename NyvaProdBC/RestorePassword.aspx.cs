@@ -38,18 +38,18 @@ namespace NyvaProdBC
         Entity.NyvaUser GetUserInput(bool encode = true)
         {
             string password = encode ? MD5Hasher.Encrypt(tbNewPassword.Text) : tbNewPassword.Text;
-            return new Entity.NyvaUser("NO_FIRST_NAME_INPUT", "NO_LAST_NAME_INPUT", "NO_FATHER_NAME_INPUT", "NO_EMAIL_INPUT", "NO_PHONE_INPUT", password, 1);
+            return new Entity.NyvaUser("NO_FIRST_NAME_INPUT", "NO_LAST_NAME_INPUT", "NO_FATHER_NAME_INPUT", "NO_EMAIL_INPUT", "NO_PHONE_INPUT", password, GlobalValues.USER_ROLE, GlobalValues.USER_BANNED);
         }
 
         protected void btnRedeemRestore_Click(object sender, EventArgs e)
         {
-            Entity.NyvaUser userData = new Entity.NyvaUser();
+            Entity.NyvaUser userData = GetUserInput();
             if (new PasswordRestoreSessionContext().PasswordSessions.Count() != 0)
             {
                 int sessionIndex = OpenedSessionIndex();
                 if (sessionIndex != -1)
                 {
-                    if (userData.Password == tbNewConfirmation.Text)
+                    if (userData.Password == MD5Hasher.Encrypt(tbNewConfirmation.Text))
                     {
                         var sessionDB = new PasswordRestoreSessionContext();
                         var sessions = sessionDB.PasswordSessions.ToList();

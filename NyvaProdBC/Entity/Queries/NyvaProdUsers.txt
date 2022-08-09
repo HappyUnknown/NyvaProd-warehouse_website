@@ -8,9 +8,9 @@ create table NyvaProdUsers
 	Email nvarchar(max),
 	Phone nvarchar(max),
 	[Password] nvarchar(max),
-	UserRole int
+	UserRole int,
+	Banned bit
 );
-insert into NyvaProdUsers values
-('First name', 'Last name', 'Father name', 'danchenkov_ak20@nuwm.edu.ua', 'Phone', 'cGJzcJYnGpb/jr/nOZj1Xw==', 1);
+insert into NyvaProdUsers values('First name', 'Last name', 'Father name', 'danchenkov_ak20@nuwm.edu.ua', 'Phone', 'cGJzcJYnGpb/jr/nOZj1Xw==', 1, 1);
 select * from NyvaProdUsers;
 SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE';

@@ -16,7 +16,7 @@ namespace NyvaProdBC
         Entity.NyvaUser GetUserInput(bool encode = true)
         {
             string password = encode ? MD5Hasher.Encrypt(tbPassword.Text) : tbPassword.Text;
-            return new Entity.NyvaUser("NO_FIRST_NAME_INPUT", "NO_LAST_NAME_INPUT", "NO_FATHER_NAME_INPUT", tbEmail.Text, "NO_PHONE_INPUT", password, 1);
+            return new Entity.NyvaUser("NO_FIRST_NAME_INPUT", "NO_LAST_NAME_INPUT", "NO_FATHER_NAME_INPUT", tbEmail.Text, "NO_PHONE_INPUT", password, GlobalValues.USER_ROLE, GlobalValues.USER_BANNED);
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {

@@ -7,6 +7,8 @@ namespace NyvaProdBC
 {
     public class GlobalValues
     {
+        public const int USER_ROLE = 0;
+        public const bool USER_BANNED = false;
         public static readonly System.Drawing.Color selectColor = System.Drawing.Color.CornflowerBlue;
         public static readonly System.Drawing.Color idleColor = System.Drawing.Color.LightGray;
         public const string HOST_EMAIL = "nyvaprod@gmail.com";

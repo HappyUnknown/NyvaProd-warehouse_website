@@ -17,8 +17,9 @@ namespace NyvaProdBC.Entity
         public string Phone { get; set; }
         public string Password { get; set; }
         public int UserRole { get; set; }
+        public bool IsBanned { get; set; }
         public NyvaUser() { }
-        public NyvaUser(int id, string firstName, string lastName, string fatherName, string email, string phone, string password, int userRole)
+        public NyvaUser(int id, string firstName, string lastName, string fatherName, string email, string phone, string password, int userRole, bool isBanned)
         {
             Id = id;
             FirstName = firstName;
@@ -28,8 +29,9 @@ namespace NyvaProdBC.Entity
             Phone = phone;
             Password = password;
             UserRole = userRole;
+            IsBanned = isBanned;
         }
-        public NyvaUser(string firstName, string lastName, string fatherName, string email, string phone, string password, int userRole)
+        public NyvaUser(string firstName, string lastName, string fatherName, string email, string phone, string password, int userRole, bool isBanned)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -38,6 +40,7 @@ namespace NyvaProdBC.Entity
             Phone = phone;
             Password = password;
             UserRole = userRole;
+            IsBanned = isBanned;
         }
         public override string ToString()
         {

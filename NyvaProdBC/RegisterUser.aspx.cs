@@ -19,7 +19,7 @@ namespace NyvaProdBC
             string password = encode ? MD5Hasher.Encrypt(tbPassword.Text) : tbPassword.Text;
             //    int id;
             //    int.TryParse(tbId.Text, out id);
-            return new Entity.NyvaUser(tbFirstName.Text, tbLastName.Text, tbFatherName.Text, tbEmail.Text, tbPhone.Text, password, 1);
+            return new Entity.NyvaUser(tbFirstName.Text, tbLastName.Text, tbFatherName.Text, tbEmail.Text, tbPhone.Text, password, GlobalValues.USER_ROLE, GlobalValues.USER_BANNED);
         }
         //Entity.NyvaUser GetUserInput(bool encode = true)
         //{
