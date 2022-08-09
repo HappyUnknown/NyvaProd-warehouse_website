@@ -36,15 +36,16 @@ namespace NyvaProdBC
         }
         void FillUI(Good good)
         {
-            tbConsumedUntil.Text = good.ConsumedUntil;
-            tbDescription.Text = good.Description;
-            tbImageUrls.Text = good.ImageUrl;
+            lblMsg.Text = $"Відображення товару по ID-{good.Id}";
             tbGoodName.Text = good.Name;
+            tbDescription.Text = good.Description;
             tbOrderPrice.Text = good.OrderPrice.ToString();
-            tbSellPrice.Text = good.SellPrice.ToString();
-            tbProductionDate.Text = good.ProductionDate;
+            tbAPF.Text = good.APF.ToString();
+            tbProfit.Text = good.Profit.ToString();
+            tbTotalAmount.Text = good.TotalAmount.ToString();
+            tbAmountSold.Text = good.AmountSold.ToString();
             tbWeightKg.Text = good.WeightKg.ToString();
-            tbInWare.Text = good.InWare.ToString();
+            tbImageUrls.Text = good.ImageUrl.ToString();
             tbGoodCode.Text = good.Barcode.GoodCode.ToString();
             tbProducerCode.Text = good.Barcode.ProducerCode.ToString();
             tbRegionCode.Text = good.Barcode.RegionCode.ToString();

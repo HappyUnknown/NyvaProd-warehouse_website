@@ -42,6 +42,15 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.TextBox tbGoodName;
 
         /// <summary>
+        /// tbDescription элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbDescription;
+
+        /// <summary>
         /// tbOrderPrice элемент управления.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,40 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.TextBox tbOrderPrice;
 
         /// <summary>
-        /// tbSellPrice элемент управления.
+        /// tbAPF элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbSellPrice;
+        protected global::System.Web.UI.WebControls.TextBox tbAPF;
+
+        /// <summary>
+        /// tbProfit элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbProfit;
+
+        /// <summary>
+        /// tbTotalAmount элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbTotalAmount;
+
+        /// <summary>
+        /// tbAmountSold элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbAmountSold;
 
         /// <summary>
         /// tbWeightKg элемент управления.
@@ -69,15 +105,6 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.TextBox tbWeightKg;
 
         /// <summary>
-        /// tbInWare элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbInWare;
-
-        /// <summary>
         /// tbImageUrls элемент управления.
         /// </summary>
         /// <remarks>
@@ -85,33 +112,6 @@ namespace NyvaProdBC
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbImageUrls;
-
-        /// <summary>
-        /// tbDescription элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbDescription;
-
-        /// <summary>
-        /// tbProductionDate элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbProductionDate;
-
-        /// <summary>
-        /// tbConsumedUntil элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbConsumedUntil;
 
         /// <summary>
         /// tbControlDigit элемент управления.

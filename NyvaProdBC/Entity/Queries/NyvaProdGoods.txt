@@ -3,13 +3,17 @@
    Id int primary key identity,
    [Name] nvarchar(max),
    [Description] nvarchar(max),
-   InWare int,
    OrderPrice float,
-   SellPrice float,
+   APF float,
+   Profit float,
+   TotalAmount int,
+   AmountSold int,
    WeightKg float,
    ImagesUrl nvarchar(max) not null,
-   ProductionDate nvarchar(max),
-   ConsumedUntil nvarchar(max)
+   ControlDigit int,
+   GoodCode int,
+   ProducerCode int,
+   RegionCode int
 );
 update NyvaProdGoods set ImageUrl = 'https://i.pinimg.com/564x/2d/b7/d8/2db7d8c53b818ce838ad8bf6a4768c71.jpg' where Id=1;
 update NyvaProdGoods set ImageUrl = 'https://i.pinimg.com/564x/59/1b/23/591b232ca14c99ad3b4bbf98b0b340f5.jpg' where Id=2;

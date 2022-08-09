@@ -4,3 +4,4 @@ Good CRUD forms
 User role
 Multiple good images
 ?: Email sending reachable only if account has been created
+?: DB Structure - Good includes in groups based on price

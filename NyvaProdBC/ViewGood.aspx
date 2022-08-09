@@ -8,21 +8,21 @@
         <br />
         <asp:TextBox runat="server" ReadOnly="true" ID="tbGoodName" placeholder="Назва товару" Style="width: 100%" />
         <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbDescription" placeholder="Опис продукту" Style="width: 100%" />
+        <br />
         <asp:TextBox runat="server" ReadOnly="true" ID="tbOrderPrice" placeholder="Ціна замовлення" Style="width: 100%" />
         <br />
-        <asp:TextBox runat="server" ReadOnly="true" ID="tbSellPrice" placeholder="Ціна продажу" Style="width: 100%" />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbAPF" placeholder="Податок на додану вартість" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbProfit" placeholder="Прибуток" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbTotalAmount" placeholder="Загальна кількість" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbAmountSold" placeholder="Продана кількість" Style="width: 100%" />
         <br />
         <asp:TextBox runat="server" ReadOnly="true" ID="tbWeightKg" placeholder="Вага продукту" Style="width: 100%" />
         <br />
-        <asp:TextBox runat="server" ReadOnly="true" ID="tbInWare" placeholder="На складі" Style="width: 100%" />
-        <br />
         <asp:TextBox runat="server" ReadOnly="true" ID="tbImageUrls" placeholder="Url зображення продукту" Style="width: 100%" />
-        <br />
-        <asp:TextBox runat="server" ReadOnly="true" ID="tbDescription" placeholder="Опис продукту" Style="width: 100%" />
-        <br />
-        <asp:TextBox runat="server" ReadOnly="true" ID="tbProductionDate" placeholder="Дата виробництва" Style="width: 100%" />
-        <br />
-        <asp:TextBox runat="server" ReadOnly="true" ID="tbConsumedUntil" placeholder="Придатний до" Style="width: 100%" />
         <br />
         <asp:TextBox runat="server" ReadOnly="true" ID="tbControlDigit" placeholder="Контрольна цифра штрихкоду" Style="width: 100%" />
         <br />

@@ -213,23 +213,47 @@ namespace NyvaProdBC
                 tcName.CssClass = "tableCell";
                 tcName.Controls.Add(lblItemName);
 
+                TableCell tcDescription = new TableCell();
+                Label lblDescription = new Label();
+                lblDescription.Text = Ware.Goods[i].Description.ToString();
+                tcDescription.CssClass = "tableCell";
+                tcDescription.Controls.Add(lblDescription);
+
                 TableCell tcOrderPrice = new TableCell();
                 Label lblOrderPrice = new Label();
                 lblOrderPrice.Text = Ware.Goods[i].OrderPrice.ToString();
                 tcOrderPrice.CssClass = "tableCell";
                 tcOrderPrice.Controls.Add(lblOrderPrice);
 
-                TableCell tcSellPrice = new TableCell();
-                Label lblSellPrice = new Label();
-                lblSellPrice.Text = Ware.Goods[i].SellPrice.ToString();
-                tcSellPrice.CssClass = "tableCell";//TROUBLE
-                tcSellPrice.Controls.Add(lblSellPrice);
+                TableCell tcAPF = new TableCell();
+                Label lblAPF = new Label();
+                lblAPF.Text = Ware.Goods[i].APF.ToString();
+                tcAPF.CssClass = "tableCell";//TROUBLE
+                tcAPF.Controls.Add(lblAPF);
+
+                TableCell tcProfit = new TableCell();
+                Label lblProfit = new Label();
+                lblProfit.Text = Ware.Goods[i].Profit.ToString();
+                tcProfit.CssClass = "tableCell";//TROUBLE
+                tcProfit.Controls.Add(lblProfit);
 
                 TableCell tcWeightKg = new TableCell();
                 Label lblWeightKg = new Label();
                 lblWeightKg.Text = Ware.Goods[i].WeightKg.ToString();
                 tcWeightKg.CssClass = "tableCell";
                 tcWeightKg.Controls.Add(lblWeightKg);
+
+                TableCell tcTotalAmount = new TableCell();
+                Label lblTotalAmount = new Label();
+                lblTotalAmount.Text = Ware.Goods[i].TotalAmount.ToString();
+                tcTotalAmount.CssClass = "tableCell";
+                tcTotalAmount.Controls.Add(lblTotalAmount);
+
+                TableCell tcAmountSold = new TableCell();
+                Label lblAmountSold = new Label();
+                lblAmountSold.Text = Ware.Goods[i].AmountSold.ToString();
+                tcAmountSold.CssClass = "tableCell";
+                tcAmountSold.Controls.Add(lblAmountSold);
 
                 TableCell tcImage = new TableCell();
                 Image image = new Image();
@@ -291,14 +315,19 @@ namespace NyvaProdBC
                 TableRow tr = new TableRow();
                 tr.Cells.Add(tcId);
                 tr.Cells.Add(tcName);
+                tr.Cells.Add(tcDescription);
                 tr.Cells.Add(tcOrderPrice);
-                tr.Cells.Add(tcSellPrice);
+                tr.Cells.Add(tcAPF);
+                tr.Cells.Add(tcProfit);
+                tr.Cells.Add(tcTotalAmount);
+                tr.Cells.Add(tcAmountSold);
                 tr.Cells.Add(tcWeightKg);
                 tr.Cells.Add(tcImage);
-                tr.Cells.Add(tcRegionCode);
-                tr.Cells.Add(tcProducerCode);
                 tr.Cells.Add(tcGoodCode);
+                tr.Cells.Add(tcProducerCode);
+                tr.Cells.Add(tcRegionCode);
                 tr.Cells.Add(tcControlDigit);
+
                 tr.Cells.Add(tcUnselector);
                 tr.Cells.Add(tcCounter);
                 tr.Cells.Add(tcSelector);

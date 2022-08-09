@@ -289,6 +289,10 @@
     <Compile Include="Migrations\202208031308035_UserPasswordField.designer.cs">
       <DependentUpon>202208031308035_UserPasswordField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208091402123_WishesInplied.cs" />
+    <Compile Include="Migrations\202208091402123_WishesInplied.designer.cs">
+      <DependentUpon>202208091402123_WishesInplied.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GoodUI.cs" />
     <Compile Include="Models\Mailer.cs" />
@@ -394,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202208031308035_UserPasswordField.resx">
       <DependentUpon>202208031308035_UserPasswordField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208091402123_WishesInplied.resx">
+      <DependentUpon>202208091402123_WishesInplied.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

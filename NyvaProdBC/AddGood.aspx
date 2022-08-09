@@ -2,34 +2,34 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label runat="server" Text="Good creation" />
-    <br />
-    <br />
-    <asp:TextBox runat="server" ID="tbGoodName" placeholder="Назва товару" />
-    <br />
-    <asp:TextBox runat="server" ID="tbOrderPrice" placeholder="Ціна замовлення" />
-    <br />
-    <asp:TextBox runat="server" ID="tbSellPrice" placeholder="Ціна продажу" />
-    <br />
-    <asp:TextBox runat="server" ID="tbWeightKg" placeholder="Вага продукту" />
-    <br />
-    <asp:TextBox runat="server" ID="tbInWare" placeholder="На складі" />
-    <br />
-    <asp:TextBox runat="server" ID="tbImageUrls" placeholder="Url зображення продукту" />
-    <br />
-    <asp:TextBox runat="server" ID="tbDescription" placeholder="Опис продукту" />
-    <br />
-    <asp:TextBox runat="server" ID="tbProductionDate" placeholder="Дата виробництва" />
-    <br />
-    <asp:TextBox runat="server" ID="tbConsumedUntil" placeholder="Придатний до" />
-    <br />
-    <asp:TextBox runat="server" ID="tbControlDigit" placeholder="Контрольна цифра штрихкоду" />
-    <br />
-    <asp:TextBox runat="server" ID="tbGoodCode" placeholder="Код товару" />
-    <br />
-    <asp:TextBox runat="server" ID="tbProducerCode" placeholder="Код виробника" />
-    <br />
-    <asp:TextBox runat="server" ID="tbRegionCode" placeholder="Код регіону" />
-    <br />
-    <br />
+        <br />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbGoodName" placeholder="Назва товару" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbDescription" placeholder="Опис продукту" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbOrderPrice" placeholder="Ціна замовлення" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbAPF" placeholder="Податок на додану вартість" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbProfit" placeholder="Прибуток" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbTotalAmount" placeholder="Загальна кількість" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbAmountSold" placeholder="Продана кількість" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbWeightKg" placeholder="Вага продукту" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbImageUrls" placeholder="Url зображення продукту" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbControlDigit" placeholder="Контрольна цифра штрихкоду" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbGoodCode" placeholder="Код товару" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbProducerCode" placeholder="Код виробника" Style="width: 100%" />
+        <br />
+        <asp:TextBox runat="server" ID="tbRegionCode" placeholder="Код регіону" Style="width: 100%" />
+        <br />
+        <br />
     <asp:Button runat="server" ID="btnCreateGood" OnClick="btnCreateGood_Click" />
 </asp:Content>
