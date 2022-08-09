@@ -37,12 +37,6 @@ namespace NyvaProdBC
             var goods = db.Goods.ToList();
             for (int i = 0; i < goods.Count; i++)
             {
-                System.Threading.Thread.Sleep(1);
-                Image img = new Image();
-                img.ImageUrl = Ware.Goods[i].ImageUrl;
-                img.Height = 100;
-                img.Width = 100;
-
                 TableCell tcId = new TableCell();
                 Label lblItemId = new Label();
                 lblItemId.Text = "#" + Ware.Goods[i].Id.ToString();

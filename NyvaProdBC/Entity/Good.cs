@@ -78,6 +78,7 @@ namespace NyvaProdBC.Entity
         }
         public Good(int id, string name, string description, double orderPrice, double apf, double profit, int totalAmount, int amountSold, double weightKg, string imageUrl, int regionCode, int producerCode, int goodCode, int controlDigit)
         {
+            Id = id;
             Name = name;
             Description = description;
             OrderPrice = orderPrice;
