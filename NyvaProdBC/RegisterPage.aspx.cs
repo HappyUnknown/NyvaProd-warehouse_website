@@ -14,9 +14,10 @@ namespace NyvaProdBC
         {
 
         }
-        Entity.NyvaUser GetUserInput()
+        Entity.NyvaUser GetUserInput(bool encode = true)
         {
-            return new Entity.NyvaUser(tbFirstName.Text, tbLastName.Text, tbFatherName.Text, tbEmail.Text, tbPhone.Text, tbPassword.Text, 1);
+            string password = encode ? MD5Hasher.Encrypt(tbPassword.Text) : tbPassword.Text;
+            return new Entity.NyvaUser(tbFirstName.Text, tbLastName.Text, tbFatherName.Text, tbEmail.Text, tbPhone.Text, password, 1);
         }
         bool MailClone(Entity.NyvaUser nyvaUser)
         {

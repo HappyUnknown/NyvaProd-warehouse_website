@@ -14,12 +14,18 @@ namespace NyvaProdBC
         {
         }
 
-        Entity.NyvaUser GetUserInput()
+        Entity.NyvaUser GetUserInput(bool encode = true)
         {
-            int id;
-            int.TryParse(tbId.Text, out id);
-            return new Entity.NyvaUser(id, tbFirstName.Text, tbLastName.Text, tbFatherName.Text, tbEmail.Text, tbPhone.Text, tbPassword.Text, 1);
+            string password = encode ? MD5Hasher.Encrypt(tbPassword.Text) : tbPassword.Text;
+            //    int id;
+            //    int.TryParse(tbId.Text, out id);
+            return new Entity.NyvaUser(tbFirstName.Text, tbLastName.Text, tbFatherName.Text, tbEmail.Text, tbPhone.Text, password, 1);
         }
+        //Entity.NyvaUser GetUserInput(bool encode = true)
+        //{
+        //    string password = encode ? MD5Hasher.Encrypt(tbPassword.Text) : tbPassword.Text;
+        //    return new Entity.NyvaUser("NO_FIRST_NAME_INPUT", "NO_LAST_NAME_INPUT", "NO_FATHER_NAME_INPUT", tbEmail.Text, "NO_PHONE_INPUT", password, 1);
+        //}
 
         bool MailClone(Entity.NyvaUser nyvaUser)
         {

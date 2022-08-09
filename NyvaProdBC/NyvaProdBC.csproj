@@ -269,6 +269,7 @@
     <Compile Include="LogoutPage.aspx.designer.cs">
       <DependentUpon>LogoutPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MD5Hasher.cs" />
     <Compile Include="Migrations\202208020903151_init.cs" />
     <Compile Include="Migrations\202208020903151_init.designer.cs">
       <DependentUpon>202208020903151_init.cs</DependentUpon>

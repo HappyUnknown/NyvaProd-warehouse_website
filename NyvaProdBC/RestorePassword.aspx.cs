@@ -35,31 +35,41 @@ namespace NyvaProdBC
             KeyValid = AnyOpenedSessionOnKey();
         }
 
+        Entity.NyvaUser GetUserInput(bool encode = true)
+        {
+            string password = encode ? MD5Hasher.Encrypt(tbNewPassword.Text) : tbNewPassword.Text;
+            return new Entity.NyvaUser("NO_FIRST_NAME_INPUT", "NO_LAST_NAME_INPUT", "NO_FATHER_NAME_INPUT", "NO_EMAIL_INPUT", "NO_PHONE_INPUT", password, 1);
+        }
+
         protected void btnRedeemRestore_Click(object sender, EventArgs e)
         {
-            int sessionIndex = OpenedSessionIndex();
-            if (sessionIndex != -1)
+            Entity.NyvaUser userData = new Entity.NyvaUser();
+            if (new PasswordRestoreSessionContext().PasswordSessions.Count() != 0)
             {
-                if (tbNewPassword.Text == tbNewConfirmation.Text)
+                int sessionIndex = OpenedSessionIndex();
+                if (sessionIndex != -1)
                 {
-                    var sessionDB = new PasswordRestoreSessionContext();
-                    var sessions = sessionDB.PasswordSessions.ToList();
-                    var theSession = sessions[sessionIndex];
-                    var userDB = new NyvaUserContext();
-                    var users = userDB.Users.ToList();
-                    var theUser = users.Where(x => x.Id == theSession.UID).FirstOrDefault();
-                    int userIndex = users.IndexOf(theUser);
-                    users[userIndex].Password = tbNewPassword.Text;
-                    sessions[sessionIndex].DateClosed = DateTime.UtcNow.ToString();
-                    userDB.SaveChanges();
-                    sessionDB.SaveChanges();
-                    Response.Redirect("/LoginPage");
+                    if (userData.Password == tbNewConfirmation.Text)
+                    {
+                        var sessionDB = new PasswordRestoreSessionContext();
+                        var sessions = sessionDB.PasswordSessions.ToList();
+                        var theSession = sessions[sessionIndex];
+                        var userDB = new NyvaUserContext();
+                        var users = userDB.Users.ToList();
+                        var theUser = users.Where(x => x.Id == theSession.UID).FirstOrDefault();
+                        int userIndex = users.IndexOf(theUser);
+                        users[userIndex].Password = userData.Password;
+                        sessions[sessionIndex].DateClosed = DateTime.UtcNow.ToString();
+                        userDB.SaveChanges();
+                        sessionDB.SaveChanges();
+                        Response.Redirect("/LoginPage");
+                    }
+                    else ResponseAlert("Passwords do not match");
                 }
-                else ResponseAlert("Passwords do not match");
+                else ResponseAlert("No sessions available");
+                //Restore password using key-user relation table for password request
+                //If some user session passes for the request-key - redeem passsword change for this user (or just prevent form load if key does not exist)
             }
-            else ResponseAlert("No sessions available");
-            //Restore password using key-user relation table for password request
-            //If some user session passes for the request-key - redeem passsword change for this user (or just prevent form load if key does not exist)
         }
     }
 }

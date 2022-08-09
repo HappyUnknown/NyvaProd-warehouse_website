@@ -11,6 +11,6 @@ create table NyvaProdUsers
 	UserRole int
 );
 insert into NyvaProdUsers values
-('First name', 'Last name', 'Father name', 'danchenkov_ak20@nuwm.edu.ua', 'Phone', 'danchenkov_ak20', 1);
+('First name', 'Last name', 'Father name', 'danchenkov_ak20@nuwm.edu.ua', 'Phone', 'cGJzcJYnGpb/jr/nOZj1Xw==', 1);
 select * from NyvaProdUsers;
 SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE';
