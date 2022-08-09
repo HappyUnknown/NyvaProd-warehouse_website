@@ -87,3 +87,4 @@ E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.Migrations.UserRoles.resources
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.Migrations.UserRoles_AfterEmpty.resources
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.Migrations.DateTimeNow.resources
+E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.csproj.AssemblyReference.cache

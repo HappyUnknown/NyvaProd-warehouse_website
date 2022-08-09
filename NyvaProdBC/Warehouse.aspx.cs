@@ -93,6 +93,7 @@ namespace NyvaProdBC
     //}
     public partial class Warehouse : System.Web.UI.Page
     {
+        public static Entity.NyvaUser User { get; set; }
         Good GoodByButton(SelectorPair pair)
         {
             try
@@ -287,13 +288,13 @@ namespace NyvaProdBC
                 tcControlDigit.CssClass = "tableCell";
                 tcControlDigit.Controls.Add(lblControlDigit);
 
-                TableCell tcSelector = new TableCell();
-                tcSelector.CssClass = "tableCell";
-                Button selectorButton = new Button();
-                selectorButton.BackColor = GlobalValues.idleColor;
-                selectorButton.Click += SelectorButton_Click;
-                selectorButton.Text = "✓";
-                tcSelector.Controls.Add(selectorButton);
+                TableCell tcUnselector = new TableCell();
+                tcUnselector.CssClass = "tableCell";
+                Button unselectorButton = new Button();
+                unselectorButton.BackColor = GlobalValues.idleColor;
+                unselectorButton.Click += UnselectorButton_Click;
+                unselectorButton.Text = "-";
+                tcUnselector.Controls.Add(unselectorButton);
 
                 TableCell tcCounter = new TableCell();
                 tcCounter.CssClass = "tableCell";
@@ -304,13 +305,13 @@ namespace NyvaProdBC
                 counterField.TextMode = TextBoxMode.Number;//still allows float
                 tcCounter.Controls.Add(counterField);
 
-                TableCell tcUnselector = new TableCell();
-                tcUnselector.CssClass = "tableCell";
-                Button unselectorButton = new Button();
-                unselectorButton.BackColor = GlobalValues.idleColor;
-                unselectorButton.Click += UnselectorButton_Click;
-                unselectorButton.Text = "✓";
-                tcUnselector.Controls.Add(unselectorButton);
+                TableCell tcSelector = new TableCell();
+                tcSelector.CssClass = "tableCell";
+                Button selectorButton = new Button();
+                selectorButton.BackColor = GlobalValues.idleColor;
+                selectorButton.Click += SelectorButton_Click;
+                selectorButton.Text = "+";
+                tcSelector.Controls.Add(selectorButton);
 
                 Ware.Selectors.Add(new SelectorPair(unselectorButton, counterField, selectorButton));
 
@@ -349,7 +350,7 @@ namespace NyvaProdBC
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            User = (NyvaUser)Application["user_data"];
             string orderKey = Request.QueryString["order"];
             if (orderKey == "yes")
             {

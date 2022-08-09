@@ -4,7 +4,7 @@
 ✔ User role
 ✔ Ban feature
 Multiple good images
-Count change on text change
+✔ Count change on text change
 Remove page reload on ware count change
 ?: Email sending reachable only if account has been created
 ?: DB Structure - Good includes in groups based on price

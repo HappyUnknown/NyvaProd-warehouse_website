@@ -15,6 +15,15 @@ namespace NyvaProdBC
     {
 
         /// <summary>
+        /// pnlWareUI элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlWareUI;
+
+        /// <summary>
         /// tblGoods элемент управления.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace NyvaProdBC
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tblGoods;
+
+        /// <summary>
+        /// lblMsg элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMsg;
 
         /// <summary>
         /// Master свойство.
