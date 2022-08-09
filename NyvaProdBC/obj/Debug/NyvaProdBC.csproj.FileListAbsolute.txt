@@ -83,4 +83,3 @@ E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.Migrations.RemoveError11.resources
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.Migrations.EmptyPrePassword.resources
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.Migrations.UserPasswordField.resources
-E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.csproj.AssemblyReference.cache

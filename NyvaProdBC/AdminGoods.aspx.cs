@@ -112,6 +112,7 @@ namespace NyvaProdBC
                 btnView.BackColor = GlobalValues.idleColor;
                 btnView.Click += GoToView;
                 btnView.Text = "✓";
+                btnView.ForeColor = System.Drawing.Color.Black;
                 tcView.Controls.Add(btnView);
 
                 TableCell tcEdit = new TableCell();
@@ -120,6 +121,7 @@ namespace NyvaProdBC
                 btnEdit.BackColor = GlobalValues.idleColor;
                 btnEdit.Click += GoToEdit;
                 btnEdit.Text = "✎";
+                btnEdit.ForeColor = System.Drawing.Color.Black;
                 tcEdit.Controls.Add(btnEdit);
 
                 TableCell tcDelete = new TableCell();
@@ -128,6 +130,7 @@ namespace NyvaProdBC
                 btnDelete.BackColor = GlobalValues.idleColor;
                 btnDelete.Click += GoToDelete;
                 btnDelete.Text = "χ";
+                btnDelete.ForeColor = System.Drawing.Color.Black;
                 tcDelete.Controls.Add(btnDelete);
 
                 SelectorTrinity selectorTrinity = new SelectorTrinity();

@@ -18,12 +18,12 @@ namespace NyvaProdBC
             if (!string.IsNullOrEmpty(goodID))
             {
                 lblMsg.Text = $"Видалити товар із ID-{goodID}?";
-                btnRedeemDelete.Visible = true;
+                pnlDeletionUI.Visible = true;
             }
             else
             {
                 lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до таблиці адміністрування, і повторіть спробу.";
-                btnRedeemDelete.Visible = false;
+                pnlDeletionUI.Visible = false;
             }
         }
 
@@ -31,7 +31,6 @@ namespace NyvaProdBC
         {
             if (!string.IsNullOrEmpty(goodID))
             {
-                string goodID = Request.QueryString["id"];
                 var db = new GoodContext();
                 var goods = db.Goods.ToList();
                 Good theGood = goods.Where(x => x.Id == int.Parse(goodID)).FirstOrDefault();
