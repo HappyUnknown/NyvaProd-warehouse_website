@@ -301,7 +301,7 @@ namespace NyvaProdBC
                 counterField.Height = 20;
                 counterField.BackColor = GlobalValues.idleColor;
                 counterField.Text = "0";
-                counterField.TextMode = TextBoxMode.Number;//still allows float//https://social.msdn.microsoft.com/Forums/en-US/00f9dc42-68dc-48a9-85ff-207dcdd3788e/textbox-should-accept-integers-only-aspnet?forum=aspgettingstarted
+                counterField.TextMode = TextBoxMode.Number;//still allows float
                 tcCounter.Controls.Add(counterField);
 
                 TableCell tcUnselector = new TableCell();
