@@ -296,11 +296,12 @@ namespace NyvaProdBC
                 tcSelector.Controls.Add(selectorButton);
 
                 TableCell tcCounter = new TableCell();
-                tcSelector.CssClass = "tableCell";
+                tcCounter.CssClass = "tableCell";
                 TextBox counterField = new TextBox();
                 counterField.Height = 20;
                 counterField.BackColor = GlobalValues.idleColor;
                 counterField.Text = "0";
+                counterField.TextMode = TextBoxMode.Number;//still allows float//https://social.msdn.microsoft.com/Forums/en-US/00f9dc42-68dc-48a9-85ff-207dcdd3788e/textbox-should-accept-integers-only-aspnet?forum=aspgettingstarted
                 tcCounter.Controls.Add(counterField);
 
                 TableCell tcUnselector = new TableCell();
@@ -310,6 +311,7 @@ namespace NyvaProdBC
                 unselectorButton.Click += UnselectorButton_Click;
                 unselectorButton.Text = "✓";
                 tcUnselector.Controls.Add(unselectorButton);
+
                 Ware.Selectors.Add(new SelectorPair(unselectorButton, counterField, selectorButton));
 
                 TableRow tr = new TableRow();

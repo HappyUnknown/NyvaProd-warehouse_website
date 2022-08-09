@@ -2,15 +2,16 @@
 
 <%@ Register TagPrefix="mp" TagName="MyMP" Src="~/Site.Master" %>
 <%@ MasterType VirtualPath="~/Site.Master" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <!DOCTYPE html>
-    <html>
-    <head>
-        <!--HOW DO WE CALL FOR LAYOUT MANUALY-->
-        <link rel="stylesheet" type="text/css" href="Styles/WarehouseStyles.css" />
-    </head>
-    <body>
+    <script lang="ja">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+    </script>
         <h1><%:Title %></h1>
         <br />
         <asp:Table runat="server" CssClass="goodTable table table-dark" ID="tblGoods">
@@ -20,6 +21,4 @@
                 <asp:TableCell CssClass="colorDiv2"></asp:TableCell>
             </asp:TableRow>--%>
         </asp:Table>
-    </body>
-    </html>
 </asp:Content>
