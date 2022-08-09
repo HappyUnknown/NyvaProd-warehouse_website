@@ -15,7 +15,7 @@ namespace NyvaProdBC
         }
         Entity.NyvaUser GetUserInput()
         {
-            return new Entity.NyvaUser("NO_FIRST_NAME_INPUT", "NO_LAST_NAME_INPUT", "NO_FATHER_NAME_INPUT", tbEmail.Text,"NO_PHONE_INPUT", tbPassword.Text);
+            return new Entity.NyvaUser("NO_FIRST_NAME_INPUT", "NO_LAST_NAME_INPUT", "NO_FATHER_NAME_INPUT", tbEmail.Text,"NO_PHONE_INPUT", tbPassword.Text, 1);
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {

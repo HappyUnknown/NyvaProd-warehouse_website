@@ -16,8 +16,9 @@ namespace NyvaProdBC.Entity
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Password { get; set; }
+        public int UserRole { get; set; }
         public NyvaUser() { }
-        public NyvaUser(int id, string firstName, string lastName, string fatherName, string email, string phone, string password)
+        public NyvaUser(int id, string firstName, string lastName, string fatherName, string email, string phone, string password, int userRole)
         {
             Id = id;
             FirstName = firstName;
@@ -26,8 +27,9 @@ namespace NyvaProdBC.Entity
             Email = email;
             Phone = phone;
             Password = password;
+            UserRole = userRole;
         }
-        public NyvaUser(string firstName, string lastName, string fatherName, string email, string phone, string password)
+        public NyvaUser(string firstName, string lastName, string fatherName, string email, string phone, string password, int userRole)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -35,6 +37,7 @@ namespace NyvaProdBC.Entity
             Email = email;
             Phone = phone;
             Password = password;
+            UserRole = userRole;
         }
         public override string ToString()
         {

@@ -16,7 +16,7 @@ namespace NyvaProdBC
         }
         Entity.NyvaUser GetUserInput()
         {
-            return new Entity.NyvaUser(tbFirstName.Text, tbLastName.Text, tbFatherName.Text, tbEmail.Text, tbPhone.Text, tbPassword.Text);
+            return new Entity.NyvaUser(tbFirstName.Text, tbLastName.Text, tbFatherName.Text, tbEmail.Text, tbPhone.Text, tbPassword.Text, 1);
         }
         bool MailClone(Entity.NyvaUser nyvaUser)
         {

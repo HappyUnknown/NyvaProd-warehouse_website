@@ -293,6 +293,18 @@
     <Compile Include="Migrations\202208091402123_WishesInplied.designer.cs">
       <DependentUpon>202208091402123_WishesInplied.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208091435335_UserRoles.cs" />
+    <Compile Include="Migrations\202208091435335_UserRoles.designer.cs">
+      <DependentUpon>202208091435335_UserRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208091438181_UserRoles_AfterEmpty.cs" />
+    <Compile Include="Migrations\202208091438181_UserRoles_AfterEmpty.designer.cs">
+      <DependentUpon>202208091438181_UserRoles_AfterEmpty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208091448330_DateTime.Now.cs" />
+    <Compile Include="Migrations\202208091448330_DateTime.Now.designer.cs">
+      <DependentUpon>202208091448330_DateTime.Now.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GoodUI.cs" />
     <Compile Include="Models\Mailer.cs" />
@@ -401,6 +413,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202208091402123_WishesInplied.resx">
       <DependentUpon>202208091402123_WishesInplied.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208091435335_UserRoles.resx">
+      <DependentUpon>202208091435335_UserRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208091438181_UserRoles_AfterEmpty.resx">
+      <DependentUpon>202208091438181_UserRoles_AfterEmpty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208091448330_DateTime.Now.resx">
+      <DependentUpon>202208091448330_DateTime.Now.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

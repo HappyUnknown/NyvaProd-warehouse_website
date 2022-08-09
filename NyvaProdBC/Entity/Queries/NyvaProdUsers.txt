@@ -1,4 +1,5 @@
-﻿create table NyvaProdUsers
+﻿drop table NyvaProdUsers;
+create table NyvaProdUsers
 (
 	Id int primary key identity,
 	FirstName nvarchar(max),
@@ -6,7 +7,10 @@
 	FatherName nvarchar(max),
 	Email nvarchar(max),
 	Phone nvarchar(max),
-	[Password] nvarchar(max)
+	[Password] nvarchar(max),
+	UserRole int
 );
+insert into NyvaProdUsers values
+('First name', 'Last name', 'Father name', 'danchenkov_ak20@nuwm.edu.ua', 'Phone', 'danchenkov_ak20', 1);
 select * from NyvaProdUsers;
 SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE';
