@@ -95,7 +95,7 @@ namespace NyvaProdBC
                 Image image = new Image();
                 image.Height = 100;
                 image.Width = 100;
-                image.ImageUrl = Ware.Goods[i].ImageUrl.ToString();
+                image.ImageUrl = Ware.Goods[i].ImagesUrl.ToString();
                 tcImage.CssClass = "tableCell";
                 tcImage.Controls.Add(image);
 

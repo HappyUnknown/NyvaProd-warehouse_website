@@ -96,22 +96,22 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.TextBox tbImageUrls;
 
         /// <summary>
-        /// tbControlDigit элемент управления.
+        /// tbDeliveryDate элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbControlDigit;
+        protected global::System.Web.UI.WebControls.TextBox tbDeliveryDate;
 
         /// <summary>
-        /// tbGoodCode элемент управления.
+        /// tbRegionCode элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbGoodCode;
+        protected global::System.Web.UI.WebControls.TextBox tbRegionCode;
 
         /// <summary>
         /// tbProducerCode элемент управления.
@@ -123,13 +123,22 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.TextBox tbProducerCode;
 
         /// <summary>
-        /// tbRegionCode элемент управления.
+        /// tbGoodCode элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbRegionCode;
+        protected global::System.Web.UI.WebControls.TextBox tbGoodCode;
+
+        /// <summary>
+        /// tbControlDigit элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbControlDigit;
 
         /// <summary>
         /// btnCreateGood элемент управления.

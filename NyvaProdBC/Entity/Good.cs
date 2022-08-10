@@ -18,10 +18,11 @@ namespace NyvaProdBC.Entity
         public int TotalAmount { get; set; } = 0;
         public int AmountSold { get; set; } = 0;
         public double WeightKg { get; set; } = 0;
-        public string ImageUrl { get; set; } = "IMAGE_DEFAULT";
+        public string ImagesUrl { get; set; } = "IMAGE_DEFAULT";
+        public string RecievedOn { get; set; } = "RECIEVE_DATE_DEFAULT";
         public Barcode Barcode { get; set; } = new Barcode();
         public Good() { }
-        public Good(string name, string description, double orderPrice, double apf, double profit, int totalAmount, int amountSold, double weightKg, string imageUrl, Barcode barcode = null)
+        public Good(string name, string description, double orderPrice, double apf, double profit, int totalAmount, int amountSold, double weightKg, string imageUrl, string recievedOn, Barcode barcode = null)
         {
             Name = name;
             Description = description;
@@ -31,7 +32,8 @@ namespace NyvaProdBC.Entity
             TotalAmount = totalAmount;
             AmountSold = amountSold;
             WeightKg = weightKg;
-            ImageUrl = imageUrl;
+            ImagesUrl = imageUrl;
+            RecievedOn = recievedOn;
             if (barcode != null)
             {
                 Barcode.ControlDigit = barcode.ControlDigit;
@@ -40,7 +42,7 @@ namespace NyvaProdBC.Entity
                 Barcode.RegionCode = barcode.RegionCode;
             }
         }
-        public Good(int id, string name, string description, double orderPrice, double apf, double profit, int totalAmount, int amountSold, double weightKg, string imageUrl, Barcode barcode = null)
+        public Good(int id, string name, string description, double orderPrice, double apf, double profit, int totalAmount, int amountSold, double weightKg, string imageUrl, string recievedOn, Barcode barcode = null)
         {
             Id = id;
             Name = name;
@@ -51,7 +53,8 @@ namespace NyvaProdBC.Entity
             TotalAmount = totalAmount;
             AmountSold = amountSold;
             WeightKg = weightKg;
-            ImageUrl = imageUrl;
+            ImagesUrl = imageUrl;
+            RecievedOn = recievedOn;
             if (barcode != null)
             {
                 Barcode.ControlDigit = barcode.ControlDigit;
@@ -60,7 +63,7 @@ namespace NyvaProdBC.Entity
                 Barcode.RegionCode = barcode.RegionCode;
             }
         }
-        public Good(string name, string description, double orderPrice, double apf, double profit, int totalAmount, int amountSold, double weightKg, string imageUrl, int regionCode, int producerCode, int goodCode, int controlDigit)
+        public Good(string name, string description, double orderPrice, double apf, double profit, int totalAmount, int amountSold, double weightKg, string imageUrl, string recievedOn, int regionCode, int producerCode, int goodCode, int controlDigit)
         {
             Name = name;
             Description = description;
@@ -70,13 +73,14 @@ namespace NyvaProdBC.Entity
             TotalAmount = totalAmount;
             AmountSold = amountSold;
             WeightKg = weightKg;
-            ImageUrl = imageUrl;
+            ImagesUrl = imageUrl;
+            RecievedOn = recievedOn;
             if (regionCode != 0) Barcode.RegionCode = regionCode;
             if (producerCode != 0) Barcode.ProducerCode = producerCode;
             if (goodCode != 0) Barcode.GoodCode = goodCode;
             if (controlDigit != 0) Barcode.ControlDigit = controlDigit;
         }
-        public Good(int id, string name, string description, double orderPrice, double apf, double profit, int totalAmount, int amountSold, double weightKg, string imageUrl, int regionCode, int producerCode, int goodCode, int controlDigit)
+        public Good(int id, string name, string description, double orderPrice, double apf, double profit, int totalAmount, int amountSold, double weightKg, string imageUrl, string recievedOn, int regionCode, int producerCode, int goodCode, int controlDigit)
         {
             Id = id;
             Name = name;
@@ -87,7 +91,8 @@ namespace NyvaProdBC.Entity
             TotalAmount = totalAmount;
             AmountSold = amountSold;
             WeightKg = weightKg;
-            ImageUrl = imageUrl;
+            ImagesUrl = imageUrl;
+            RecievedOn = recievedOn;
             if (regionCode != 0) Barcode.RegionCode = regionCode;
             if (producerCode != 0) Barcode.ProducerCode = producerCode;
             if (goodCode != 0) Barcode.GoodCode = goodCode;

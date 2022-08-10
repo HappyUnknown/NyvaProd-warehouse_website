@@ -198,7 +198,7 @@ namespace NyvaProdBC
             {
                 System.Threading.Thread.Sleep(1);
                 Image img = new Image();
-                img.ImageUrl = Ware.Goods[i].ImageUrl;
+                img.ImageUrl = Ware.Goods[i].ImagesUrl;
                 img.Height = 100;
                 img.Width = 100;
 
@@ -260,9 +260,15 @@ namespace NyvaProdBC
                 Image image = new Image();
                 image.Height = 100;
                 image.Width = 100;
-                image.ImageUrl = Ware.Goods[i].ImageUrl.ToString();
+                image.ImageUrl = Ware.Goods[i].ImagesUrl.ToString();
                 tcImage.CssClass = "tableCell";
                 tcImage.Controls.Add(image);
+
+                TableCell tcArriveDate = new TableCell();
+                Label arriveDate = new Label();
+                arriveDate.Text = Ware.Goods[i].RecievedOn;
+                tcImage.CssClass = "tableCell";
+                tcImage.Controls.Add(arriveDate);
 
                 TableCell tcRegionCode = new TableCell();
                 Label lblRegionCode = new Label();
@@ -325,6 +331,7 @@ namespace NyvaProdBC
                 tr.Cells.Add(tcTotalAmount);
                 tr.Cells.Add(tcAmountSold);
                 tr.Cells.Add(tcWeightKg);
+                tr.Cells.Add(tcArriveDate);
                 tr.Cells.Add(tcImage);
                 tr.Cells.Add(tcGoodCode);
                 tr.Cells.Add(tcProducerCode);

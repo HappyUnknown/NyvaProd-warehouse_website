@@ -45,7 +45,7 @@ namespace NyvaProdBC
             tbTotalAmount.Text = good.TotalAmount.ToString();
             tbAmountSold.Text = good.AmountSold.ToString();
             tbWeightKg.Text = good.WeightKg.ToString();
-            tbImageUrls.Text = good.ImageUrl.ToString();
+            tbImageUrls.Text = good.ImagesUrl.ToString();
             tbGoodCode.Text = good.Barcode.GoodCode.ToString();
             tbProducerCode.Text = good.Barcode.ProducerCode.ToString();
             tbRegionCode.Text = good.Barcode.RegionCode.ToString();

@@ -144,6 +144,7 @@
     <Content Include="GoodEdition.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="LogoutPage.aspx" />
+    <Content Include="ManageUsers.aspx" />
     <Content Include="NewGoodForm.aspx" />
     <Content Include="RegisterPage.aspx" />
     <Content Include="RegisterUser.aspx" />
@@ -269,6 +270,13 @@
     <Compile Include="LogoutPage.aspx.designer.cs">
       <DependentUpon>LogoutPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ManageUsers.aspx.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageUsers.aspx.designer.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MD5Hasher.cs" />
     <Compile Include="Migrations\202208020903151_init.cs" />
     <Compile Include="Migrations\202208020903151_init.designer.cs">
@@ -305,6 +313,14 @@
     <Compile Include="Migrations\202208091448330_DateTime.Now.cs" />
     <Compile Include="Migrations\202208091448330_DateTime.Now.designer.cs">
       <DependentUpon>202208091448330_DateTime.Now.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208101122531_troubles_2022-08-10.cs" />
+    <Compile Include="Migrations\202208101122531_troubles_2022-08-10.designer.cs">
+      <DependentUpon>202208101122531_troubles_2022-08-10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208101131283_troubles_2022-08-10_2.cs" />
+    <Compile Include="Migrations\202208101131283_troubles_2022-08-10_2.designer.cs">
+      <DependentUpon>202208101131283_troubles_2022-08-10_2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GoodUI.cs" />
@@ -423,6 +439,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202208091448330_DateTime.Now.resx">
       <DependentUpon>202208091448330_DateTime.Now.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208101122531_troubles_2022-08-10.resx">
+      <DependentUpon>202208101122531_troubles_2022-08-10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208101131283_troubles_2022-08-10_2.resx">
+      <DependentUpon>202208101131283_troubles_2022-08-10_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

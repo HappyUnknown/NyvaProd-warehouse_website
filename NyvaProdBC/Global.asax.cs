@@ -20,7 +20,7 @@ namespace NyvaProdBC
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //System.Data.Entity.Database.SetInitializer<Entity.Contexts.NyvaUserContext>(null);
             //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<NyvaUserContext>());
-            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<GoodContext>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<GoodContext>());
         }
     }
 }

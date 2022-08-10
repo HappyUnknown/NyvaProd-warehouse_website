@@ -1,4 +1,5 @@
-﻿create table NyvaProdGoods
+﻿drop table NyvaProdGoods;
+create table NyvaProdGoods
 (
    Id int primary key identity,
    [Name] nvarchar(max),
@@ -10,6 +11,7 @@
    AmountSold int,
    WeightKg float,
    ImagesUrl nvarchar(max) not null,
+   RecievedOn nvarchar(max),
    ControlDigit int,
    GoodCode int,
    ProducerCode int,
