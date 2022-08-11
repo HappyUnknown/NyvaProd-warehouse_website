@@ -10,8 +10,9 @@
             </head>
             <body>
                 <asp:Label runat="server" ID="lblMsg" />
-                <asp:Panel runat="server" ID="pnlAdminGoodsUI">
+                <asp:Panel runat="server" ID="pnlAdminGoodsUI" Visible="false">
                     <asp:Table runat="server" ID="tblGoods" CssClass="goodTable table table-dark" />
+                    <asp:Button runat="server" ID="btnGoToCreate" OnClick="btnGoToCreate_Click" Text="Новий товар" />
                 </asp:Panel>
             </body>
             </html>

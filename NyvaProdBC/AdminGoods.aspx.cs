@@ -36,10 +36,12 @@ namespace NyvaProdBC
             {
                 RefreshTableUI();
                 lblMsg.Text = "Товари";
+                pnlAdminGoodsUI.Visible = true;
             }
             else 
             {
                 lblMsg.Text = "Ви не маєте повноважень для доступу до сторінки";
+                pnlAdminGoodsUI.Visible = false;
             }
         }
         void RefreshTableUI()
@@ -237,6 +239,11 @@ namespace NyvaProdBC
             var db = new GoodContext();
             var goods = db.Goods.ToList();
             Response.Redirect("/GoodDeletion?id=" + goods[index].Id);
+        }
+
+        protected void btnGoToCreate_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/AddGood");
         }
     }
 }
