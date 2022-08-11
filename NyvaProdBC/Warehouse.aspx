@@ -18,13 +18,17 @@
     <h1><%:Title %></h1>
     <asp:Panel runat="server" ID="pnlWareUI">
         <br />
-        <asp:Table runat="server" CssClass="goodTable table table-dark" ID="tblGoods">
-            <%--            
+        <asp:UpdatePanel runat="server">
+            <ContentTemplate>
+                <asp:Table runat="server" CssClass="goodTable table table-dark" ID="tblGoods">
+                    <%--            
                 <asp:TableRow>
                 <asp:TableCell CssClass="colorDiv1"></asp:TableCell>
                 <asp:TableCell CssClass="colorDiv2"></asp:TableCell>
             </asp:TableRow>--%>
-        </asp:Table>
+                </asp:Table>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </asp:Panel>
     <%
         }
