@@ -13,21 +13,31 @@ namespace NyvaProdBC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            NyvaUser userParse = ((Entity.NyvaUser)Application["user_data"]);
+            NyvaUser nyvaUser = userParse != null ? userParse : new NyvaUser();
+            if (nyvaUser.UserRole == (int)GlobalValues.UserRole.Admin)
             {
-                string goodID = Request.QueryString["id"];
-                if (!string.IsNullOrEmpty(goodID))
+                if (!Page.IsPostBack)
                 {
-                    lblMsg.Text = $"Видалити товар із ID-{goodID}?";
-                    pnlDeletionUI.Visible = true;
-                    Good good = new GoodContext().Goods.ToList().Where(x => x.Id == int.Parse(goodID)).FirstOrDefault();
-                    FillUI(good);
+                    string goodID = Request.QueryString["id"];
+                    if (!string.IsNullOrEmpty(goodID))
+                    {
+                        lblMsg.Text = $"Видалити товар із ID-{goodID}?";
+                        pnlDeletionUI.Visible = true;
+                        Good good = new GoodContext().Goods.ToList().Where(x => x.Id == int.Parse(goodID)).FirstOrDefault();
+                        FillUI(good);
+                    }
+                    else
+                    {
+                        lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до таблиці адміністрування, і повторіть спробу.";
+                        pnlDeletionUI.Visible = false;
+                    }
                 }
-                else
-                {
-                    lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до таблиці адміністрування, і повторіть спробу.";
-                    pnlDeletionUI.Visible = false;
-                }
+            }
+            else 
+            {
+                lblMsg.Text = "Ви не маєте права доступу до цієї сторінки";
+                pnlDeletionUI.Visible = false;
             }
         }
         void FillUI(Good good)

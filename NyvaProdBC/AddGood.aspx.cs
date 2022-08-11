@@ -12,9 +12,19 @@ namespace NyvaProdBC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            NyvaUser userParse = ((Entity.NyvaUser)Application["user_data"]);
+            NyvaUser nyvaUser = userParse != null ? userParse : new NyvaUser();
+            if (nyvaUser.UserRole == (int)GlobalValues.UserRole.Admin)
+            {
+                lblMsg.Text = "Створення товару";
+                pnlGoodAddUI.Visible = true;
+            }
+            else 
+            {
+                lblMsg.Text = "Ви не маєте права доступу до цієї сторінки";
+                pnlGoodAddUI.Visible = false;
+            }
         }
-
         protected void btnCreateGood_Click(object sender, EventArgs e)
         {
             double orderPrice = double.Parse(tbOrderPrice.Text);

@@ -57,6 +57,7 @@ namespace NyvaProdBC
                 db.Users.Add(nyvaUser);
                 db.SaveChanges();
                 Response.Write("<script>alert('Користувача зареєстровано.');</script>");
+                Response.Redirect("/LoginPage");
             }
             else
             {

@@ -144,9 +144,7 @@
     <Content Include="GoodEdition.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="LogoutPage.aspx" />
-    <Content Include="ManageU.aspx" />
     <Content Include="ManageUsers.aspx" />
-    <Content Include="NewGoodForm.aspx" />
     <Content Include="RegisterPage.aspx" />
     <Content Include="RegisterUser.aspx" />
     <Content Include="RequestRestorePassword.aspx" />
@@ -276,13 +274,6 @@
     <Compile Include="LogoutPage.aspx.designer.cs">
       <DependentUpon>LogoutPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ManageU.aspx.cs">
-      <DependentUpon>ManageU.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ManageU.aspx.designer.cs">
-      <DependentUpon>ManageU.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ManageUsers.aspx.cs">
       <DependentUpon>ManageUsers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -339,13 +330,6 @@
     <Compile Include="Models\GoodUI.cs" />
     <Compile Include="Models\Mailer.cs" />
     <Compile Include="Models\SelectorPair.cs" />
-    <Compile Include="NewGoodForm.aspx.cs">
-      <DependentUpon>NewGoodForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NewGoodForm.aspx.designer.cs">
-      <DependentUpon>NewGoodForm.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\RegexCheck.cs" />
     <Compile Include="RegisterPage.aspx.cs">

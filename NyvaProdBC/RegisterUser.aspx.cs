@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NyvaProdBC.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,9 @@ namespace NyvaProdBC
         Entity.Contexts.NyvaUserContext db = new Entity.Contexts.NyvaUserContext();
         protected void Page_Load(object sender, EventArgs e)
         {
+            NyvaUser userParse = ((Entity.NyvaUser)Application["user_data"]);
+            NyvaUser nyvaUser = userParse != null ? userParse : new NyvaUser();
+            if (nyvaUser.UserRole != (int)GlobalValues.UserRole.Admin) Response.Redirect("/Default");
         }
 
         Entity.NyvaUser GetUserInput(bool encode = true)

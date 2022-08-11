@@ -11,7 +11,19 @@ namespace NyvaProdBC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                if (((Entity.NyvaUser)Application["user_data"]) != null)
+                {
+                    lblMsg.Text = "Вихід";
+                    pnlLogoutUI.Visible = true;
+                }
+                else
+                {
+                    lblMsg.Text = "Ви ще не увійшли - вихід неможливий";
+                    pnlLogoutUI.Visible = false;
+                }
+            }
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)

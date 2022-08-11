@@ -14,20 +14,32 @@ namespace NyvaProdBC
         static string goodID;
         protected void Page_Load(object sender, EventArgs e)
         {
-            goodID = Request.QueryString["id"];
-            if (!Page.IsPostBack)
+            NyvaUser userParse = ((Entity.NyvaUser)Application["user_data"]);
+            NyvaUser nyvaUser = userParse != null ? userParse : new NyvaUser();
+            if (nyvaUser.UserRole == (int)GlobalValues.UserRole.Admin)
             {
-                LoadGoodUI(int.Parse(goodID));
-                if (!string.IsNullOrEmpty(goodID))
+                lblMsg.Text = "Створення товару";
+                pnlEditionUI.Visible = true;
+                goodID = Request.QueryString["id"];
+                if (!Page.IsPostBack)
                 {
-                    lblMsg.Text = "Зміна товару із ID-" + goodID;
-                    pnlEditionUI.Visible = true;
+                    LoadGoodUI(int.Parse(goodID));
+                    if (!string.IsNullOrEmpty(goodID))
+                    {
+                        lblMsg.Text = "Зміна товару із ID-" + goodID;
+                        pnlEditionUI.Visible = true;
+                    }
+                    else
+                    {
+                        lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до таблиці адміністрування, та повторіть спробу.";
+                        pnlEditionUI.Visible = false;
+                    }
                 }
-                else
-                {
-                    lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до таблиці адміністрування, та повторіть спробу.";
-                    pnlEditionUI.Visible = false;
-                }
+            }
+            else
+            {
+                lblMsg.Text = "Ви не маєте права доступу до цієї сторінки";
+                pnlEditionUI.Visible = false;
             }
         }
         void LoadGoodUI(int id)

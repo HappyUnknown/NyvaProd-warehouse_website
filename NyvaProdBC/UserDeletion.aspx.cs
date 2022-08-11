@@ -13,18 +13,28 @@ namespace NyvaProdBC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-                if (!string.IsNullOrEmpty(Request.QueryString["id"]))
-                {
-                    LoadUserUI(int.Parse(Request.QueryString["id"]));
-                    lblMsg.Text = $"Видалити користувача із ID-{Request.QueryString["id"]}?";
-                    pnlDeletionUI.Visible = true;
-                }
-                else
-                {
-                    lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до таблиці адміністрування, і повторіть спробу.";
-                    pnlDeletionUI.Visible = false;
-                }
+            NyvaUser userParse = ((Entity.NyvaUser)Application["user_data"]);
+            NyvaUser nyvaUser = userParse != null ? userParse : new NyvaUser();
+            if (nyvaUser.UserRole == (int)GlobalValues.UserRole.Admin)
+            {
+                if (!Page.IsPostBack)
+                    if (!string.IsNullOrEmpty(Request.QueryString["id"]))
+                    {
+                        LoadUserUI(int.Parse(Request.QueryString["id"]));
+                        lblMsg.Text = $"Видалити користувача із ID-{Request.QueryString["id"]}?";
+                        pnlDeletionUI.Visible = true;
+                    }
+                    else
+                    {
+                        lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до таблиці адміністрування, і повторіть спробу.";
+                        pnlDeletionUI.Visible = false;
+                    }
+            }
+            else
+            {
+                lblMsg.Text = "Ви не маєте права доступу до цієї сторінки";
+                pnlDeletionUI.Visible = false;
+            }
         }
         void LoadUserUI(int id)
         {

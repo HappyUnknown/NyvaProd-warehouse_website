@@ -147,7 +147,7 @@ namespace NyvaProdBC
                 Button btnView = new Button();
                 btnView.BackColor = GlobalValues.idleColor;
                 btnView.Click += GoToView;
-                btnView.Text = "✓";
+                btnView.Text = "👁";
                 btnView.ForeColor = System.Drawing.Color.Black;
                 tcView.Controls.Add(btnView);
 
@@ -165,7 +165,7 @@ namespace NyvaProdBC
                 Button btnDelete = new Button();
                 btnDelete.BackColor = GlobalValues.idleColor;
                 btnDelete.Click += GoToDelete;
-                btnDelete.Text = "χ";
+                btnDelete.Text = "❌";
                 btnDelete.ForeColor = System.Drawing.Color.Black;
                 tcDelete.Controls.Add(btnDelete);
 

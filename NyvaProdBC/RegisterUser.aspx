@@ -9,8 +9,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:Label runat="server" ID="lblMsg" />
         <asp:Button runat="server" ID="btnGoBack" OnClick="btnGoBack_Click" Text="Go back" />
-        <div>
+        <asp:Panel runat="server" ID="pnlUserData">
             <asp:TextBox runat="server" ID="tbId" placeholder="Id" />
             <br />
             <asp:TextBox runat="server" ID="tbFirstName" placeholder="Ім'я" />
@@ -36,7 +37,7 @@
             <asp:Button runat="server" ID="btnCurrentUser" OnClick="btnCurrentUser_Click" Text="Поточний користувач" />
             <br />
             <asp:Button runat="server" ID="btnLogout" OnClick="btnLogout_Click" Text="Вийти" />
-        </div>
+        </asp:Panel>
     </form>
 </body>
 </html>

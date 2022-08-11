@@ -12,9 +12,33 @@ namespace NyvaProdBC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int uid = int.Parse(Request.QueryString["id"]);
-            LoadUserUI(uid);
-            //LOAD REQUIRED WHEN LOADING START, BECAUSE IT FIRST REFRESHES AND THEN PROCESSES CLICK
+            NyvaUser currentUser = (NyvaUser)Application["user_data"];
+            if (currentUser != null)
+            {
+
+                if (!string.IsNullOrEmpty(Request.QueryString["id"]))
+                {
+                    LoadUserUI(int.Parse(Request.QueryString["id"]));
+                    lblMsg.Text = $"Видалити користувача із ID-{Request.QueryString["id"]}?";
+                    pnlEditionUI.Visible = true;
+                    if (!Page.IsPostBack)
+                    {
+                        int uid = int.Parse(Request.QueryString["id"]);
+                        LoadUserUI(uid);
+
+                    } //LOAD REQUIRED WHEN LOADING START, BECAUSE IT FIRST REFRESHES AND THEN PROCESSES CLICK
+                }
+                else
+                {
+                    lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до таблиці адміністрування, і повторіть спробу.";
+                    pnlEditionUI.Visible = false;
+                }
+            }
+            else
+            {
+                lblMsg.Text = $"Ви не маєте права доступу до цієї сторінки";
+                pnlEditionUI.Visible = false;
+            }
         }
         void LoadUserUI(int id)
         {
@@ -69,17 +93,25 @@ namespace NyvaProdBC
             {
                 NyvaUser userInput = InputUser();
                 int editIndex = users.IndexOf(nyvaUser);
-                //SetUserValues(users[editIndex], InputUser());
                 users[editIndex].FatherName = userInput.FatherName;
                 users[editIndex].FirstName = userInput.FirstName;
                 users[editIndex].LastName = userInput.LastName;
                 users[editIndex].Email = userInput.Email;
                 users[editIndex].Phone = userInput.Phone;
                 users[editIndex].UserRole = userInput.UserRole;
-                users[editIndex].IsBanned = userInput.IsBanned;
+                //users[editIndex].IsBanned = userInput.IsBanned;
                 db.SaveChanges();
                 Response.Redirect("/ManageUsers");
             }
+        }
+
+        protected void chkIsBanned_CheckedChanged(object sender, EventArgs e)
+        {
+            int uid = int.Parse(Request.QueryString["id"]);
+            if (((NyvaUser)Application["user_data"]).Id == uid)
+                Response.Write("<script>alert('Ви не можете забанити себе!');</script>");
+            else
+                Response.Write("<script>alert('OK');</script>");
         }
     }
 }

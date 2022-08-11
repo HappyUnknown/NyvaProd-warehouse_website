@@ -13,17 +13,22 @@ namespace NyvaProdBC
         static string goodID;
         protected void Page_Load(object sender, EventArgs e)
         {
-            goodID = Request.QueryString["id"];
-            if (!string.IsNullOrEmpty(goodID))
+            NyvaUser userParse = ((Entity.NyvaUser)Application["user_data"]);
+            NyvaUser nyvaUser = userParse != null ? userParse : new NyvaUser();
+            if (nyvaUser.UserRole == (int)GlobalValues.UserRole.Admin)
             {
-                lblMsg.Text = $"Огляд товару із ID-{goodID}";
-                pnlViewUI.Visible = true;
-                LoadGoodUI(int.Parse(goodID));
-            }
-            else
-            {
-                lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до таблиці адміністрування, і повторіть спробу.";
-                pnlViewUI.Visible = false;
+                goodID = Request.QueryString["id"];
+                if (!string.IsNullOrEmpty(goodID))
+                {
+                    lblMsg.Text = $"Огляд товару із ID-{goodID}";
+                    pnlViewUI.Visible = true;
+                    LoadGoodUI(int.Parse(goodID));
+                }
+                else
+                {
+                    lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до таблиці адміністрування, і повторіть спробу.";
+                    pnlViewUI.Visible = false;
+                }
             }
         }
         void LoadGoodUI(int id)

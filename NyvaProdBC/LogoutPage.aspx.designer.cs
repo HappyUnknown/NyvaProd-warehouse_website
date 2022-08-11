@@ -15,6 +15,24 @@ namespace NyvaProdBC
     {
 
         /// <summary>
+        /// lblMsg элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMsg;
+
+        /// <summary>
+        /// pnlLogoutUI элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlLogoutUI;
+
+        /// <summary>
         /// btnLogout элемент управления.
         /// </summary>
         /// <remarks>

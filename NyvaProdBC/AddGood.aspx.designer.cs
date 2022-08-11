@@ -15,6 +15,24 @@ namespace NyvaProdBC
     {
 
         /// <summary>
+        /// lblMsg элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMsg;
+
+        /// <summary>
+        /// pnlGoodAddUI элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlGoodAddUI;
+
+        /// <summary>
         /// tbGoodName элемент управления.
         /// </summary>
         /// <remarks>

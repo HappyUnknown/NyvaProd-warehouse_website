@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label runat="server" ID="lblMsg" />
-    <asp:Panel runat="server" ID="pnlDeletionUI">
+    <asp:Panel runat="server" ID="pnlDeletionUI" Visible="false">
         <asp:TextBox runat="server" ReadOnly="false" ID="tbFirstName" placeholder="First name" />
         <br />
         <asp:TextBox runat="server" ReadOnly="false" ID="tbLastName" placeholder="Last name" />
