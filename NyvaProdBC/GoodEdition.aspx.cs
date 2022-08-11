@@ -15,16 +15,19 @@ namespace NyvaProdBC
         protected void Page_Load(object sender, EventArgs e)
         {
             goodID = Request.QueryString["id"];
-            if (!string.IsNullOrEmpty(goodID))
+            if (!Page.IsPostBack)
             {
-                lblMsg.Text = "Зміна товару із ID-" + goodID;
-                pnlEditionUI.Visible = true;
                 LoadGoodUI(int.Parse(goodID));
-            }
-            else
-            {
-                lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до таблиці адміністрування, і повторіть спробу.";
-                pnlEditionUI.Visible = false;
+                if (!string.IsNullOrEmpty(goodID))
+                {
+                    lblMsg.Text = "Зміна товару із ID-" + goodID;
+                    pnlEditionUI.Visible = true;
+                }
+                else
+                {
+                    lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до таблиці адміністрування, та повторіть спробу.";
+                    pnlEditionUI.Visible = false;
+                }
             }
         }
         void LoadGoodUI(int id)
@@ -47,6 +50,7 @@ namespace NyvaProdBC
             tbAmountSold.Text = good.AmountSold.ToString();
             tbWeightKg.Text = good.WeightKg.ToString();
             tbImageUrls.Text = good.ImagesUrl.ToString();
+            tbDeliveryDate.Text = good.RecievedOn.ToString();
             tbGoodCode.Text = good.Barcode.GoodCode.ToString();
             tbProducerCode.Text = good.Barcode.ProducerCode.ToString();
             tbRegionCode.Text = good.Barcode.RegionCode.ToString();
@@ -83,7 +87,18 @@ namespace NyvaProdBC
                 if (theGood != default)
                 {
                     int editIndex = goods.IndexOf(theGood);
-                    SetGoodValues(goods[editIndex], GetInput());
+                    goods[editIndex].AmountSold = GetInput().AmountSold;
+                    goods[editIndex].APF = GetInput().APF;
+                    goods[editIndex].Barcode = GetInput().Barcode;
+                    goods[editIndex].Description = GetInput().Description;
+                    goods[editIndex].ImagesUrl = GetInput().ImagesUrl;//"https://i.pinimg.com/564x/2d/b7/d8/2db7d8c53b818ce838ad8bf6a4768c71.jpg";
+                    goods[editIndex].Name = GetInput().Name;
+                    goods[editIndex].OrderPrice = GetInput().OrderPrice;
+                    goods[editIndex].Profit = GetInput().Profit;
+                    goods[editIndex].RecievedOn = DateTime.Parse(GetInput().RecievedOn).Date.ToString();
+                    goods[editIndex].TotalAmount = GetInput().TotalAmount;
+                    goods[editIndex].WeightKg = GetInput().WeightKg;
+                    //SetGoodValues(goods[editIndex],GetInput());//Non-working
                     db.SaveChanges();
                     Response.Redirect("/AdminGoods");
                 }
