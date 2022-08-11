@@ -4,20 +4,20 @@
     <asp:Panel runat="server" HorizontalAlign="Left">
         <asp:Label runat="server" ID="lblMsg" />
         <br />
-        <asp:TextBox runat="server" ID="tbFirstName" />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbFirstName" />
         <br />
-        <asp:TextBox runat="server" ID="tbLastName" />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbLastName" />
         <br />
-        <asp:TextBox runat="server" ID="tbFatherName" />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbFatherName" />
         <br />
-        <asp:TextBox runat="server" ID="tbEmail" />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbEmail" />
         <br />
-        <asp:TextBox runat="server" ID="tbPhone" />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbPhone" />
         <br />
-        <asp:TextBox runat="server" ID="tbPassword" />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbPassword" />
         <br />
-        <asp:TextBox runat="server" ID="tbUserRole" />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbUserRole" />
         <br />
-        <asp:CheckBox runat="server" ID="chkIsBanned" Text="Banned" TextAlign="Left" OnCheckedChanged="chkIsBanned_CheckedChanged" />
+        <asp:CheckBox runat="server" ReadOnly="true" ID="chkIsBanned" Text="Banned" TextAlign="Left" onclick="return false;" />
     </asp:Panel>
 </asp:Content>

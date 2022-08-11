@@ -1,0 +1,10 @@
+﻿body {
+}
+input[type=checkbox]:disabled {
+    -webkit-appearance: none; /* disable chrome and safari styles */
+    width: 12px;
+    height: 12px;
+    background: white;
+    border: solid 1px black;
+    vertical-align: middle;
+}

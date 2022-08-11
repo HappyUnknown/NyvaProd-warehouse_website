@@ -184,6 +184,7 @@
     <Content Include="Styles\ContactStyles.css" />
     <Content Include="Styles\DefaultStyles.css" />
     <Content Include="Styles\MasterStyles.css" />
+    <Content Include="Styles\UserFormStyles.css" />
     <Content Include="Styles\WarehouseStyles.css" />
     <Content Include="UserBanning.aspx" />
     <Content Include="UserDeletion.aspx" />
