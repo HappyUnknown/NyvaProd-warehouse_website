@@ -15,7 +15,6 @@ namespace NyvaProdBC
         public static string appMailPwd = "iyqzxgwdivjscrdo";
         public static string bridgeAddr = "smtp.gmail.com";
         public static int bridgePort = 587;
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -38,6 +37,7 @@ namespace NyvaProdBC
         {
             if (EmailValid(tbUserEmail.Text))
             {
+                Master.WebEcho = string.Empty;
                 tbUserEmail.CssClass = "entryNeutral";
                 using (MailMessage mail = new MailMessage(appMail, appMail, "Запит від " + tbUserEmail.Text, tbMailText.Text))
                 {
@@ -49,7 +49,6 @@ namespace NyvaProdBC
                         bridge.Send(mail);
                     }
                 }
-                btnSubmitMail.Enabled = false;
             }
             else
             {
