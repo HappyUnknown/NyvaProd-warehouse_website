@@ -1,5 +1,4 @@
-﻿using NyvaProdBC.Entity.Contexts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,30 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace NyvaProdBC
 {
-    public partial class ManageUsers1 : System.Web.UI.Page
+    public partial class ManageUsers : System.Web.UI.Page
     {
-        static List<SelectorQuad> selectors = new List<SelectorQuad>();
-        class SelectorQuad
-        {
-            public Button GoToView { get; set; }
-            public Button GoToEdit { get; set; }
-            public Button GoToBan { get; set; }
-            public Button GoToDelete { get; set; }
-            public SelectorQuad(Button btnToView, Button btnToEdit, Button btnToBan, Button btnToDelete)
-            {
-                GoToView = btnToView;
-                GoToEdit = btnToEdit;
-                GoToBan = btnToBan;
-                GoToDelete = btnToDelete;
-            }
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
             RefreshUsers();
         }
         void RefreshUsers()
         {
-            selectors.Clear();
             var users = new Entity.Contexts.NyvaUserContext().Users.ToList();
             for (int i = 0; i < users.Count; i++)
             {
@@ -82,26 +65,18 @@ namespace NyvaProdBC
                 tcIsBanned.Controls.Add(lblIsBanned);
 
                 Button btnViewUser = new Button();
-                btnViewUser.Text = "👁";
-                btnViewUser.Click += BtnViewUser_Click;
                 TableCell tcViewUser = new TableCell();
                 tcViewUser.Controls.Add(btnViewUser);
 
                 Button btnEditUser = new Button();
-                btnEditUser.Text = "✏️";
-                btnEditUser.Click += BtnEditUser_Click;
                 TableCell tcEditUser = new TableCell();
                 tcEditUser.Controls.Add(btnEditUser);
 
                 Button btnBanUser = new Button();
-                btnBanUser.Text = "⚠️";
-                btnBanUser.Click += BtnBanUser_Click;
                 TableCell tcBanUser = new TableCell();
                 tcBanUser.Controls.Add(btnBanUser);
 
                 Button btnDeleteUser = new Button();
-                btnDeleteUser.Text = "❌";
-                btnDeleteUser.Click += BtnDeleteUser_Click;
                 TableCell tcDeleteUser = new TableCell();
                 tcDeleteUser.Controls.Add(btnDeleteUser);
 
@@ -121,66 +96,7 @@ namespace NyvaProdBC
                 row.Cells.Add(tcBanUser);
                 row.Cells.Add(tcDeleteUser);
                 tblUsers.Rows.Add(row);
-
-                SelectorQuad quad = new SelectorQuad(btnViewUser, btnEditUser, btnBanUser, btnDeleteUser);
-                selectors.Add(quad);
             }
-        }
-        int ViewButtonIndex(Button vb)
-        {
-            for (int i = 0; i < selectors.Count; i++)
-                if (selectors[i].GoToView == vb)
-                    return i;
-            return -1;
-        }
-        int DeleteButtonIndex(Button db)
-        {
-            for (int i = 0; i < selectors.Count; i++)
-                if (selectors[i].GoToDelete == db)
-                    return i;
-            return -1;
-        }
-        int EditButtonIndex(Button eb)
-        {
-            for (int i = 0; i < selectors.Count; i++)
-                if (selectors[i].GoToEdit == eb)
-                    return i;
-            return -1;
-        }
-        int BanButtonIndex(Button bb)
-        {
-            for (int i = 0; i < selectors.Count; i++)
-                if (selectors[i].GoToBan == bb)
-                    return i;
-            return -1;
-        }
-        private void BtnDeleteUser_Click(object sender, EventArgs e)
-        {
-            int index = DeleteButtonIndex((Button)sender);
-            var db = new NyvaUserContext();
-            var users = db.Users.ToList();
-            Response.Redirect("/UserDeletion?id=" + users[index].Id);
-        }
-        private void BtnBanUser_Click(object sender, EventArgs e)
-        {
-            int index = BanButtonIndex((Button)sender);
-            var db = new NyvaUserContext();
-            var users = db.Users.ToList();
-            Response.Redirect("/UserBanning?id=" + users[index].Id);
-        }
-        private void BtnViewUser_Click(object sender, EventArgs e)
-        {
-            int index = ViewButtonIndex((Button)sender);
-            var db = new NyvaUserContext();
-            var users = db.Users.ToList();
-            Response.Redirect("/ViewUser?id=" + users[index].Id);
-        }
-        private void BtnEditUser_Click(object sender, EventArgs e)
-        {
-            int index = EditButtonIndex((Button)sender);
-            var db = new NyvaUserContext();
-            var users = db.Users.ToList();
-            Response.Redirect("/UserEdition?id=" + users[index].Id);
         }
     }
 }
