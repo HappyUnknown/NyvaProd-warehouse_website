@@ -17,7 +17,17 @@ namespace NyvaProdBC
 
         protected void btnCreateGood_Click(object sender, EventArgs e)
         {
-            var newGood = new Good(tbGoodName.Text, tbDescription.Text, double.Parse(tbOrderPrice.Text), double.Parse(tbAPF.Text), double.Parse(tbProfit.Text), int.Parse(tbTotalAmount.Text), int.Parse(tbAmountSold.Text), double.Parse(tbWeightKg.Text), tbImageUrls.Text, DateTime.Today.ToString(), int.Parse(tbRegionCode.Text), int.Parse(tbProducerCode.Text), int.Parse(tbGoodCode.Text), int.Parse(tbControlDigit.Text));
+            double orderPrice = double.Parse(tbOrderPrice.Text);
+            double apf = double.Parse(tbAPF.Text);
+            double profit = double.Parse(tbProfit.Text);
+            int totalAmount = int.Parse(tbTotalAmount.Text);
+            int amountSold = int.Parse(tbAmountSold.Text);
+            double weightKg = double.Parse(tbWeightKg.Text);
+            int regionCode = int.Parse(tbRegionCode.Text);
+            int producerCode = int.Parse(tbProducerCode.Text);
+            int goodCode = int.Parse(tbGoodCode.Text);
+            int controlDigit = int.Parse(tbControlDigit.Text);
+            var newGood = new Good(tbGoodName.Text, tbDescription.Text, orderPrice, apf, profit, totalAmount, amountSold, weightKg, tbImageUrls.Text, tbDeliveryDate.Text, regionCode, producerCode, goodCode, controlDigit);
             var db = new Entity.Contexts.GoodContext();
             db.Goods.Add(newGood);
             db.SaveChanges();

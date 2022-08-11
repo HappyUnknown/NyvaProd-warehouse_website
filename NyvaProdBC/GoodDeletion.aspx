@@ -21,6 +21,8 @@
         <br />
         <asp:TextBox runat="server" ReadOnly="true" ID="tbWeightKg" placeholder="Вага продукту" Style="width: 100%" />
         <br />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbDeliveryDate" TextMode="Date" placeholder="Дата доставки" Style="width: 100%" />
+        <br />
         <asp:TextBox runat="server" ReadOnly="true" ID="tbImageUrls" placeholder="Url зображення продукту" Style="width: 100%" />
         <br />
         <asp:TextBox runat="server" ReadOnly="true" ID="tbControlDigit" placeholder="Контрольна цифра штрихкоду" Style="width: 100%" />
@@ -29,7 +31,7 @@
         <br />
         <asp:TextBox runat="server" ReadOnly="true" ID="tbProducerCode" placeholder="Код виробника" Style="width: 100%" />
         <br />
-        <asp:TextBox runat="server" ID="tbRegionCode" placeholder="Код регіону" Style="width: 100%" />
+        <asp:TextBox runat="server" ReadOnly="true" ID="tbRegionCode" placeholder="Код регіону" Style="width: 100%" />
         <br />
         <br />
         <asp:Button runat="server" ID="btnRedeemDelete" OnClick="btnRedeemDelete_Click" />
