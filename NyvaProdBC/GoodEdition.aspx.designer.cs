@@ -114,6 +114,15 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.TextBox tbImageUrls;
 
         /// <summary>
+        /// tbDeliveryDate элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbDeliveryDate;
+
+        /// <summary>
         /// tbControlDigit элемент управления.
         /// </summary>
         /// <remarks>

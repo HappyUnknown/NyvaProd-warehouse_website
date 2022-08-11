@@ -24,6 +24,7 @@ namespace NyvaProdBC.Entity
         public Good() { }
         public Good(string name, string description, double orderPrice, double apf, double profit, int totalAmount, int amountSold, double weightKg, string imageUrl, string recievedOn, Barcode barcode = null)
         {
+            Id = 0;
             Name = name;
             Description = description;
             OrderPrice = orderPrice;
@@ -65,6 +66,7 @@ namespace NyvaProdBC.Entity
         }
         public Good(string name, string description, double orderPrice, double apf, double profit, int totalAmount, int amountSold, double weightKg, string imageUrl, string recievedOn, int regionCode, int producerCode, int goodCode, int controlDigit)
         {
+            Id = 0;
             Name = name;
             Description = description;
             OrderPrice = orderPrice;

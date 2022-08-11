@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GoodEdition.aspx.cs" Inherits="NyvaProdBC.GoodEdition" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Label runat="server" ID="lblMsg" style="float:left" />
+    <asp:Label runat="server" ID="lblMsg" Style="float: left" />
     <br />
-    <asp:Panel runat="server" ID="pnlEditionUI" CssClass="container" Style="width: 20%; float:left">
+    <asp:Panel runat="server" ID="pnlEditionUI" CssClass="container" Style="width: 20%; float: left">
         <br />
         <br />
         <asp:TextBox runat="server" ReadOnly="true" ID="tbGoodName" placeholder="Назва товару" Style="width: 100%" />
@@ -24,6 +24,8 @@
         <br />
         <asp:TextBox runat="server" ReadOnly="true" ID="tbImageUrls" placeholder="Url зображення продукту" Style="width: 100%" />
         <br />
+        <asp:TextBox runat="server" ID="tbDeliveryDate" placeholder="Дата доставки" TextMode="Date" Style="width: 100%" />
+        <br />
         <asp:TextBox runat="server" ReadOnly="true" ID="tbControlDigit" placeholder="Контрольна цифра штрихкоду" Style="width: 100%" />
         <br />
         <asp:TextBox runat="server" ReadOnly="true" ID="tbGoodCode" placeholder="Код товару" Style="width: 100%" />
@@ -33,6 +35,6 @@
         <asp:TextBox runat="server" ID="tbRegionCode" placeholder="Код регіону" Style="width: 100%" />
         <br />
         <br />
-        <asp:Button runat="server" ID="btnRedeemEdit" OnClick="btnRedeemEdit_Click" Text="Redeem" Style="float:right" />
+        <asp:Button runat="server" ID="btnRedeemEdit" OnClick="btnRedeemEdit_Click" Text="Redeem" Style="float: right" />
     </asp:Panel>
 </asp:Content>

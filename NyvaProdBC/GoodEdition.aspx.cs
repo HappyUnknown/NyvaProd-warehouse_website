@@ -52,6 +52,27 @@ namespace NyvaProdBC
             tbRegionCode.Text = good.Barcode.RegionCode.ToString();
             tbControlDigit.Text = good.Barcode.ControlDigit.ToString();
         }
+        Good GetInput()
+        {
+            Good good = new Good(tbGoodName.Text, tbDescription.Text, double.Parse(tbOrderPrice.Text), double.Parse(tbAPF.Text), double.Parse(tbProfit.Text), int.Parse(tbTotalAmount.Text), int.Parse(tbAmountSold.Text), double.Parse(tbWeightKg.Text), tbImageUrls.Text, tbDeliveryDate.Text, int.Parse(tbGoodCode.Text), int.Parse(tbProducerCode.Text), int.Parse(tbRegionCode.Text), int.Parse(tbControlDigit.Text));
+            return good;
+        }
+        void SetGoodValues(Good to, Good from)
+        {
+            from.Name = to.Name;
+            from.Description = to.Description;
+            from.OrderPrice = to.OrderPrice;
+            from.APF = to.APF;
+            from.Profit = to.Profit;
+            from.TotalAmount = to.TotalAmount;
+            from.AmountSold = to.AmountSold;
+            from.WeightKg = to.WeightKg;
+            from.ImagesUrl = to.ImagesUrl;
+            from.Barcode.GoodCode = to.Barcode.GoodCode;
+            from.Barcode.ProducerCode = to.Barcode.ProducerCode;
+            from.Barcode.RegionCode = to.Barcode.RegionCode;
+            from.Barcode.ControlDigit = to.Barcode.ControlDigit;
+        }
         protected void btnRedeemEdit_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(goodID))
@@ -62,7 +83,7 @@ namespace NyvaProdBC
                 if (theGood != default)
                 {
                     int editIndex = goods.IndexOf(theGood);
-                    goods.RemoveAt(editIndex);
+                    SetGoodValues(goods[editIndex], GetInput());
                     db.SaveChanges();
                     Response.Redirect("/AdminGoods");
                 }
