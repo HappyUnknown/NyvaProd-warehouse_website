@@ -13,9 +13,10 @@ namespace NyvaProdBC
         protected void Page_Load(object sender, EventArgs e)
         {
             int uid = int.Parse(Request.QueryString["id"]);
-            RefreshUserUI(uid);
+            if (!Page.IsPostBack)//REQUIRED WHEN LOAD, BECAUSE IT FIRST REFRESHES AND THEN PROCESSES CLICK
+                LoadUserUI(uid);
         }
-        void RefreshUserUI(int id)
+        void LoadUserUI(int id)
         {
             Entity.NyvaUser user = new Entity.Contexts.NyvaUserContext().Users.ToList().Where(x => x.Id == id).FirstOrDefault();
             tbEmail.Text = user.Email;
@@ -61,7 +62,6 @@ namespace NyvaProdBC
             //else Response.Write($"<script>alert('Неможливо змінити: обраний елемент не існує');</script>");
 
             int uid = int.Parse(Request.QueryString["id"]);
-            RefreshUserUI(uid);
             var db = new Entity.Contexts.NyvaUserContext();
             var users = db.Users.ToList();
             NyvaUser nyvaUser = users.Where(x => x.Id == uid).FirstOrDefault();
@@ -78,6 +78,7 @@ namespace NyvaProdBC
                 users[editIndex].UserRole = userInput.UserRole;
                 users[editIndex].IsBanned = userInput.IsBanned;
                 db.SaveChanges();
+                Response.Redirect("/ManageUsers");
             }
         }
     }
