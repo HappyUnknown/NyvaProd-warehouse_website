@@ -9,5 +9,6 @@ Remove page reload on ware count change
 User administration CRUD forms
 Excel sync
 User role is <select/>
+Admin UIs restrict by role
 ?: Email sending reachable only if account has been created
 ?: DB Structure - Good includes in groups based on price

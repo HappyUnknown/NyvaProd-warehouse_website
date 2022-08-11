@@ -1,4 +1,5 @@
-﻿using NyvaProdBC.Entity.Contexts;
+﻿using NyvaProdBC.Entity;
+using NyvaProdBC.Entity.Contexts;
 using NyvaProdBC.Models;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,17 @@ namespace NyvaProdBC
         {
             //gdGoods.DataSource = new Entity.Contexts.GoodContext().Goods.ToList();
             //gdGoods.DataBind();
-            RefreshTableUI();
+            NyvaUser userParse = ((Entity.NyvaUser)Application["user_data"]);
+            NyvaUser nyvaUser = userParse != null ? userParse : new NyvaUser();
+            if (nyvaUser.UserRole == (int)GlobalValues.UserRole.Admin)
+            {
+                RefreshTableUI();
+                lblMsg.Text = "Товари";
+            }
+            else 
+            {
+                lblMsg.Text = "Ви не маєте повноважень для доступу до сторінки";
+            }
         }
         void RefreshTableUI()
         {
@@ -178,7 +189,7 @@ namespace NyvaProdBC
                 tr.Cells.Add(tcProducerCode);
                 tr.Cells.Add(tcGoodCode);
                 tr.Cells.Add(tcControlDigit);
-                
+
                 tr.Cells.Add(tcView);
                 tr.Cells.Add(tcEdit);
                 tr.Cells.Add(tcDelete);

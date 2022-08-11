@@ -17,7 +17,7 @@
     <br />
     <asp:TextBox runat="server" ReadOnly="false" ID="tbUserRole" placeholder="User role" />
     <br />
-    <asp:CheckBox runat="server" ReadOnly="false" ID="chkIsBanned" Text="Banned" TextAlign="Left" onclick="return false;" />
+    <asp:CheckBox runat="server" ReadOnly="false" ID="chkIsBanned" Text="Banned" TextAlign="Left" />
     <br />
     <br />
     <asp:Button runat="server" ID="btnRedeemEdit" OnClick="btnRedeemEdit_Click" Text="Redeem" />

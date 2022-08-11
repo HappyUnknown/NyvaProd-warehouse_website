@@ -9,7 +9,10 @@
                 <link rel="stylesheet" type="text/css" href="Styles/WarehouseStyles.css" />
             </head>
             <body>
-                <asp:Table runat="server" ID="tblGoods" CssClass="goodTable table table-dark" />
+                <asp:Label runat="server" ID="lblMsg" />
+                <asp:Panel runat="server" ID="pnlAdminGoodsUI">
+                    <asp:Table runat="server" ID="tblGoods" CssClass="goodTable table table-dark" />
+                </asp:Panel>
             </body>
             </html>
         </ContentTemplate>

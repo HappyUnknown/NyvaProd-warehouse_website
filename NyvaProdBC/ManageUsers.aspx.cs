@@ -1,4 +1,5 @@
-﻿using NyvaProdBC.Entity.Contexts;
+﻿using NyvaProdBC.Entity;
+using NyvaProdBC.Entity.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,17 @@ namespace NyvaProdBC
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            RefreshUsers();
+            NyvaUser userParse = ((Entity.NyvaUser)Application["user_data"]);
+            NyvaUser nyvaUser = userParse != null ? userParse : new NyvaUser();
+            if (nyvaUser.UserRole == (int)GlobalValues.UserRole.Admin)
+            {
+                lblMsg.Text = "Зареєстровані користувачі";
+                RefreshUsers();
+            }
+            else
+            {
+                lblMsg.Text = "Ваші повноваження недостатні для доступу до сторінки";
+            }
         }
         void RefreshUsers()
         {
@@ -97,13 +108,13 @@ namespace NyvaProdBC
                 btnBanUser.Text = "⚠️";
                 btnBanUser.Click += BtnBanUser_Click;
                 TableCell tcBanUser = new TableCell();
-                tcBanUser.Controls.Add(btnBanUser);
+                if (users[i].Email != ((NyvaUser)Application["user_data"]).Email) tcBanUser.Controls.Add(btnBanUser);
 
                 Button btnDeleteUser = new Button();
                 btnDeleteUser.Text = "❌";
                 btnDeleteUser.Click += BtnDeleteUser_Click;
                 TableCell tcDeleteUser = new TableCell();
-                tcDeleteUser.Controls.Add(btnDeleteUser);
+                if (users[i].Email != ((NyvaUser)Application["user_data"]).Email) tcDeleteUser.Controls.Add(btnDeleteUser);
 
                 TableRow row = new TableRow();
                 row.Cells.Add(tcId);

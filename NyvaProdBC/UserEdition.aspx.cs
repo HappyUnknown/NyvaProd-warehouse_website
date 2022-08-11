@@ -13,8 +13,8 @@ namespace NyvaProdBC
         protected void Page_Load(object sender, EventArgs e)
         {
             int uid = int.Parse(Request.QueryString["id"]);
-            if (!Page.IsPostBack)//REQUIRED WHEN LOAD, BECAUSE IT FIRST REFRESHES AND THEN PROCESSES CLICK
-                LoadUserUI(uid);
+            LoadUserUI(uid);
+            //LOAD REQUIRED WHEN LOADING START, BECAUSE IT FIRST REFRESHES AND THEN PROCESSES CLICK
         }
         void LoadUserUI(int id)
         {

@@ -7,6 +7,12 @@ namespace NyvaProdBC
 {
     public class GlobalValues
     {
+        public enum UserRole
+        {
+            User = 0,
+            Admin = 1,
+            ReadOnlyAdmin = 2
+        }
         public const int USER_ROLE = 0;
         public const bool USER_BANNED = false;
         public static readonly System.Drawing.Color selectColor = System.Drawing.Color.CornflowerBlue;

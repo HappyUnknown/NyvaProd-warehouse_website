@@ -32,6 +32,11 @@ namespace NyvaProdBC
             get;
             set;
         }
+        public int UserRole
+        {
+            get;
+            set;
+        }
         public int CountUniques(Good[] goods, string name)
         {
             int counter = 0;
@@ -105,11 +110,17 @@ namespace NyvaProdBC
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            object currentUser = Application["user_data"];
+            NyvaUser currentUser = (NyvaUser)Application["user_data"];
             if (currentUser != null)
-                CurrentEmail = currentUser.ToString();
+            {
+                UserRole = currentUser.UserRole;
+                CurrentEmail = currentUser.Email;
+            }
             else
+            {
+                UserRole = (int)GlobalValues.UserRole.User;
                 CurrentEmail = string.Empty;
+            }
             RefreshBasketUI();//In order to display everywhere
         }
         public string FormedOrder()
