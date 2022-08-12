@@ -294,6 +294,14 @@ namespace NyvaProdBC
                 tcControlDigit.CssClass = "tableCell";
                 tcControlDigit.Controls.Add(lblControlDigit);
 
+                TableCell tcGoToView = new TableCell();
+                tcGoToView.CssClass = "tableCell";
+                Button btnGoToView = new Button();
+                btnGoToView.BackColor = GlobalValues.idleColor;
+                btnGoToView.Click += BtnGoToView_Click;
+                btnGoToView.Text = "👁";
+                tcGoToView.Controls.Add(btnGoToView);
+
                 TableCell tcUnselector = new TableCell();
                 tcUnselector.CssClass = "tableCell";
                 Button unselectorButton = new Button();
@@ -319,7 +327,7 @@ namespace NyvaProdBC
                 selectorButton.Text = "+";
                 tcSelector.Controls.Add(selectorButton);
 
-                Ware.Selectors.Add(new SelectorPair(unselectorButton, counterField, selectorButton));
+                Ware.Selectors.Add(new SelectorPair(btnGoToView, unselectorButton, counterField, selectorButton));
 
                 TableRow tr = new TableRow();
                 tr.Cells.Add(tcId);
@@ -338,12 +346,25 @@ namespace NyvaProdBC
                 tr.Cells.Add(tcRegionCode);
                 tr.Cells.Add(tcControlDigit);
 
+                tr.Cells.Add(tcGoToView);
                 tr.Cells.Add(tcUnselector);
                 tr.Cells.Add(tcCounter);
                 tr.Cells.Add(tcSelector);
                 tblGoods.Rows.Add(tr);
             }
         }
+
+        private void BtnGoToView_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Ware.Selectors.Count; i++)
+            {
+                if (((Button)sender).UniqueID == Ware.Selectors[i].viewer.UniqueID)//wry: parallel arrays
+                {
+                    Response.Redirect("/ShopGood?id=" + Ware.Goods[i].Id);
+                }
+            }
+        }
+
         struct GoodInBasket
         {
             public string GoodName { get; set; }
