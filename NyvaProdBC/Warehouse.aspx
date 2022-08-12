@@ -21,6 +21,27 @@
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
                 <asp:Table runat="server" CssClass="goodTable table table-dark" ID="tblGoods">
+                    <asp:TableHeaderRow>
+                        <asp:TableCell Text="ID" />
+                        <asp:TableCell Text="Назва" />
+                        <asp:TableCell Text="Опис" />
+                        <asp:TableCell Text="Ціна замовлення" />
+                        <asp:TableCell Text="Частка прибутку" />
+                        <asp:TableCell Text="Частка податку" />
+                        <asp:TableCell Text="Загальна кількість" />
+                        <asp:TableCell Text="Продано" />
+                        <asp:TableCell Text="Вага (КГ)" />
+                        <asp:TableCell Text="Дата прибуття" />
+                        <asp:TableCell Text="Зображення" />
+                        <asp:TableCell Text="Код товару" />
+                        <asp:TableCell Text="Код виробника" />
+                        <asp:TableCell Text="Код регіону" />
+                        <asp:TableCell Text="Контрольна цифра" />
+                        <asp:TableCell Text="Оглянути" />
+                        <asp:TableCell Text="Зменшити" />
+                        <asp:TableCell Text="Кількість" />
+                        <asp:TableCell Text="Збільшити" />
+                    </asp:TableHeaderRow>
                     <%--            
                 <asp:TableRow>
                 <asp:TableCell CssClass="colorDiv1"></asp:TableCell>

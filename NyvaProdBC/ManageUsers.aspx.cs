@@ -109,13 +109,14 @@ namespace NyvaProdBC
                 btnBanUser.Click += BtnBanUser_Click;
                 TableCell tcBanUser = new TableCell();
                 if (users[i].Email != ((NyvaUser)Application["user_data"]).Email) tcBanUser.Controls.Add(btnBanUser);
+                else tcBanUser.Controls.Add(new Label() { Text = "..." });
 
                 Button btnDeleteUser = new Button();
                 btnDeleteUser.Text = "❌";
                 btnDeleteUser.Click += BtnDeleteUser_Click;
                 TableCell tcDeleteUser = new TableCell();
                 if (users[i].Email != ((NyvaUser)Application["user_data"]).Email) tcDeleteUser.Controls.Add(btnDeleteUser);
-
+                else tcDeleteUser.Controls.Add(new Label() { Text = "..." });
                 TableRow row = new TableRow();
                 row.Cells.Add(tcId);
                 row.Cells.Add(tcFirstName);

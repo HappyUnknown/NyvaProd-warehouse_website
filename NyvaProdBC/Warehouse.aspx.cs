@@ -334,8 +334,8 @@ namespace NyvaProdBC
                 tr.Cells.Add(tcName);
                 tr.Cells.Add(tcDescription);
                 tr.Cells.Add(tcOrderPrice);
-                tr.Cells.Add(tcAPF);
                 tr.Cells.Add(tcProfit);
+                tr.Cells.Add(tcAPF);
                 tr.Cells.Add(tcTotalAmount);
                 tr.Cells.Add(tcAmountSold);
                 tr.Cells.Add(tcWeightKg);
