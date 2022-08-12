@@ -69,31 +69,44 @@ namespace NyvaProdBC
                 //System.Threading.Thread.Sleep(1);
                 //string secondParagraph = LoremIpsum.Generate(1, 7, 1, 5, 1);
                 //lblGoodDescription.Text += secondParagraph.Substring(0, 1).ToUpper() + secondParagraph.Substring(1);
-                string idStr = Request.QueryString["id"];
-                if (!string.IsNullOrEmpty(idStr))
+                var currentUser = (Entity.NyvaUser)Application["user_data"];
+                if (currentUser != null)
                 {
-                    pnlGoodPage.Visible = true;
-                    int goodID = int.Parse(idStr);
-                    var db = new Entity.Contexts.GoodContext();
-                    var goods = db.Goods.ToList();
-                    var theGood = goods.Where(x => x.Id == goodID).FirstOrDefault();
-                    if (theGood != default)
+                    string idStr = Request.QueryString["id"];
+                    if (!string.IsNullOrEmpty(idStr))
                     {
-                        lblGoodName.Text = theGood.Name;
-                        lblGoodDescription.Text = theGood.Description;
+                        pnlGoodPage.Visible = true;
+                        int goodID = int.Parse(idStr);
+                        var db = new Entity.Contexts.GoodContext();
+                        var goods = db.Goods.ToList();
+                        var theGood = goods.Where(x => x.Id == goodID).FirstOrDefault();
+                        if (theGood != default)
+                        {
+                            lblGoodName.Text = theGood.Name;
+                            lblGoodDescription.Text = theGood.Description;
+                        }
+                        imgGoodPreview.Height = 900;
+                        imgGoodPreview.ImageUrl = theGood.ImagesUrl;//ImageUrls[new Random().Next(0, ImageUrls.Length - 1)];
+                        lblMsg.Text = "Огляд товару";
+                        lblPrice.Text = $"{theGood.GetFullPrice()}₴";
                     }
-                    imgGoodPreview.Height = 900;
-                    imgGoodPreview.ImageUrl = theGood.ImagesUrl;//ImageUrls[new Random().Next(0, ImageUrls.Length - 1)];
-                    lblGoodDescription.Height = 750;
-                    lblGoodName.Height = 150;
-                    lblMsg.Text = "Огляд товару";
+                    else
+                    {
+                        pnlGoodPage.Visible = false;
+                        lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до списку товарів, та спробуйте ще раз.";
+                    }
                 }
                 else
                 {
                     pnlGoodPage.Visible = false;
-                    lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до списку товарів, та спробуйте ще раз.";
+                    lblMsg.Text = "Огляд товарів доступний лише для зареєстрованих користувачів.";
                 }
             }
+        }
+
+        protected void btnBackToWare_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Warehouse");
         }
     }
 }

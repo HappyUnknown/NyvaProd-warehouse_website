@@ -100,5 +100,11 @@ namespace NyvaProdBC.Entity
             if (goodCode != 0) Barcode.GoodCode = goodCode;
             if (controlDigit != 0) Barcode.ControlDigit = controlDigit;
         }
+        public double GetFullPrice()
+        {
+            double profitedPrice = OrderPrice * (1 + Profit);
+            double feedPrice = profitedPrice * (1 + APF);
+            return feedPrice;
+        }
     }
 }

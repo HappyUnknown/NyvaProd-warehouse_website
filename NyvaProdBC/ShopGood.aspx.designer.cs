@@ -33,13 +33,13 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.Panel pnlGoodPage;
 
         /// <summary>
-        /// tblGoodInfo элемент управления.
+        /// imgGoodPreview элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tblGoodInfo;
+        protected global::System.Web.UI.WebControls.Image imgGoodPreview;
 
         /// <summary>
         /// lblGoodName элемент управления.
@@ -51,22 +51,13 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.Label lblGoodName;
 
         /// <summary>
-        /// tblGoodText элемент управления.
+        /// lblPrice элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tblGoodText;
-
-        /// <summary>
-        /// imgGoodPreview элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgGoodPreview;
+        protected global::System.Web.UI.WebControls.Label lblPrice;
 
         /// <summary>
         /// lblGoodDescription элемент управления.
@@ -76,5 +67,14 @@ namespace NyvaProdBC
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblGoodDescription;
+
+        /// <summary>
+        /// btnBackToWare элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBackToWare;
     }
 }
