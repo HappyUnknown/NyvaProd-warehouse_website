@@ -177,6 +177,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="ShopGood.aspx" />
     <Content Include="Site.Master" />
     <Content Include="Styles\AboutStyles.css" />
     <Content Include="Styles\ContactStyles.css" />
@@ -244,6 +245,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Globals\LoremIpsum.cs" />
     <Compile Include="GlobalValues.cs" />
     <Compile Include="GoodDeletion.aspx.cs">
       <DependentUpon>GoodDeletion.aspx</DependentUpon>
@@ -359,6 +361,13 @@
     </Compile>
     <Compile Include="RestorePassword.aspx.designer.cs">
       <DependentUpon>RestorePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShopGood.aspx.cs">
+      <DependentUpon>ShopGood.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShopGood.aspx.designer.cs">
+      <DependentUpon>ShopGood.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
