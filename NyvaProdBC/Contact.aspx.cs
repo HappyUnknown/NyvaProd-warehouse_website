@@ -35,26 +35,34 @@ namespace NyvaProdBC
 
         protected void btnSubmitMail_Click(object sender, EventArgs e)
         {
-            if (EmailValid(tbUserEmail.Text))
-            {
-                Master.WebEcho = string.Empty;
-                tbUserEmail.CssClass = "entryNeutral";
-                using (MailMessage mail = new MailMessage(appMail, appMail, "Запит від " + tbUserEmail.Text, tbMailText.Text))
+            if (tbMailText.Text.Trim(' ').Length > 0)
+                if (EmailValid(tbUserEmail.Text))
                 {
-                    using (SmtpClient bridge = new SmtpClient(bridgeAddr, bridgePort))
+                    Master.WebEcho = string.Empty;
+                    tbUserEmail.CssClass = "entryNeutral";
+                    using (MailMessage mail = new MailMessage(appMail, appMail, "Запит від " + tbUserEmail.Text, tbMailText.Text))
                     {
-                        bridge.UseDefaultCredentials = true;
-                        bridge.EnableSsl = true;
-                        bridge.Credentials = new NetworkCredential(appMail, appMailPwd);//HARDER PASSWORD, Secured acc
-                        bridge.Send(mail);
+                        using (SmtpClient bridge = new SmtpClient(bridgeAddr, bridgePort))
+                        {
+                            bridge.UseDefaultCredentials = true;
+                            bridge.EnableSsl = true;
+                            bridge.Credentials = new NetworkCredential(appMail, appMailPwd);//HARDER PASSWORD, Secured acc
+                            bridge.Send(mail);
+                        }
                     }
+                    btnSubmitMail.Visible = false;
+                    Response.Write("<script>alert('Ваше повідомлення надіслане!');</script>");
                 }
-            }
+                else
+                {
+                    Master.WebEcho = "User e-mail invaild";
+                    tbUserEmail.CssClass = "entryInvalid";
+                    //Response.Write("<script language=javascript>alert('E-Mail invalid');</script>");
+                }
             else
             {
-                Master.WebEcho = "User e-mail invaild";
-                tbUserEmail.CssClass = "entryInvalid";
-                //Response.Write("<script language=javascript>alert('E-Mail invalid');</script>");
+                Master.WebEcho = "Порожнє повідомлення";
+                tbMailText.CssClass = "entryInvalid";
             }
         }
     }

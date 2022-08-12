@@ -15,6 +15,7 @@ namespace NyvaProdBC
         {
             if (!Page.IsPostBack)
             {
+                pnlGoodPage.Visible = true;
                 ImageUrls = new string[]
                 {
                 //"https://files.yande.re/sample/43baf1155996358570eabd7ebb16ef91/yande.re%20993730%20sample%20ass%20feet%20genshin_impact%20keqing%20nanaken_nana%20pantyhose%20topless.jpg",
@@ -62,16 +63,36 @@ namespace NyvaProdBC
                 "https://i.pinimg.com/564x/ac/53/cb/ac53cbf1633eb8349ee65ed54c9b855f.jpg",
                 "https://i.pinimg.com/564x/0b/1a/e1/0b1ae1969bf5a2947d22dfc2321b1354.jpg",
                 };
-                imgGoodPreview.Height = 900;
-                imgGoodPreview.ImageUrl = ImageUrls[new Random().Next(0, ImageUrls.Length - 1)];
-                lblGoodDescription.Height = 750;
-                lblGoodName.Height = 150;
-                lblGoodName.Text = LoremIpsum.Generate(2, 4, 1, 1, 1);
-                string firstParagraph = LoremIpsum.Generate(1, 7, 1, 5, 1);
-                lblGoodDescription.Text = firstParagraph.Substring(0, 1).ToUpper() + firstParagraph.Substring(1);
-                System.Threading.Thread.Sleep(1);
-                string secondParagraph = LoremIpsum.Generate(1, 7, 1, 5, 1);
-                lblGoodDescription.Text += secondParagraph.Substring(0, 1).ToUpper() + secondParagraph.Substring(1);
+                //lblGoodName.Text = LoremIpsum.Generate(2, 4, 1, 1, 1);
+                //string firstParagraph = LoremIpsum.Generate(1, 7, 1, 5, 1);
+                //lblGoodDescription.Text = firstParagraph.Substring(0, 1).ToUpper() + firstParagraph.Substring(1);
+                //System.Threading.Thread.Sleep(1);
+                //string secondParagraph = LoremIpsum.Generate(1, 7, 1, 5, 1);
+                //lblGoodDescription.Text += secondParagraph.Substring(0, 1).ToUpper() + secondParagraph.Substring(1);
+                string idStr = Request.QueryString["id"];
+                if (!string.IsNullOrEmpty(idStr))
+                {
+                    pnlGoodPage.Visible = true;
+                    int goodID = int.Parse(idStr);
+                    var db = new Entity.Contexts.GoodContext();
+                    var goods = db.Goods.ToList();
+                    var theGood = goods.Where(x => x.Id == goodID).FirstOrDefault();
+                    if (theGood != default)
+                    {
+                        lblGoodName.Text = theGood.Name;
+                        lblGoodDescription.Text = theGood.Description;
+                    }
+                    imgGoodPreview.Height = 900;
+                    imgGoodPreview.ImageUrl = theGood.ImagesUrl;//ImageUrls[new Random().Next(0, ImageUrls.Length - 1)];
+                    lblGoodDescription.Height = 750;
+                    lblGoodName.Height = 150;
+                    lblMsg.Text = "Огляд товару";
+                }
+                else
+                {
+                    pnlGoodPage.Visible = false;
+                    lblMsg.Text = "Як ви потрапили на цю сторінку? Поверніться до списку товарів, та спробуйте ще раз.";
+                }
             }
         }
     }

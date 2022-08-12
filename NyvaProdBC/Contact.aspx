@@ -43,19 +43,7 @@
                     <tr>
                         <td />
                         <td style="background-color: whitesmoke">
-                            <%if (!MailSent)
-                                {
-                            %>
                             <asp:Button runat="server" ID="btnSubmitMail" CssClass="gridItem button" Text="Надіслати" OnClick="btnSubmitMail_Click" />
-                            <%
-                                }
-                                else
-                                {
-                            %>
-                            <asp:Label runat="server" ID="lblMsg" Visible="false" />
-                            <%
-                                }
-                            %>
                         </td>
                     </tr>
                 </table>

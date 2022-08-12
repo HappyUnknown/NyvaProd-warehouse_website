@@ -15,22 +15,40 @@ namespace NyvaProdBC
     {
 
         /// <summary>
-        /// tblGoodPage элемент управления.
+        /// lblMsg элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tblGoodPage;
+        protected global::System.Web.UI.WebControls.Label lblMsg;
 
         /// <summary>
-        /// imgGoodPreview элемент управления.
+        /// pnlGoodPage элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgGoodPreview;
+        protected global::System.Web.UI.WebControls.Panel pnlGoodPage;
+
+        /// <summary>
+        /// tblGoodInfo элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tblGoodInfo;
+
+        /// <summary>
+        /// lblGoodName элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGoodName;
 
         /// <summary>
         /// tblGoodText элемент управления.
@@ -42,13 +60,13 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.Table tblGoodText;
 
         /// <summary>
-        /// lblGoodName элемент управления.
+        /// imgGoodPreview элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGoodName;
+        protected global::System.Web.UI.WebControls.Image imgGoodPreview;
 
         /// <summary>
         /// lblGoodDescription элемент управления.
