@@ -15,13 +15,13 @@
             <h3>Контактні номери
             </h3>
             <p>
-                Директор, Данченков Олександр Якович: <a href="”tel:+380673640488”">+38-(067)-364-04-88</a>
+                Директор, Данченков Олександр Якович: <a href="tel:+380673640488">+38-(067)-364-04-88</a>
             </p>
         </div>
         <br />
         <div class="container">
             <h3>Лист електронною поштою</h3>
-            <p>Наша адреса: <strong><a href="mailto:novaprod@gmail.com">novaprod@gmail.com</a></strong></p>
+            <p>Наша адреса: <strong><a href="mailto:nyvaprod@gmail.com">nyvaprod@gmail.com</a></strong></p>
             <address>
                 <table style="background-color: aliceblue">
                     <tr>
