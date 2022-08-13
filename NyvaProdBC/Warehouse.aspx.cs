@@ -98,11 +98,11 @@ namespace NyvaProdBC
         {
             try
             {
-                for (int i = 0; i < Ware.Selectors.Count; i++)
+                for (int i = 0; i < Ware.Selectors.Count; i++)//For all ware selectors
                 {
-                    if (Ware.Selectors[i].selector.UniqueID == pair.selector.UniqueID)
+                    if (Ware.Selectors[i].selector.UniqueID == pair.selector.UniqueID)//If caller is in range
                     {
-                        return Ware.Goods[i];
+                        return Ware.Goods[i];//Return coresponding good
                     }
                 }
                 ResponseAlert("No good on button");
@@ -130,24 +130,21 @@ namespace NyvaProdBC
         {
             try
             {
-                for (int i = 0; i < Ware.Selectors.Count; i++)
+                for (int i = 0; i < Ware.Selectors.Count; i++)//For all good-selectors 
                 {
-                    if (Ware.Selectors[i].selector == (Button)sender)
+                    if (Ware.Selectors[i].selector == (Button)sender)//If selector pressed is in range
                     {
-                        Basket.Add(Ware.Selectors[i]);
-                        Ware.Selectors[i].counter.Text = (int.Parse(Ware.Selectors[i].counter.Text) + 1).ToString();
-                    }
-                    else if (Ware.Selectors[i].selector.BackColor != GlobalValues.selectColor)
-                    {
-                        Ware.Selectors[i].selector.BackColor = GlobalValues.idleColor;
+                        Basket.Add(Ware.Selectors[i]);//Add coresponding selector to basket (stands for good)
+                        Ware.Selectors[i].counter.Text = (int.Parse(Ware.Selectors[i].counter.Text) + 1).ToString();//Refresh UI counter in textbox
                     }
                 }
-                for (int i = 0; i < Basket.BaseArray.Length; i++)
+                for (int i = 0; i < Basket.BaseArray.Length; i++)//For all basket items
                 {
-                    for (int j = i; j < Basket.BaseArray.Length; j++)
+                    for (int j = i; j < Basket.BaseArray.Length; j++)//Parallel to basket items
                     {
-                        if (GoodByButton(Basket.BaseArray[i]).Name.CompareTo(GoodByButton(Basket.BaseArray[j]).Name) == 1)//Caller goes second, but first in queue
+                        if (GoodByButton(Basket.BaseArray[i]).Name.CompareTo(GoodByButton(Basket.BaseArray[j]).Name) == 1)//Basket item's name goes second, but button standing first
                         {
+                            //swap
                             SelectorPair temp = Basket.BaseArray[i];
                             Basket.BaseArray[i] = Basket.BaseArray[j];
                             Basket.BaseArray[j] = temp;
@@ -156,7 +153,7 @@ namespace NyvaProdBC
                 }
             }
             catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
-            RefreshBasketUI();
+            RefreshBasketUI();//Refresh basket UI (no matter it refreshes in master)
         }
         private void UnselectorButton_Click(object sender, EventArgs e)
         {
@@ -169,6 +166,7 @@ namespace NyvaProdBC
                 {
                     if (Ware.Selectors[i].unselector == (Button)sender)
                     {
+                        //Ware.Selectors[i].counter.Text = (int.Parse(Ware.Selectors[i].counter.Text) - 1).ToString();//Refresh UI counter in textbox
                         int counter = int.Parse(Ware.Selectors[i].counter.Text);
                         if (counter > 0) Ware.Selectors[i].counter.Text = (counter - 1).ToString();
                         else ResponseAlert("Неможливо замовити менше нуля одиниць товару.");
@@ -317,6 +315,7 @@ namespace NyvaProdBC
                 counterField.BackColor = GlobalValues.idleColor;
                 counterField.Text = "0";
                 counterField.TextMode = TextBoxMode.Number;//still allows float
+                //counterField.TextChanged += CounterField_TextChanged;
                 tcCounter.Controls.Add(counterField);
 
                 TableCell tcSelector = new TableCell();
@@ -352,6 +351,104 @@ namespace NyvaProdBC
                 tr.Cells.Add(tcSelector);
                 tblGoods.Rows.Add(tr);
             }
+        }
+        private void NewCounterField_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ////0.Given
+                //tbCounter = (TextBox)sender
+                //replaceValue = Basket.BaseArray.Where(x=>x.counter==tbCounter).FirstOrDefault()
+                //replaceCount = int.Parse(tbCounter.Text)
+                var tbCounter = (TextBox)sender;
+                var replaceValue = Basket.BaseArray.Where(x => x.counter == tbCounter).FirstOrDefault();
+                var replaceCount = int.Parse(replaceValue.counter.Text);
+
+                ////1.Remove to-replace items
+                //SelectorPair[] fullBasketTemp = new SelectorPair[Basket.BaseArray.Length]
+                //for int i=0;i<Basket.BaseArray;i++: fullBasketTemp[i]=el
+                //skipCounters=0
+                //for int i=0;i<fullBasketTemp.Length;i++: if fullBasketTemp[i].Counter.UniqueID==tbCounter.UniqueID: skipCounters++
+                //Basket.BaseArray=new int[fullBasketTemp.Length-skipCounters]
+                SelectorPair[] fullBasketTemp = new SelectorPair[Basket.BaseArray.Length];
+                for (int i = 0; i < fullBasketTemp.Length; i++)
+                    fullBasketTemp[i] = Basket.BaseArray[i];
+                int skipCounter = 0;
+                for (int i = 0; i < fullBasketTemp.Length; i++)
+                    if (fullBasketTemp[i].counter.UniqueID == tbCounter.UniqueID)
+                        skipCounter++;
+                Basket.BaseArray = new SelectorPair[fullBasketTemp.Length - skipCounter];
+
+                ////2.Re-add skipping to-replaces
+                //slope=0; for int i=0;i<fullBasketTemp.Length;i++: if fullBasketTemp[i] != replaceValue: Basket.BaseArray[slope++]=fullBasketTemp[i]
+                for (int i = 0, slope = 0; i < fullBasketTemp.Length; i++)
+                    if (fullBasketTemp[i].counter.UniqueID != replaceValue.counter.UniqueID)
+                        Basket.BaseArray[slope++] = fullBasketTemp[i];
+                //3.Add items back in amount
+                //for int ri=0;ri<replaceCount;ri++:
+                //SelectorPair[] pushBackTemp = new SelectorPair[Basket.BaseArray.Length]
+                //for int i=0;i<Basket.BaseArray.Length;i++: pushBackTemp[i]=Basket.BaseArray[i]
+                //Basket.BaseArray=new int[Basket.BaseArray.Length+1]
+                //for int i=0;i<pushBackTemp.Length;i++: Basket.BaseArray[i]=pushBackTemp[i]
+                //Basket.BaseArray[Basket.BaseArray.Length-1]=replaceValue
+                for (int ri = 0; ri < replaceCount; ri++)
+                {
+                    //Perform pushback operation multiple times
+                    SelectorPair[] pushBackTemp = new SelectorPair[Basket.BaseArray.Length];
+                    for (int i = 0; i < Basket.BaseArray.Length; i++)
+                        pushBackTemp[i] = Basket.BaseArray[i];
+                    Basket.BaseArray = new SelectorPair[Basket.BaseArray.Length + 1];
+                    for (int i = 0; i < pushBackTemp.Length; i++)
+                        Basket.BaseArray[i] = pushBackTemp[i];
+                    Basket.BaseArray[Basket.BaseArray.Length - 1] = replaceValue;
+                }
+
+                for (int i = 0; i < Basket.BaseArray.Length; i++)//For all basket items
+                {
+                    for (int j = i; j < Basket.BaseArray.Length; j++)//Parallel to basket items
+                    {
+                        if (GoodByButton(Basket.BaseArray[i]).Name.CompareTo(GoodByButton(Basket.BaseArray[j]).Name) == 1)//Basket item's name goes second, but button standing first
+                        {
+                            //swap
+                            SelectorPair temp = Basket.BaseArray[i];
+                            Basket.BaseArray[i] = Basket.BaseArray[j];
+                            Basket.BaseArray[j] = temp;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
+            RefreshBasketUI();//Refresh basket UI (no matter it refreshes in master)
+        }
+        private void CounterField_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = 0; i < Ware.Selectors.Count; i++)//For all good-selectors 
+                {
+                    if (Ware.Selectors[i].selector == (Button)sender)//If selector pressed is in range
+                    {
+                        Ware.Selectors[i].counter.Text = (int.Parse(Ware.Selectors[i].counter.Text)).ToString();//Refresh UI counter in textbox
+                        //Basket.RemoveAt();///Separate loop looks for each ware selectors' good, then compares. If good id matches with related to selector pressed - add good's basket index to array. Next - we skip those indexes when recreating.
+                        Basket.Add(Ware.Selectors[i]);//Add coresponding selector to basket (stands for good)
+                    }
+                }
+                for (int i = 0; i < Basket.BaseArray.Length; i++)//For all basket items
+                {
+                    for (int j = i; j < Basket.BaseArray.Length; j++)//Parallel to basket items
+                    {
+                        if (GoodByButton(Basket.BaseArray[i]).Name.CompareTo(GoodByButton(Basket.BaseArray[j]).Name) == 1)//Basket item's name goes second, but button standing first
+                        {
+                            //swap
+                            SelectorPair temp = Basket.BaseArray[i];
+                            Basket.BaseArray[i] = Basket.BaseArray[j];
+                            Basket.BaseArray[j] = temp;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
+            RefreshBasketUI();//Refresh basket UI (no matter it refreshes in master)
         }
 
         private void BtnGoToView_Click(object sender, EventArgs e)

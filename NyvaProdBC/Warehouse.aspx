@@ -18,8 +18,8 @@
     <h1><%:Title %></h1>
     <asp:Panel runat="server" ID="pnlWareUI">
         <br />
-        <asp:UpdatePanel runat="server">
-            <ContentTemplate>
+<%--        <asp:UpdatePanel runat="server">
+            <ContentTemplate>--%>
                 <asp:Table runat="server" CssClass="goodTable table table-dark" ID="tblGoods">
                     <asp:TableHeaderRow>
                         <asp:TableCell Text="ID" />
@@ -48,8 +48,8 @@
                 <asp:TableCell CssClass="colorDiv2"></asp:TableCell>
             </asp:TableRow>--%>
                 </asp:Table>
-            </ContentTemplate>
-        </asp:UpdatePanel>
+<%--            </ContentTemplate>
+        </asp:UpdatePanel>--%>
     </asp:Panel>
     <%
         }
