@@ -148,52 +148,54 @@
                 </ul>
             </div>
         </div>--%>
-
-        <div class="container body-content">
-            <br />
-            <asp:Label runat="server" ID="lblWebEcho" />
-            <hr />
-            <asp:Table runat="server" Width="100%" CssClass="pageTable">
-                <asp:TableRow>
-                    <asp:TableCell CssClass="pageCell">
-                        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-                    </asp:TableCell>
-                    <asp:TableCell CssClass="basketCell" Style="text-align: center">
-                        <%
-                            if (CurrentEmail.Length == 0)
-                            {
-                        %>
-                        <asp:Label runat="server" Text="Зареєструйтесь, щоб замовити" />
-                        <%
-                            }
-                            else
-                            {
-                        %>
-                        <asp:Table runat="server" Width="100%">
-                            <asp:TableRow Width="80%">
-                                <asp:TableCell>
-                                    <asp:ListBox runat="server" ID="liBasket" Width="100%" />
-                                </asp:TableCell>
-                            </asp:TableRow>
-                            <asp:TableRow Height="10%">
-                                <asp:TableCell>
-                                    <asp:Button runat="server" ID="btnOrder" OnClick="btnOrder_Click" Text="Замовити" CssClass="btn btn-dark" Style="width: 100%" />
-                                </asp:TableCell>
-                            </asp:TableRow>
-                        </asp:Table>
-                        <%
-                            }
-                        %>
-                        <%--<asp:Panel runat="server" CssClass="basket">OOOOOHMYGOD</asp:Panel>--%>
-                    </asp:TableCell>
-                </asp:TableRow>
-            </asp:Table>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - NyvaProd</p>
-            </footer>
-        </div>
-
+        <asp:UpdatePanel runat="server">
+            <ContentTemplate>
+                <div class="container body-content">
+                    <br />
+                    <asp:Label runat="server" ID="lblWebEcho" />
+                    <hr />
+                    <asp:Table runat="server" Width="100%" CssClass="pageTable">
+                        <asp:TableRow>
+                            <asp:TableCell CssClass="pageCell">
+                                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                            </asp:TableCell>
+                            <asp:TableCell CssClass="basketCell" Style="text-align: center">
+                                <%
+                                    if (CurrentEmail.Length == 0)
+                                    {
+                                %>
+                                <asp:Label runat="server" Text="Зареєструйтесь, щоб замовити" />
+                                <%
+                                    }
+                                    else
+                                    {
+                                %>
+                                <asp:Table runat="server" Width="100%">
+                                    <asp:TableRow Width="80%">
+                                        <asp:TableCell>
+                                            <asp:ListBox runat="server" ID="liBasket" Width="100%" />
+                                        </asp:TableCell>
+                                    </asp:TableRow>
+                                    <asp:TableRow Height="10%">
+                                        <asp:TableCell>
+                                            <asp:Button runat="server" ID="btnOrder" OnClick="btnOrder_Click" Text="Замовити" CssClass="btn btn-dark" Style="width: 100%" />
+                                        </asp:TableCell>
+                                    </asp:TableRow>
+                                </asp:Table>
+                                <%
+                                    }
+                                %>
+                                <%--<asp:Panel runat="server" CssClass="basket">OOOOOHMYGOD</asp:Panel>--%>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                    </asp:Table>
+                    <hr />
+                    <footer>
+                        <p>&copy; <%: DateTime.Now.Year %> - NyvaProd</p>
+                    </footer>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </form>
 </body>
 </html>

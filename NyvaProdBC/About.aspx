@@ -1,6 +1,24 @@
 ﻿<%@ Page Title="Про фірму" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="NyvaProdBC.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <storyboard x:key="animate">
+        <objectanimationusingkeyframes begintime="0:0:0" storyboard.targetproperty="Visibility">
+            <discreteobjectkeyframe keytime="0">
+                <discreteobjectkeyframe.value>
+                    <visibility>Visible</visibility>
+                </discreteobjectkeyframe.value>
+            </discreteobjectkeyframe>
+        </objectanimationusingkeyframes>
+        <doubleanimation begintime="0:0:0.0" storyboard.targetproperty="Opacity" from="0" to="1" duration="0:0:0.2" />
+        <doubleanimation begintime="0:0:5.0" storyboard.targetproperty="Opacity" from="1" to="0" duration="0:0:0.5" />
+        <objectanimationusingkeyframes begintime="0:0:5.5" storyboard.targetproperty="Visibility">
+            <discreteobjectkeyframe keytime="0">
+                <discreteobjectkeyframe.value>
+                    <visibility>Hidden</visibility>
+                </discreteobjectkeyframe.value>
+            </discreteobjectkeyframe>
+        </objectanimationusingkeyframes>
+    </storyboard>
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
             <!DOCTYPE html>
