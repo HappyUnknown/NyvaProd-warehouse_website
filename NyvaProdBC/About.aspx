@@ -1,13 +1,6 @@
 ﻿<%@ Page Title="Про фірму" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="NyvaProdBC.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <ajaxtoolkit:animationextender id="ae" runat="server" targetcontrolid="Panel1">
-        <animations>
-            <onload>
-                <fadeout duration="1.5" fps="24" />
-            </onload>
-        </animations>
-    </ajaxtoolkit:animationextender>
     <storyboard x:key="animate">
         <objectanimationusingkeyframes begintime="0:0:0" storyboard.targetproperty="Visibility">
             <discreteobjectkeyframe keytime="0">
@@ -53,7 +46,7 @@
                 </div>
                 <br />
                 <div class="container">
-                    <asp:Table runat="server" Style="height: 400px; width: 100%; border-radius: 10px 10px">
+                    <asp:Table ID="tblAboutUI" runat="server" Style="height: 400px; width: 100%; border-radius: 10px 10px">
                         <asp:TableRow Style="height: 100%">
                             <%--
                             <asp:TableCell Style="width: 10%">

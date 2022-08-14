@@ -315,7 +315,8 @@ namespace NyvaProdBC
                 counterField.BackColor = GlobalValues.idleColor;
                 counterField.Text = "0";
                 counterField.TextMode = TextBoxMode.Number;//still allows float
-                //counterField.TextChanged += CounterField_TextChanged;
+                counterField.TextChanged += NewCounterField_TextChanged;
+                counterField.AutoPostBack = true;
                 tcCounter.Controls.Add(counterField);
 
                 TableCell tcSelector = new TableCell();
@@ -361,91 +362,108 @@ namespace NyvaProdBC
                 //replaceValue = Basket.BaseArray.Where(x=>x.counter==tbCounter).FirstOrDefault()
                 //replaceCount = int.Parse(tbCounter.Text)
                 var tbCounter = (TextBox)sender;
-                var replaceValue = Basket.BaseArray.Where(x => x.counter == tbCounter).FirstOrDefault();
-                var replaceCount = int.Parse(replaceValue.counter.Text);
-
-                ////1.Remove to-replace items
-                //SelectorPair[] fullBasketTemp = new SelectorPair[Basket.BaseArray.Length]
-                //for int i=0;i<Basket.BaseArray;i++: fullBasketTemp[i]=el
-                //skipCounters=0
-                //for int i=0;i<fullBasketTemp.Length;i++: if fullBasketTemp[i].Counter.UniqueID==tbCounter.UniqueID: skipCounters++
-                //Basket.BaseArray=new int[fullBasketTemp.Length-skipCounters]
-                SelectorPair[] fullBasketTemp = new SelectorPair[Basket.BaseArray.Length];
-                for (int i = 0; i < fullBasketTemp.Length; i++)
-                    fullBasketTemp[i] = Basket.BaseArray[i];
-                int skipCounter = 0;
-                for (int i = 0; i < fullBasketTemp.Length; i++)
-                    if (fullBasketTemp[i].counter.UniqueID == tbCounter.UniqueID)
-                        skipCounter++;
-                Basket.BaseArray = new SelectorPair[fullBasketTemp.Length - skipCounter];
-
-                ////2.Re-add skipping to-replaces
-                //slope=0; for int i=0;i<fullBasketTemp.Length;i++: if fullBasketTemp[i] != replaceValue: Basket.BaseArray[slope++]=fullBasketTemp[i]
-                for (int i = 0, slope = 0; i < fullBasketTemp.Length; i++)
-                    if (fullBasketTemp[i].counter.UniqueID != replaceValue.counter.UniqueID)
-                        Basket.BaseArray[slope++] = fullBasketTemp[i];
-                //3.Add items back in amount
-                //for int ri=0;ri<replaceCount;ri++:
-                //SelectorPair[] pushBackTemp = new SelectorPair[Basket.BaseArray.Length]
-                //for int i=0;i<Basket.BaseArray.Length;i++: pushBackTemp[i]=Basket.BaseArray[i]
-                //Basket.BaseArray=new int[Basket.BaseArray.Length+1]
-                //for int i=0;i<pushBackTemp.Length;i++: Basket.BaseArray[i]=pushBackTemp[i]
-                //Basket.BaseArray[Basket.BaseArray.Length-1]=replaceValue
-                for (int ri = 0; ri < replaceCount; ri++)
+                var replaceValue = Basket.BaseArray.Where(x => x.counter == (TextBox)sender).FirstOrDefault();
+                try
                 {
-                    //Perform pushback operation multiple times
-                    SelectorPair[] pushBackTemp = new SelectorPair[Basket.BaseArray.Length];
-                    for (int i = 0; i < Basket.BaseArray.Length; i++)
-                        pushBackTemp[i] = Basket.BaseArray[i];
-                    Basket.BaseArray = new SelectorPair[Basket.BaseArray.Length + 1];
-                    for (int i = 0; i < pushBackTemp.Length; i++)
-                        Basket.BaseArray[i] = pushBackTemp[i];
-                    Basket.BaseArray[Basket.BaseArray.Length - 1] = replaceValue;
-                }
-
-                for (int i = 0; i < Basket.BaseArray.Length; i++)//For all basket items
-                {
-                    for (int j = i; j < Basket.BaseArray.Length; j++)//Parallel to basket items
+                    if (replaceValue == default) { Master.WebEcho = "default"; return; }
+                    var replaceCount = int.Parse(replaceValue.counter.Text);
+                    try
                     {
-                        if (GoodByButton(Basket.BaseArray[i]).Name.CompareTo(GoodByButton(Basket.BaseArray[j]).Name) == 1)//Basket item's name goes second, but button standing first
+                        ////1.Remove to-replace items
+                        //SelectorPair[] fullBasketTemp = new SelectorPair[Basket.BaseArray.Length]
+                        //for int i=0;i<Basket.BaseArray;i++: fullBasketTemp[i]=el
+                        //skipCounters=0
+                        //for int i=0;i<fullBasketTemp.Length;i++: if fullBasketTemp[i].Counter.UniqueID==tbCounter.UniqueID: skipCounters++
+                        //Basket.BaseArray=new int[fullBasketTemp.Length-skipCounters]
+                        SelectorPair[] fullBasketTemp = new SelectorPair[Basket.BaseArray.Length];
+                        for (int i = 0; i < fullBasketTemp.Length; i++)
+                            fullBasketTemp[i] = Basket.BaseArray[i];
+                        int skipCounter = 0;
+                        try
                         {
-                            //swap
-                            SelectorPair temp = Basket.BaseArray[i];
-                            Basket.BaseArray[i] = Basket.BaseArray[j];
-                            Basket.BaseArray[j] = temp;
+                            for (int i = 0; i < fullBasketTemp.Length; i++)
+                                if (fullBasketTemp[i].counter.UniqueID == tbCounter.UniqueID)
+                                    skipCounter++;
+                            Basket.BaseArray = new SelectorPair[fullBasketTemp.Length - skipCounter];
+
+                            ////2.Re-add skipping to-replaces
+                            //slope=0; for int i=0;i<fullBasketTemp.Length;i++: if fullBasketTemp[i] != replaceValue: Basket.BaseArray[slope++]=fullBasketTemp[i]
+                            for (int i = 0, slope = 0; i < fullBasketTemp.Length; i++)
+                                if (fullBasketTemp[i].counter.UniqueID != replaceValue.counter.UniqueID)
+                                    Basket.BaseArray[slope++] = fullBasketTemp[i];
+                            //3.Add items back in amount
+                            //for int ri=0;ri<replaceCount;ri++:
+                            //SelectorPair[] pushBackTemp = new SelectorPair[Basket.BaseArray.Length]
+                            //for int i=0;i<Basket.BaseArray.Length;i++: pushBackTemp[i]=Basket.BaseArray[i]
+                            //Basket.BaseArray=new int[Basket.BaseArray.Length+1]
+                            //for int i=0;i<pushBackTemp.Length;i++: Basket.BaseArray[i]=pushBackTemp[i]
+                            //Basket.BaseArray[Basket.BaseArray.Length-1]=replaceValue
+                            try
+                            {
+                                for (int ri = 0; ri < replaceCount; ri++)
+                                {
+                                    //Perform pushback operation multiple times
+                                    SelectorPair[] pushBackTemp = new SelectorPair[Basket.BaseArray.Length];
+                                    for (int i = 0; i < Basket.BaseArray.Length; i++)
+                                        pushBackTemp[i] = Basket.BaseArray[i];
+                                    Basket.BaseArray = new SelectorPair[Basket.BaseArray.Length + 1];
+                                    for (int i = 0; i < pushBackTemp.Length; i++)
+                                        Basket.BaseArray[i] = pushBackTemp[i];
+                                    Basket.BaseArray[Basket.BaseArray.Length - 1] = replaceValue;
+                                }
+
+                                for (int i = 0; i < Basket.BaseArray.Length; i++)//For all basket items
+                                {
+                                    for (int j = i; j < Basket.BaseArray.Length; j++)//Parallel to basket items
+                                    {
+                                        if (GoodByButton(Basket.BaseArray[i]).Name.CompareTo(GoodByButton(Basket.BaseArray[j]).Name) == 1)//Basket item's name goes second, but button standing first
+                                        {
+                                            //swap
+                                            SelectorPair temp = Basket.BaseArray[i];
+                                            Basket.BaseArray[i] = Basket.BaseArray[j];
+                                            Basket.BaseArray[j] = temp;
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception ex) { Master.WebEcho = ("4GS: " + Ware.Goods.Count + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
                         }
+                        catch (Exception ex) { Master.WebEcho = ("3GS: " + Ware.Goods.Count + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
                     }
+                    catch (Exception ex) { Master.WebEcho = ("2.5GS: " + Ware.Goods.Count + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
                 }
+                catch (Exception ex) { Master.WebEcho = ("2GS: " + Ware.Goods.Count + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
             }
-            catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
+            catch (Exception ex) { Master.WebEcho = ("1GS: " + Ware.Goods.Count + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
             RefreshBasketUI();//Refresh basket UI (no matter it refreshes in master)
         }
         private void CounterField_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                for (int i = 0; i < Ware.Selectors.Count; i++)//For all good-selectors 
-                {
-                    if (Ware.Selectors[i].selector == (Button)sender)//If selector pressed is in range
-                    {
-                        Ware.Selectors[i].counter.Text = (int.Parse(Ware.Selectors[i].counter.Text)).ToString();//Refresh UI counter in textbox
-                        //Basket.RemoveAt();///Separate loop looks for each ware selectors' good, then compares. If good id matches with related to selector pressed - add good's basket index to array. Next - we skip those indexes when recreating.
-                        Basket.Add(Ware.Selectors[i]);//Add coresponding selector to basket (stands for good)
-                    }
-                }
-                for (int i = 0; i < Basket.BaseArray.Length; i++)//For all basket items
-                {
-                    for (int j = i; j < Basket.BaseArray.Length; j++)//Parallel to basket items
-                    {
-                        if (GoodByButton(Basket.BaseArray[i]).Name.CompareTo(GoodByButton(Basket.BaseArray[j]).Name) == 1)//Basket item's name goes second, but button standing first
-                        {
-                            //swap
-                            SelectorPair temp = Basket.BaseArray[i];
-                            Basket.BaseArray[i] = Basket.BaseArray[j];
-                            Basket.BaseArray[j] = temp;
-                        }
-                    }
-                }
+                Master.WebEcho = "CounterField_TextChanged";
+                //for (int i = 0; i < Ware.Selectors.Count; i++)//For all good-selectors 
+                //{
+                //    if (Ware.Selectors[i].selector == (Button)sender)//If selector pressed is in range
+                //    {
+                //        Ware.Selectors[i].counter.Text = (int.Parse(Ware.Selectors[i].counter.Text)).ToString();//Refresh UI counter in textbox
+                //        //Basket.RemoveAt();///Separate loop looks for each ware selectors' good, then compares. If good id matches with related to selector pressed - add good's basket index to array. Next - we skip those indexes when recreating.
+                //        Basket.Add(Ware.Selectors[i]);//Add coresponding selector to basket (stands for good)
+                //    }
+                //}
+                //for (int i = 0; i < Basket.BaseArray.Length; i++)//For all basket items
+                //{
+                //    for (int j = i; j < Basket.BaseArray.Length; j++)//Parallel to basket items
+                //    {
+                //        if (GoodByButton(Basket.BaseArray[i]).Name.CompareTo(GoodByButton(Basket.BaseArray[j]).Name) == 1)//Basket item's name goes second, but button standing first
+                //        {
+                //            //swap
+                //            SelectorPair temp = Basket.BaseArray[i];
+                //            Basket.BaseArray[i] = Basket.BaseArray[j];
+                //            Basket.BaseArray[j] = temp;
+                //        }
+                //    }
+                //}
             }
             catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
             RefreshBasketUI();//Refresh basket UI (no matter it refreshes in master)

@@ -13,6 +13,14 @@ namespace NyvaProdBC
 
     public partial class About
     {
+        /// <summary>
+        /// tblAboutUI элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tblAboutUI;
 
         /// <summary>
         /// lblUpTitle элемент управления.
