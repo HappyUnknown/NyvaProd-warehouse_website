@@ -18,7 +18,7 @@ namespace NyvaProdBC
             {
                 Goods = GlobalValues.goods;
                 ImgIteraror = 0;
-                imgCarousel.ImageUrl = Goods[ImgIteraror].ImagesUrl;
+                tblCarouselUI.BackImageUrl = Goods[ImgIteraror].ImagesUrl;
                 RefreshInfoUI();
             }
         }
@@ -27,7 +27,7 @@ namespace NyvaProdBC
         {
             ImgIteraror--;
             if (ImgIteraror < 0) ImgIteraror = Goods.Count - 1;
-            imgCarousel.ImageUrl = Goods[ImgIteraror].ImagesUrl;
+            tblCarouselUI.BackImageUrl = Goods[ImgIteraror].ImagesUrl;
             RefreshInfoUI();
         }
 
@@ -35,7 +35,7 @@ namespace NyvaProdBC
         {
             ImgIteraror++;
             if (ImgIteraror > Goods.Count - 1) ImgIteraror = 0;
-            imgCarousel.ImageUrl = Goods[ImgIteraror].ImagesUrl; 
+            tblCarouselUI.BackImageUrl = Goods[ImgIteraror].ImagesUrl; 
             RefreshInfoUI();
         }
         void RefreshInfoUI() 

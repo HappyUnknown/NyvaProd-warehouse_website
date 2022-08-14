@@ -5,6 +5,15 @@
     width: 100%;
     height: 400px;
 }
+
+.btn-carousel {
+    background-color: cornflowerblue;
+}
+
+    .btn-carousel:hover {
+        background-color: cornflowerblue;
+    }
+
 .image {
     display: block;
     margin-left: auto;

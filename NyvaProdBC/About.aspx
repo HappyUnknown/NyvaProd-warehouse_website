@@ -1,6 +1,13 @@
 ﻿<%@ Page Title="Про фірму" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="NyvaProdBC.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <ajaxtoolkit:animationextender id="ae" runat="server" targetcontrolid="Panel1">
+        <animations>
+            <onload>
+                <fadeout duration="1.5" fps="24" />
+            </onload>
+        </animations>
+    </ajaxtoolkit:animationextender>
     <storyboard x:key="animate">
         <objectanimationusingkeyframes begintime="0:0:0" storyboard.targetproperty="Visibility">
             <discreteobjectkeyframe keytime="0">
@@ -26,6 +33,16 @@
             <head>
                 <title><%: Title %></title>
                 <link rel="stylesheet" type="text/css" href="Styles/AboutStyles.css" />
+                <style>
+                    .btn-carousel {
+                        background-color: transparent;
+                    }
+
+                        .btn-carousel:hover {
+                            color: whitesmoke;
+                            background-color: #343a40;
+                        }
+                </style>
             </head>
             <body>
                 <div class="container">
@@ -36,39 +53,54 @@
                 </div>
                 <br />
                 <div class="container">
-                    <asp:Table runat="server" Style="height: 400px; width: 100%">
+                    <asp:Table runat="server" Style="height: 400px; width: 100%; border-radius: 10px 10px">
                         <asp:TableRow Style="height: 100%">
+                            <%--
                             <asp:TableCell Style="width: 10%">
-                                <asp:Button runat="server" ID="btnPrev" OnClick="btnPrevMedia_Click" CssClass="button" />
-                            </asp:TableCell>
+                                <asp:Button runat="server" ID="btnPrevMedia" OnClick="btnPrevMedia_Click" CssClass="btn btn-primary btn-carousel" Style="width: 100%; height: 400px;" />
+                            </asp:TableCell>--%>
                             <asp:TableCell Style="width: 80%">
                                 <asp:Table Style="width: 100%" runat="server">
-                                    <asp:TableRow Style="background-color: aquamarine">
+                                    <asp:TableRow Style="background-color: #343a40">
                                         <asp:TableCell Style="text-align: center">
                                             <br />
-                                            <asp:Label runat="server" ID="lblUpTitle" Text="HELLO" />
+                                            <asp:Label runat="server" ID="lblUpTitle" Text="HELLO" Style="color: whitesmoke" />
                                             <br />
                                             <br />
                                         </asp:TableCell>
                                     </asp:TableRow>
                                     <asp:TableRow Style="height: 50%">
                                         <asp:TableCell Style="background-color: red;">
-                                            <asp:Image runat="server" ID="imgCarousel" CssClass="image" Height="400" />
+                                            <asp:Table runat="server" ID="tblCarouselUI" Height="400" Width="100%" Style="background-color: whitesmoke; background-repeat: no-repeat; background-size: contain; background-position: center;">
+                                                <asp:TableRow>
+                                                    <asp:TableCell Style="width: 10%;">
+                                                        <asp:Button runat="server" ID="btnPrev" OnClick="btnPrevMedia_Click" CssClass="btn btn-carousel" Style="height: 400px; width: 100%" Text="<" />
+                                                    </asp:TableCell>
+                                                    <asp:TableCell Style="width: 80%;">
+                                                        <asp:Image runat="server" ID="imgCarousel" CssClass="image" Style="height: 400px;" />
+                                                    </asp:TableCell>
+                                                    <asp:TableCell Style="width: 10%;">
+                                                        <asp:Button runat="server" ID="btnNext" OnClick="btnNextMedia_Click" CssClass="btn btn-carousel" Style="height: 400px; width: 100%" Text=">" />
+                                                    </asp:TableCell>
+                                                </asp:TableRow>
+                                            </asp:Table>
                                         </asp:TableCell>
                                     </asp:TableRow>
-                                    <asp:TableRow Style="background-color: aquamarine">
+                                    <asp:TableRow Style="background-color: #343a40">
                                         <asp:TableCell Style="text-align: center">
                                             <br />
-                                            <asp:Label runat="server" ID="lblDownTitle" Text="HELLO" />
+                                            <asp:Label runat="server" ID="lblDownTitle" Text="HELLO" Style="color: whitesmoke" />
                                             <br />
                                             <br />
                                         </asp:TableCell>
                                     </asp:TableRow>
                                 </asp:Table>
                             </asp:TableCell>
+                            <%--
                             <asp:TableCell Style="width: 10%">
-                                <asp:Button runat="server" ID="btnNext" OnClick="btnNextMedia_Click" CssClass="button" Style="width: 100%; height: 400px;" />
+                                <asp:Button runat="server" ID="btnNextMedia" OnClick="btnNextMedia_Click" CssClass="btn btn-primary btn-carousel" Style="width: 100%; height: 400px;" />
                             </asp:TableCell>
+                            --%>
                         </asp:TableRow>
                     </asp:Table>
                 </div>
