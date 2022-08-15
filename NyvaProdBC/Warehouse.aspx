@@ -48,6 +48,9 @@
                 <asp:TableCell CssClass="colorDiv2"></asp:TableCell>
             </asp:TableRow>--%>
                 </asp:Table>
+        <br />
+        <br />
+        <asp:Button runat="server" ID="btnDbToExcel" OnClick="btnDbToExcel_Click" Text="⭳" />
 <%--            </ContentTemplate>
         </asp:UpdatePanel>--%>
     </asp:Panel>

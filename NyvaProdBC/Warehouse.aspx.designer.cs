@@ -33,6 +33,15 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.Table tblGoods;
 
         /// <summary>
+        /// btnDbToExcel элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDbToExcel;
+
+        /// <summary>
         /// lblMsg элемент управления.
         /// </summary>
         /// <remarks>

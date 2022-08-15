@@ -1,5 +1,6 @@
 ﻿using NyvaProdBC.Entity;
 using NyvaProdBC.Models;
+using NyvaProdTest_ExcelCRUD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -539,6 +540,15 @@ namespace NyvaProdBC
             RefreshTableUI();
             RefreshBasketUI();
         }
-
+        //https://stackoverflow.com/questions/12914473/how-can-i-show-up-openfiledialog-class-in-asp-net
+        protected void btnDbToExcel_Click(object sender, EventArgs e)
+        {
+            string name = @"E:\Test.xlsx";
+            try
+            {
+                NyvaExcel.ExampleToExcel(name);
+            }
+            catch (Exception ex) { Master.WebEcho = ex.Message + ": " + name; }
+        }
     }
 }
