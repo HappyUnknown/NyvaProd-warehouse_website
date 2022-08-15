@@ -274,7 +274,8 @@ namespace NyvaProdBC
 
                     TableCell tcRegionCode = new TableCell();
                     Label lblRegionCode = new Label();
-                    lblRegionCode.Text = Ware.Goods[i].Barcode.RegionCode.ToString();
+                    var regionInfo = new System.Globalization.RegionInfo(Ware.Goods[i].Barcode.RegionCode);
+                    lblRegionCode.Text = Ware.Goods[i].Barcode.RegionCode.ToString() + $"{regionInfo.Name}";
                     tcRegionCode.CssClass = "tableCell";
                     tcRegionCode.Controls.Add(lblRegionCode);
 

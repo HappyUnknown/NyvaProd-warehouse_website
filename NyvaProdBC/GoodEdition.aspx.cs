@@ -107,7 +107,7 @@ namespace NyvaProdBC
                     goods[editIndex].Name = GetInput().Name;
                     goods[editIndex].OrderPrice = GetInput().OrderPrice;
                     goods[editIndex].Profit = GetInput().Profit;
-                    goods[editIndex].RecievedOn = DateTime.Parse(GetInput().RecievedOn).Date.ToString();
+                    goods[editIndex].RecievedOn = GetInput().RecievedOn;//DateTime.Parse(GetInput().RecievedOn).Date.ToString();
                     goods[editIndex].TotalAmount = GetInput().TotalAmount;
                     goods[editIndex].WeightKg = GetInput().WeightKg;
                     //SetGoodValues(goods[editIndex],GetInput());//Non-working
