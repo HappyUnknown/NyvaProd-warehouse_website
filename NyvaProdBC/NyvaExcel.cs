@@ -127,10 +127,10 @@ namespace NyvaProdTest_ExcelCRUD
         public static void DbToExcel(string name = "")
         {
             if (name == "") name = ExcelName;
-            System.IO.FileInfo file = new FileInfo(name);
+            FileInfo file = new FileInfo(name);
             var input = new GoodContext().Goods.ToList();
             int row = 3;//Skip colnames
-            using (var pkg = new OfficeOpenXml.ExcelPackage(file))
+            using (var pkg = new ExcelPackage(file))
             {
                 var workSheet = pkg.Workbook.Worksheets.Add("Товари");
                 var ws = pkg.Workbook.Worksheets["Товари"];

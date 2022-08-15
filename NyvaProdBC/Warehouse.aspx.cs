@@ -543,7 +543,9 @@ namespace NyvaProdBC
         //https://stackoverflow.com/questions/12914473/how-can-i-show-up-openfiledialog-class-in-asp-net
         protected void btnDbToExcel_Click(object sender, EventArgs e)
         {
-            string name = @"E:\Test.xlsx";
+            string user = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            string download = System.IO.Path.Combine(user, "Downloads");
+            string name = download + @"\Test.xlsx";
             try
             {
                 NyvaExcel.ExampleToExcel(name);
