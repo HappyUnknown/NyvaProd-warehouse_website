@@ -190,168 +190,172 @@ namespace NyvaProdBC
             for (int i = 0; i < Ware.Selectors.Count; i++)
                 Ware.Selectors[i].selector.BackColor = GlobalValues.idleColor;
         }
-        void RefreshTableUI()
+        void RefreshTableUI(string key = "")
         {
+            tblGoods.Rows.Clear();
             Ware.Selectors.Clear();//Preventing selector-button duplicating
             for (int i = 0; i < Ware.Goods.Count; i++)
             {
-                System.Threading.Thread.Sleep(1);
-                Image img = new Image();
-                img.ImageUrl = Ware.Goods[i].ImagesUrl;
-                img.Height = 100;
-                img.Width = 100;
+                if (Ware.Goods[i].Name.Contains(key))
+                {
+                    System.Threading.Thread.Sleep(1);
+                    Image img = new Image();
+                    img.ImageUrl = Ware.Goods[i].ImagesUrl;
+                    img.Height = 100;
+                    img.Width = 100;
 
-                TableCell tcId = new TableCell();
-                Label lblItemId = new Label();
-                lblItemId.Text = "#" + Ware.Goods[i].Id.ToString();
-                tcId.CssClass = "tableCell";
-                tcId.Controls.Add(lblItemId);
+                    TableCell tcId = new TableCell();
+                    Label lblItemId = new Label();
+                    lblItemId.Text = "#" + Ware.Goods[i].Id.ToString();
+                    tcId.CssClass = "tableCell";
+                    tcId.Controls.Add(lblItemId);
 
-                TableCell tcName = new TableCell();
-                Label lblItemName = new Label();
-                lblItemName.Text = Ware.Goods[i].Name.ToString();
-                tcName.CssClass = "tableCell";
-                tcName.Controls.Add(lblItemName);
+                    TableCell tcName = new TableCell();
+                    Label lblItemName = new Label();
+                    lblItemName.Text = Ware.Goods[i].Name.ToString();
+                    tcName.CssClass = "tableCell";
+                    tcName.Controls.Add(lblItemName);
 
-                TableCell tcDescription = new TableCell();
-                Label lblDescription = new Label();
-                lblDescription.Text = Ware.Goods[i].Description.ToString();
-                tcDescription.CssClass = "tableCell";
-                tcDescription.Controls.Add(lblDescription);
+                    TableCell tcDescription = new TableCell();
+                    Label lblDescription = new Label();
+                    lblDescription.Text = Ware.Goods[i].Description.ToString();
+                    tcDescription.CssClass = "tableCell";
+                    tcDescription.Controls.Add(lblDescription);
 
-                TableCell tcOrderPrice = new TableCell();
-                Label lblOrderPrice = new Label();
-                lblOrderPrice.Text = Ware.Goods[i].OrderPrice.ToString();
-                tcOrderPrice.CssClass = "tableCell";
-                tcOrderPrice.Controls.Add(lblOrderPrice);
+                    TableCell tcOrderPrice = new TableCell();
+                    Label lblOrderPrice = new Label();
+                    lblOrderPrice.Text = Ware.Goods[i].OrderPrice.ToString();
+                    tcOrderPrice.CssClass = "tableCell";
+                    tcOrderPrice.Controls.Add(lblOrderPrice);
 
-                TableCell tcAPF = new TableCell();
-                Label lblAPF = new Label();
-                lblAPF.Text = Ware.Goods[i].APF.ToString();
-                tcAPF.CssClass = "tableCell";//TROUBLE
-                tcAPF.Controls.Add(lblAPF);
+                    TableCell tcAPF = new TableCell();
+                    Label lblAPF = new Label();
+                    lblAPF.Text = Ware.Goods[i].APF.ToString();
+                    tcAPF.CssClass = "tableCell";//TROUBLE
+                    tcAPF.Controls.Add(lblAPF);
 
-                TableCell tcProfit = new TableCell();
-                Label lblProfit = new Label();
-                lblProfit.Text = Ware.Goods[i].Profit.ToString();
-                tcProfit.CssClass = "tableCell";//TROUBLE
-                tcProfit.Controls.Add(lblProfit);
+                    TableCell tcProfit = new TableCell();
+                    Label lblProfit = new Label();
+                    lblProfit.Text = Ware.Goods[i].Profit.ToString();
+                    tcProfit.CssClass = "tableCell";//TROUBLE
+                    tcProfit.Controls.Add(lblProfit);
 
-                TableCell tcWeightKg = new TableCell();
-                Label lblWeightKg = new Label();
-                lblWeightKg.Text = Ware.Goods[i].WeightKg.ToString();
-                tcWeightKg.CssClass = "tableCell";
-                tcWeightKg.Controls.Add(lblWeightKg);
+                    TableCell tcWeightKg = new TableCell();
+                    Label lblWeightKg = new Label();
+                    lblWeightKg.Text = Ware.Goods[i].WeightKg.ToString();
+                    tcWeightKg.CssClass = "tableCell";
+                    tcWeightKg.Controls.Add(lblWeightKg);
 
-                TableCell tcTotalAmount = new TableCell();
-                Label lblTotalAmount = new Label();
-                lblTotalAmount.Text = Ware.Goods[i].TotalAmount.ToString();
-                tcTotalAmount.CssClass = "tableCell";
-                tcTotalAmount.Controls.Add(lblTotalAmount);
+                    TableCell tcTotalAmount = new TableCell();
+                    Label lblTotalAmount = new Label();
+                    lblTotalAmount.Text = Ware.Goods[i].TotalAmount.ToString();
+                    tcTotalAmount.CssClass = "tableCell";
+                    tcTotalAmount.Controls.Add(lblTotalAmount);
 
-                TableCell tcAmountSold = new TableCell();
-                Label lblAmountSold = new Label();
-                lblAmountSold.Text = Ware.Goods[i].AmountSold.ToString();
-                tcAmountSold.CssClass = "tableCell";
-                tcAmountSold.Controls.Add(lblAmountSold);
+                    TableCell tcAmountSold = new TableCell();
+                    Label lblAmountSold = new Label();
+                    lblAmountSold.Text = Ware.Goods[i].AmountSold.ToString();
+                    tcAmountSold.CssClass = "tableCell";
+                    tcAmountSold.Controls.Add(lblAmountSold);
 
-                TableCell tcImage = new TableCell();
-                Image image = new Image();
-                image.Height = 100;
-                image.Width = 100;
-                image.ImageUrl = Ware.Goods[i].ImagesUrl.ToString();
-                tcImage.CssClass = "tableCell";
-                tcImage.Controls.Add(image);
+                    TableCell tcImage = new TableCell();
+                    Image image = new Image();
+                    image.Height = 100;
+                    image.Width = 100;
+                    image.ImageUrl = Ware.Goods[i].ImagesUrl.ToString();
+                    tcImage.CssClass = "tableCell";
+                    tcImage.Controls.Add(image);
 
-                TableCell tcArriveDate = new TableCell();
-                Label arriveDate = new Label();
-                arriveDate.Text = Ware.Goods[i].RecievedOn;
-                tcImage.CssClass = "tableCell";
-                tcImage.Controls.Add(arriveDate);
+                    TableCell tcArriveDate = new TableCell();
+                    Label arriveDate = new Label();
+                    arriveDate.Text = Ware.Goods[i].RecievedOn;
+                    tcImage.CssClass = "tableCell";
+                    tcImage.Controls.Add(arriveDate);
 
-                TableCell tcRegionCode = new TableCell();
-                Label lblRegionCode = new Label();
-                lblRegionCode.Text = Ware.Goods[i].Barcode.RegionCode.ToString();
-                tcRegionCode.CssClass = "tableCell";
-                tcRegionCode.Controls.Add(lblRegionCode);
+                    TableCell tcRegionCode = new TableCell();
+                    Label lblRegionCode = new Label();
+                    lblRegionCode.Text = Ware.Goods[i].Barcode.RegionCode.ToString();
+                    tcRegionCode.CssClass = "tableCell";
+                    tcRegionCode.Controls.Add(lblRegionCode);
 
-                TableCell tcProducerCode = new TableCell();
-                Label lblProducerCode = new Label();
-                lblProducerCode.Text = Ware.Goods[i].Barcode.ProducerCode.ToString();
-                tcProducerCode.CssClass = "tableCell";
-                tcProducerCode.Controls.Add(lblProducerCode);
+                    TableCell tcProducerCode = new TableCell();
+                    Label lblProducerCode = new Label();
+                    lblProducerCode.Text = Ware.Goods[i].Barcode.ProducerCode.ToString();
+                    tcProducerCode.CssClass = "tableCell";
+                    tcProducerCode.Controls.Add(lblProducerCode);
 
-                TableCell tcGoodCode = new TableCell();
-                Label lblGoodCode = new Label();
-                lblGoodCode.Text = Ware.Goods[i].Barcode.GoodCode.ToString();
-                tcGoodCode.CssClass = "tableCell";
-                tcGoodCode.Controls.Add(lblGoodCode);
+                    TableCell tcGoodCode = new TableCell();
+                    Label lblGoodCode = new Label();
+                    lblGoodCode.Text = Ware.Goods[i].Barcode.GoodCode.ToString();
+                    tcGoodCode.CssClass = "tableCell";
+                    tcGoodCode.Controls.Add(lblGoodCode);
 
-                TableCell tcControlDigit = new TableCell();
-                Label lblControlDigit = new Label();
-                lblControlDigit.Text = Ware.Goods[i].Barcode.ControlDigit.ToString();
-                tcControlDigit.CssClass = "tableCell";
-                tcControlDigit.Controls.Add(lblControlDigit);
+                    TableCell tcControlDigit = new TableCell();
+                    Label lblControlDigit = new Label();
+                    lblControlDigit.Text = Ware.Goods[i].Barcode.ControlDigit.ToString();
+                    tcControlDigit.CssClass = "tableCell";
+                    tcControlDigit.Controls.Add(lblControlDigit);
 
-                TableCell tcGoToView = new TableCell();
-                tcGoToView.CssClass = "tableCell";
-                Button btnGoToView = new Button();
-                btnGoToView.BackColor = GlobalValues.idleColor;
-                btnGoToView.Click += BtnGoToView_Click;
-                btnGoToView.Text = "👁";
-                tcGoToView.Controls.Add(btnGoToView);
+                    TableCell tcGoToView = new TableCell();
+                    tcGoToView.CssClass = "tableCell";
+                    Button btnGoToView = new Button();
+                    btnGoToView.BackColor = GlobalValues.idleColor;
+                    btnGoToView.Click += BtnGoToView_Click;
+                    btnGoToView.Text = "👁";
+                    tcGoToView.Controls.Add(btnGoToView);
 
-                TableCell tcUnselector = new TableCell();
-                tcUnselector.CssClass = "tableCell";
-                Button unselectorButton = new Button();
-                unselectorButton.BackColor = GlobalValues.idleColor;
-                unselectorButton.Click += UnselectorButton_Click;
-                unselectorButton.Text = "-";
-                tcUnselector.Controls.Add(unselectorButton);
+                    TableCell tcUnselector = new TableCell();
+                    tcUnselector.CssClass = "tableCell";
+                    Button unselectorButton = new Button();
+                    unselectorButton.BackColor = GlobalValues.idleColor;
+                    unselectorButton.Click += UnselectorButton_Click;
+                    unselectorButton.Text = "-";
+                    tcUnselector.Controls.Add(unselectorButton);
 
-                TableCell tcCounter = new TableCell();
-                tcCounter.CssClass = "tableCell";
-                TextBox counterField = new TextBox();
-                counterField.Height = 20;
-                counterField.BackColor = GlobalValues.idleColor;
-                counterField.Text = "0";
-                counterField.TextMode = TextBoxMode.Number;//still allows float
-                counterField.TextChanged += NewCounterField_TextChanged;
-                counterField.AutoPostBack = true;
-                tcCounter.Controls.Add(counterField);
+                    TableCell tcCounter = new TableCell();
+                    tcCounter.CssClass = "tableCell";
+                    TextBox counterField = new TextBox();
+                    counterField.Height = 20;
+                    counterField.BackColor = GlobalValues.idleColor;
+                    counterField.Text = "0";
+                    counterField.TextMode = TextBoxMode.Number;//still allows float
+                    counterField.TextChanged += NewCounterField_TextChanged;
+                    counterField.AutoPostBack = true;
+                    tcCounter.Controls.Add(counterField);
 
-                TableCell tcSelector = new TableCell();
-                tcSelector.CssClass = "tableCell";
-                Button selectorButton = new Button();
-                selectorButton.BackColor = GlobalValues.idleColor;
-                selectorButton.Click += SelectorButton_Click;
-                selectorButton.Text = "+";
-                tcSelector.Controls.Add(selectorButton);
+                    TableCell tcSelector = new TableCell();
+                    tcSelector.CssClass = "tableCell";
+                    Button selectorButton = new Button();
+                    selectorButton.BackColor = GlobalValues.idleColor;
+                    selectorButton.Click += SelectorButton_Click;
+                    selectorButton.Text = "+";
+                    tcSelector.Controls.Add(selectorButton);
 
-                Ware.Selectors.Add(new SelectorPair(btnGoToView, unselectorButton, counterField, selectorButton));
+                    Ware.Selectors.Add(new SelectorPair(btnGoToView, unselectorButton, counterField, selectorButton));
 
-                TableRow tr = new TableRow();
-                tr.Cells.Add(tcId);
-                tr.Cells.Add(tcName);
-                tr.Cells.Add(tcDescription);
-                tr.Cells.Add(tcOrderPrice);
-                tr.Cells.Add(tcProfit);
-                tr.Cells.Add(tcAPF);
-                tr.Cells.Add(tcTotalAmount);
-                tr.Cells.Add(tcAmountSold);
-                tr.Cells.Add(tcWeightKg);
-                tr.Cells.Add(tcArriveDate);
-                tr.Cells.Add(tcImage);
-                tr.Cells.Add(tcGoodCode);
-                tr.Cells.Add(tcProducerCode);
-                tr.Cells.Add(tcRegionCode);
-                tr.Cells.Add(tcControlDigit);
+                    TableRow tr = new TableRow();
+                    tr.Cells.Add(tcId);
+                    tr.Cells.Add(tcName);
+                    tr.Cells.Add(tcDescription);
+                    tr.Cells.Add(tcOrderPrice);
+                    tr.Cells.Add(tcProfit);
+                    tr.Cells.Add(tcAPF);
+                    tr.Cells.Add(tcTotalAmount);
+                    tr.Cells.Add(tcAmountSold);
+                    tr.Cells.Add(tcWeightKg);
+                    tr.Cells.Add(tcArriveDate);
+                    tr.Cells.Add(tcImage);
+                    tr.Cells.Add(tcGoodCode);
+                    tr.Cells.Add(tcProducerCode);
+                    tr.Cells.Add(tcRegionCode);
+                    tr.Cells.Add(tcControlDigit);
 
-                tr.Cells.Add(tcGoToView);
-                tr.Cells.Add(tcUnselector);
-                tr.Cells.Add(tcCounter);
-                tr.Cells.Add(tcSelector);
-                tblGoods.Rows.Add(tr);
+                    tr.Cells.Add(tcGoToView);
+                    tr.Cells.Add(tcUnselector);
+                    tr.Cells.Add(tcCounter);
+                    tr.Cells.Add(tcSelector);
+                    tblGoods.Rows.Add(tr);
+                }
             }
         }
         private void NewCounterField_TextChanged(object sender, EventArgs e)
@@ -551,6 +555,19 @@ namespace NyvaProdBC
                 NyvaExcel.ExampleToExcel(name);
             }
             catch (Exception ex) { Master.WebEcho = ex.Message + ": " + name; }
+        }
+
+        protected void btnRedeemSearch_Click(object sender, EventArgs e)
+        {
+            btnClearKey.Visible = true;
+            RefreshTableUI(tbKey.Text);
+        }
+
+        protected void btnClearKey_Click(object sender, EventArgs e)
+        {
+            btnClearKey.Visible = false;
+            tbKey.Text = string.Empty;
+            RefreshTableUI(tbKey.Text);
         }
     }
 }

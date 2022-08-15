@@ -24,6 +24,42 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.Panel pnlWareUI;
 
         /// <summary>
+        /// tblSearchBar элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tblSearchBar;
+
+        /// <summary>
+        /// btnClearKey элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnClearKey;
+
+        /// <summary>
+        /// tbKey элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbKey;
+
+        /// <summary>
+        /// btnRedeemSearch элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRedeemSearch;
+
+        /// <summary>
         /// tblGoods элемент управления.
         /// </summary>
         /// <remarks>
