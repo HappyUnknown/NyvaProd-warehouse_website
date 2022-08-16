@@ -274,8 +274,9 @@ namespace NyvaProdBC
 
                     TableCell tcRegionCode = new TableCell();
                     Label lblRegionCode = new Label();
-                    var regionInfo = new System.Globalization.RegionInfo(Ware.Goods[i].Barcode.RegionCode);
-                    lblRegionCode.Text = Ware.Goods[i].Barcode.RegionCode.ToString() + $"{regionInfo.Name}";
+                    string regionName = " [?]";
+                    try { regionName = new System.Globalization.RegionInfo(Ware.Goods[i].Barcode.RegionCode).ThreeLetterISORegionName; } catch { }
+                    lblRegionCode.Text = Ware.Goods[i].Barcode.RegionCode.ToString() + $"{regionName}";
                     tcRegionCode.CssClass = "tableCell";
                     tcRegionCode.Controls.Add(lblRegionCode);
 
