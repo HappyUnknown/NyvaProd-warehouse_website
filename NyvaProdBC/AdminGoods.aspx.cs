@@ -1,6 +1,7 @@
 ﻿using NyvaProdBC.Entity;
 using NyvaProdBC.Entity.Contexts;
 using NyvaProdBC.Models;
+using NyvaProdTest_ExcelCRUD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace NyvaProdBC
                 lblMsg.Text = "Товари";
                 pnlAdminGoodsUI.Visible = true;
             }
-            else 
+            else
             {
                 lblMsg.Text = "Ви не маєте повноважень для доступу до сторінки";
                 pnlAdminGoodsUI.Visible = false;
@@ -244,6 +245,18 @@ namespace NyvaProdBC
         protected void btnGoToCreate_Click(object sender, EventArgs e)
         {
             Response.Redirect("/AddGood");
+        }
+        //https://stackoverflow.com/questions/12914473/how-can-i-show-up-openfiledialog-class-in-asp-net
+        protected void btnDbToExcel_Click(object sender, EventArgs e)
+        {
+            string user = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            string download = System.IO.Path.Combine(user, "Downloads");
+            string name = download + @"\Test.xlsx";
+            try
+            {
+                NyvaExcel.ExampleToExcel(name);
+            }
+            catch (Exception ex) { Response.Write($"<script>alert('{ex.Message}: {name}');</script"); }
         }
     }
 }

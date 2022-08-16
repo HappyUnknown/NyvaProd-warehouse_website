@@ -546,19 +546,6 @@ namespace NyvaProdBC
             RefreshTableUI();
             RefreshBasketUI();
         }
-        //https://stackoverflow.com/questions/12914473/how-can-i-show-up-openfiledialog-class-in-asp-net
-        protected void btnDbToExcel_Click(object sender, EventArgs e)
-        {
-            string user = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            string download = System.IO.Path.Combine(user, "Downloads");
-            string name = download + @"\Test.xlsx";
-            try
-            {
-                NyvaExcel.ExampleToExcel(name);
-            }
-            catch (Exception ex) { Master.WebEcho = ex.Message + ": " + name; }
-        }
-
         protected void btnRedeemSearch_Click(object sender, EventArgs e)
         {
             btnClearKey.Visible = true;
