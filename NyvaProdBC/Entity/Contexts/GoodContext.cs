@@ -10,6 +10,9 @@ namespace NyvaProdBC.Entity.Contexts
      * Created context, inheriting DbContext, containing public constructor, defined DbSet<<ModelType>> public property here
      * Context constructor inherrits from base, with connection string name argument
      */
+    /*
+     https://stackoverflow.com/questions/73366660/asp-net-c-entity-updating-is-being-blocked
+     */
     public class GoodContext : System.Data.Entity.DbContext
     {
         public GoodContext() : base("DefaultConnection") { }

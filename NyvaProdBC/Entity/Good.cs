@@ -64,7 +64,7 @@ namespace NyvaProdBC.Entity
                 Barcode.RegionCode = barcode.RegionCode;
             }
         }
-        public Good(string name, string description, double orderPrice, double apf, double profit, int totalAmount, int amountSold, double weightKg, string imageUrl, string recievedOn, int regionCode, int producerCode, int goodCode, int controlDigit)
+        public Good(string name, string description, double orderPrice, double apf, double profit, int totalAmount, int amountSold, double weightKg, string imageUrl, string recievedOn, int goodCode, int producerCode, int regionCode, int controlDigit)
         {
             Id = 0;
             Name = name;

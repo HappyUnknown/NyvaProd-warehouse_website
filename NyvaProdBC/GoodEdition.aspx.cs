@@ -11,7 +11,6 @@ namespace NyvaProdBC
 {
     public partial class GoodEdition : System.Web.UI.Page
     {
-        static string goodID;
         protected void Page_Load(object sender, EventArgs e)
         {
             NyvaUser userParse = ((Entity.NyvaUser)Application["user_data"]);
@@ -20,13 +19,12 @@ namespace NyvaProdBC
             {
                 lblMsg.Text = "Створення товару";
                 pnlEditionUI.Visible = true;
-                goodID = Request.QueryString["id"];
                 if (!Page.IsPostBack)
                 {
-                    LoadGoodUI(int.Parse(goodID));
-                    if (!string.IsNullOrEmpty(goodID))
+                    LoadGoodUI(int.Parse(Request.QueryString["id"]));
+                    if (!string.IsNullOrEmpty(Request.QueryString["id"]))
                     {
-                        lblMsg.Text = "Зміна товару із ID-" + goodID;
+                        lblMsg.Text = "Зміна товару із ID-" + Request.QueryString["id"];
                         pnlEditionUI.Visible = true;
                     }
                     else
@@ -91,32 +89,41 @@ namespace NyvaProdBC
         }
         protected void btnRedeemEdit_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(goodID))
+            int gid = int.Parse(Request.QueryString["id"]);
+            if (!string.IsNullOrEmpty(Request.QueryString["id"]))
             {
-                var db = new GoodContext();
-                var goods = db.Goods.ToList();
-                Good theGood = goods.Where(x => x.Id == int.Parse(goodID)).FirstOrDefault();
-                if (theGood != default)
+                using (var db = new GoodContext())
                 {
-                    int editIndex = goods.IndexOf(theGood);
-                    goods[editIndex].AmountSold = GetInput().AmountSold;
-                    goods[editIndex].APF = GetInput().APF;
-                    goods[editIndex].Barcode = GetInput().Barcode;
-                    goods[editIndex].Description = GetInput().Description;
-                    goods[editIndex].ImagesUrl = GetInput().ImagesUrl;//"https://i.pinimg.com/564x/2d/b7/d8/2db7d8c53b818ce838ad8bf6a4768c71.jpg";
-                    goods[editIndex].Name = GetInput().Name;
-                    goods[editIndex].OrderPrice = GetInput().OrderPrice;
-                    goods[editIndex].Profit = GetInput().Profit;
-                    goods[editIndex].RecievedOn = GetInput().RecievedOn;//DateTime.Parse(GetInput().RecievedOn).Date.ToString();
-                    goods[editIndex].TotalAmount = GetInput().TotalAmount;
-                    goods[editIndex].WeightKg = GetInput().WeightKg;
-                    //SetGoodValues(goods[editIndex],GetInput());//Non-working
-                    db.SaveChanges();
-                    Response.Redirect("/AdminGoods");
+                    Good theGood = db.Goods.FirstOrDefault(x => x.Id == gid);
+                    Good input = GetInput();
+                    //db.Goods.Attach(theGood);//No effect
+                    //db.Entry(theGood).State = System.Data.Entity.EntityState.Modified; //No effect
+                    if (theGood != default)
+                    {
+                        theGood.AmountSold = input.AmountSold;
+                        theGood.APF = input.APF;
+                        theGood.Barcode = input.Barcode;
+                        theGood.Description = input.Description;
+                        theGood.ImagesUrl = input.ImagesUrl;//"https://i.pinimg.com/564x/2d/b7/d8/2db7d8c53b818ce838ad8bf6a4768c71.jpg";
+                        theGood.Name = input.Name;
+                        theGood.OrderPrice = input.OrderPrice;
+                        theGood.Profit = input.Profit;
+                        theGood.RecievedOn = input.RecievedOn;//DateTime.Parse(GetInput().RecievedOn).Date.ToString();
+                        theGood.TotalAmount = input.TotalAmount;
+                        theGood.WeightKg = input.WeightKg;
+                        //SetGoodValues(goods[editIndex],GetInput());//Non-working
+                        db.Entry(theGood).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                        Response.Redirect("/AdminGoods");
+                    }
+                    else
+                    {
+                        Response.Write($"<script>alert('Good on ID does not exist');</script>");
+                        Response.Redirect("/Default");
+                    }
                 }
-                else Response.Write($"<script>alert('Товар із даним ID не існує');</script>");
             }
-            else Response.Write($"<script>alert('Неможливо змінити: обраний елемент не існує');</script>");
+            else Response.Write($"<script>alert('Unable to change: element selected does not exist');</script>");
         }
     }
 }
