@@ -34,6 +34,9 @@
                         </asp:TableHeaderRow>
                     </asp:Table>
                     <asp:Button runat="server" ID="btnGoToCreate" OnClick="btnGoToCreate_Click" Text="Новий товар" />
+                    <br />
+                    <br />
+                    <asp:Button runat="server" ID="btnDbToExcel" OnClick="btnDbToExcel_Click" Text="⭳" />
                 </asp:Panel>
             </body>
             </html>
