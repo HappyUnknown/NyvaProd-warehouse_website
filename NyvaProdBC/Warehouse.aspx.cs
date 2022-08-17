@@ -380,6 +380,31 @@ namespace NyvaProdBC
                         msg += $"{Ware.Selectors[i].counter.UniqueID} != {((TextBox)sender).UniqueID} =>=>=> ";
                 }
                 Master.WebEcho = $"INDEX-{counterIndex}";
+
+                int inBasket = 0;//Basket.BaseArray.Where(x => x.counter == (TextBox)sender).Count();
+                for (int i = 0; i < Basket.BaseArray.Length; i++)
+                {
+                    if (Basket.BaseArray[i].counter.UniqueID == ((TextBox)sender).UniqueID)
+                    {
+                        inBasket++;
+                    }
+                }
+                int change = counterValue - inBasket;
+                Master.WebEcho = $"Changed by {counterValue}-{inBasket}={change}";
+                if (change > 0)//
+                {
+                    for (int i = 0; i < change; i++)
+                    {
+
+                    }
+                }
+                else if (change < 0)//
+                {
+                    for (int i = 0; i < Math.Abs(change); i++)
+                    {
+
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -395,7 +420,7 @@ namespace NyvaProdBC
                 //replaceValue = Basket.BaseArray.Where(x=>x.counter==tbCounter).FirstOrDefault()
                 //replaceCount = int.Parse(tbCounter.Text)
                 var tbCounter = (TextBox)sender;
-                var replaceValue = Basket.BaseArray.Where(x => x.counter == (TextBox)sender).FirstOrDefault();
+                var replaceValue = Ware.Selectors.Where(x => x.counter == (TextBox)sender).FirstOrDefault();
                 try
                 {
                     if (replaceValue == default) { Master.WebEcho = "default"; return; }
