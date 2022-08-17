@@ -160,10 +160,10 @@
                     <hr />
                     <asp:Table runat="server" Width="100%" CssClass="pageTable">
                         <asp:TableRow>
-                            <asp:TableCell CssClass="pageCell">
+                            <asp:TableCell CssClass="pageCell" Style="background-color: #B4b4f9">
                                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
                             </asp:TableCell>
-                            <asp:TableCell CssClass="basketCell" Style="text-align: center">
+                            <asp:TableCell CssClass="basketCell" Style="text-align: center; background-color: #9090f9">
                                 <%
                                     if (CurrentEmail.Length == 0)
                                     {

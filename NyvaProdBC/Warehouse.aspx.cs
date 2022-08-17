@@ -153,7 +153,7 @@ namespace NyvaProdBC
                     }
                 }
             }
-            catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
+            catch (Exception ex) { Master.WebEcho = ("GS: " + Ware.Goods + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
             RefreshBasketUI();//Refresh basket UI (no matter it refreshes in master)
         }
         private void UnselectorButton_Click(object sender, EventArgs e)
@@ -170,7 +170,7 @@ namespace NyvaProdBC
                         //Ware.Selectors[i].counter.Text = (int.Parse(Ware.Selectors[i].counter.Text) - 1).ToString();//Refresh UI counter in textbox
                         int counter = int.Parse(Ware.Selectors[i].counter.Text);
                         if (counter > 0) Ware.Selectors[i].counter.Text = (counter - 1).ToString();
-                        else ResponseAlert("Неможливо замовити менше нуля одиниць товару.");
+                        else Master.WebEcho = ("Неможливо замовити менше нуля одиниць товару.");
                         int removeAt = Basket.IndexOf(Ware.Selectors[i]);//-1
                         string rmsg = Basket.RemoveAt(removeAt);
                         if (rmsg != string.Empty) ResponseAlert(rmsg);
@@ -182,7 +182,7 @@ namespace NyvaProdBC
                     }
                 }
             }
-            catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods.Count + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
+            catch (Exception ex) { Master.WebEcho = ("GS: " + Ware.Goods.Count + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
             RefreshBasketUI();
         }
         void RefreshButtonUI()
@@ -538,7 +538,7 @@ namespace NyvaProdBC
                 //    }
                 //}
             }
-            catch (Exception ex) { ResponseAlert("GS: " + Ware.Goods + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
+            catch (Exception ex) { Master.WebEcho = ("GS: " + Ware.Goods + " == SL:" + Ware.Selectors.Count + " => " + ex.Message); }
             RefreshBasketUI();//Refresh basket UI (no matter it refreshes in master)
         }
 

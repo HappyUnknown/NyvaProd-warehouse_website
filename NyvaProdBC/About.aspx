@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Про фірму" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="NyvaProdBC.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <storyboard x:key="animate">
+<%--    <storyboard x:key="animate">
         <objectanimationusingkeyframes begintime="0:0:0" storyboard.targetproperty="Visibility">
             <discreteobjectkeyframe keytime="0">
                 <discreteobjectkeyframe.value>
@@ -18,7 +18,7 @@
                 </discreteobjectkeyframe.value>
             </discreteobjectkeyframe>
         </objectanimationusingkeyframes>
-    </storyboard>
+    </storyboard>--%>
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
             <!DOCTYPE html>
