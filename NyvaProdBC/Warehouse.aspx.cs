@@ -369,10 +369,12 @@ namespace NyvaProdBC
                 int counterValue = int.Parse(textCounter);
                 var replaceValue = Ware.Selectors.Where(x => x.counter == (TextBox)sender).FirstOrDefault();
                 int counterIndex = -1;
+                SelectorPair pair = null;
                 for (int i = 0; i < Ware.Selectors.Count; i++)
                 {
                     if (Ware.Selectors[i].counter.UniqueID == ((TextBox)sender).UniqueID)
                     {
+                        if (pair == null) pair = Ware.Selectors[i];
                         counterIndex = i;
                         break;
                     }
@@ -395,7 +397,7 @@ namespace NyvaProdBC
                 {
                     for (int i = 0; i < change; i++)
                     {
-
+                        if (pair != null) Basket.Add(pair);
                     }
                 }
                 else if (change < 0)//
@@ -410,6 +412,7 @@ namespace NyvaProdBC
             {
                 Master.WebEcho = ("1GS: " + Ware.Goods.Count + " == SL:" + Ware.Selectors.Count + " => " + ex.Message);
             }
+            RefreshBasketUI();
         }
         private void NewCounterField_TextChanged(object sender, EventArgs e)
         {
