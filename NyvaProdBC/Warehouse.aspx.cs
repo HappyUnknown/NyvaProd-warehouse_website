@@ -402,10 +402,22 @@ namespace NyvaProdBC
                 }
                 else if (change < 0)//
                 {
-                    for (int i = 0; i < Math.Abs(change); i++)
+                    List<SelectorPair> temp = new List<SelectorPair>();
+                    for (int i = 0, skipCounter = 0; i < Basket.BaseArray.Length; i++)
                     {
-
+                        if (skipCounter < Math.Abs(change))
+                        {
+                            if (Basket.BaseArray[i].counter.UniqueID != pair.counter.UniqueID)
+                            {
+                                temp.Add(Basket.BaseArray[i]);
+                            }
+                        }
                     }
+                    Basket.BaseArray = new SelectorPair[temp.Count];
+                    for (int i = 0; i < temp.Count; i++)
+                        Basket.BaseArray[i] = temp[i];
+                    for (int i = 0; i < counterValue; i++)
+                        Basket.Add(pair);
                 }
             }
             catch (Exception ex)
