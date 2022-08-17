@@ -321,7 +321,7 @@ namespace NyvaProdBC
                     counterField.BackColor = GlobalValues.idleColor;
                     counterField.Text = "0";
                     counterField.TextMode = TextBoxMode.Number;//still allows float
-                    counterField.TextChanged += NewCounterField_TextChanged;
+                    counterField.TextChanged += SimpleCounterField_TextChanged;
                     counterField.AutoPostBack = true;
                     tcCounter.Controls.Add(counterField);
 
@@ -358,6 +358,32 @@ namespace NyvaProdBC
                     tr.Cells.Add(tcSelector);
                     tblGoods.Rows.Add(tr);
                 }
+            }
+        }
+        void SimpleCounterField_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string msg = $"[\\{Ware.Selectors.Count}/]";
+                string textCounter = ((TextBox)sender).Text;
+                int counterValue = int.Parse(textCounter);
+                var replaceValue = Ware.Selectors.Where(x => x.counter == (TextBox)sender).FirstOrDefault();
+                int counterIndex = -1;
+                for (int i = 0; i < Ware.Selectors.Count; i++)
+                {
+                    if (Ware.Selectors[i].counter.UniqueID == ((TextBox)sender).UniqueID)
+                    {
+                        counterIndex = i;
+                        break;
+                    }
+                    else
+                        msg += $"{Ware.Selectors[i].counter.UniqueID} != {((TextBox)sender).UniqueID} =>=>=> ";
+                }
+                Master.WebEcho = $"INDEX-{counterIndex}";
+            }
+            catch (Exception ex)
+            {
+                Master.WebEcho = ("1GS: " + Ware.Goods.Count + " == SL:" + Ware.Selectors.Count + " => " + ex.Message);
             }
         }
         private void NewCounterField_TextChanged(object sender, EventArgs e)

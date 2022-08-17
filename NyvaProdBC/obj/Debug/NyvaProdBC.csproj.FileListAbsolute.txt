@@ -95,4 +95,3 @@ E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\bin\Microsoft.IO.RecyclableMemoryStream.dll
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\bin\EPPlus.xml
 E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\bin\Microsoft.IO.RecyclableMemoryStream.xml
-E:\FILES\GENERAL-PURPOSE\PROJECTS\PROGRAMMING\Source - Visual Studio\Author Apps\NyvaProdBC\NyvaProdBC\obj\Debug\NyvaProdBC.csproj.AssemblyReference.cache
