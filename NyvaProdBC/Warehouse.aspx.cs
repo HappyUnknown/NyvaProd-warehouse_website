@@ -362,6 +362,8 @@ namespace NyvaProdBC
         }
         void SimpleCounterField_TextChanged(object sender, EventArgs e)
         {
+            if (((TextBox)sender).Text.Trim(' ') == string.Empty)
+                ((TextBox)sender).Text = "0";
             try
             {
                 string msg = $"[\\{Ware.Selectors.Count}/]";
