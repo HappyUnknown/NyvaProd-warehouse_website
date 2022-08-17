@@ -269,8 +269,8 @@ namespace NyvaProdBC
                     TableCell tcArriveDate = new TableCell();
                     Label arriveDate = new Label();
                     arriveDate.Text = Ware.Goods[i].RecievedOn;
-                    tcImage.CssClass = "tableCell";
-                    tcImage.Controls.Add(arriveDate);
+                    tcArriveDate.CssClass = "tableCell";
+                    tcArriveDate.Controls.Add(arriveDate);
 
                     TableCell tcRegionCode = new TableCell();
                     Label lblRegionCode = new Label();
