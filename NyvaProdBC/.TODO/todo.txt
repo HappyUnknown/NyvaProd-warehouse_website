@@ -6,10 +6,11 @@
 ✔ Count change on text change
 ✔ Remove page reload on ware count change
 ✔ User administration CRUD forms
+✔ Basket UI content update on textbox change
+Style boldering on postback
 Multiple good images
 Excel sync
 User role is <select/>
 Design: Full good cutomer view (with carousel), overall
-Basket UI content update on textbox change
 ?: Email sending reachable only if account has been created
 ?: DB Structure - Good includes in groups based on price

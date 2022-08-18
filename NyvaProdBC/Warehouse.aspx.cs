@@ -572,10 +572,10 @@ namespace NyvaProdBC
             string orderKey = Request.QueryString["order"];
             if (orderKey == "yes")
             {
-                ResponseAlert("STATE: ORDERED");
+                //Response.Redirect("/Warehouse.aspx");///Inconfidence - You need to press button to reset request: need returning on a page with no request
+                ResponseAlert("Очікуйте відповіді від власника за своєю адресою.");
                 Ware.Selectors.Clear();
                 Basket.Clear();
-                Response.Redirect("/Warehouse.aspx");///Inconfidence - You need to press button to reset request: need returning on a page with no request
             }
             if (!Page.IsPostBack)
             {

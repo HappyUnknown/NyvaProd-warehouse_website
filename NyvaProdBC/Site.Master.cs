@@ -151,7 +151,6 @@ namespace NyvaProdBC
                 Mailer.SendMail(reciever.Email, usersubject, usertext);
                 liBasket.Items.Clear();
                 AppState.Ordered = true;
-                ResponseAlert("Очікуйте відповіді від власника за своєю адресою.");
                 Response.Redirect("/Warehouse.aspx?order=yes");
             }
             else ResponseAlert("Спершу зареєструйтесь.");

@@ -9,9 +9,23 @@ namespace NyvaProdBC
 {
     public partial class LoginPage : System.Web.UI.Page
     {
+        const string COOKIE_DEPARTMENT = "nyva_prod_web";
+        readonly string[] COOKIE_NAMES = new string[] { "user_email", "user_password" };
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Page.IsPostBack)
+            {
+                HttpCookie cookies = Request.Cookies[COOKIE_DEPARTMENT];
+                if (cookies != null)
+                {
+                    if (cookies.Values[COOKIE_NAMES[0]] != null && cookies.Values[COOKIE_NAMES[1]] != null)
+                    {
+                        tbEmail.Text = cookies.Values[COOKIE_NAMES[0]];
+                        tbPassword.Text = cookies.Values[COOKIE_NAMES[1]];
+                    }
+                }
+                else { Response.Write("<script>alert('{NO COOKIES FOUND}')</script>"); }
+            }
         }
         Entity.NyvaUser GetUserInput(bool encode = true)
         {
@@ -27,6 +41,13 @@ namespace NyvaProdBC
                 if (users[i].Email == GetUserInput().Email && users[i].Password == GetUserInput().Password)
                 {
                     Application["user_data"] = users[i];
+
+                    HttpCookie httpCookie = new HttpCookie(COOKIE_DEPARTMENT, tbEmail.Text);
+                    httpCookie[COOKIE_NAMES[0]] = tbEmail.Text;
+                    httpCookie[COOKIE_NAMES[1]] = tbPassword.Text;
+                    httpCookie.Expires = DateTime.Now.AddSeconds(30);
+                    Response.Cookies.Add(httpCookie);
+
                     Response.Write("<script>alert('Користувач увійшов як " + users[i].Email + ": " + users[i].Password.ToString() + "==" + userInput.Password + "');</script>");
                     Response.Redirect("/Default");
                 }
