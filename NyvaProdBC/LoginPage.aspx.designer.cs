@@ -51,6 +51,15 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.CheckBox chkSeePassword;
 
         /// <summary>
+        /// chkRememberMe элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRememberMe;
+
+        /// <summary>
         /// btnRestore элемент управления.
         /// </summary>
         /// <remarks>

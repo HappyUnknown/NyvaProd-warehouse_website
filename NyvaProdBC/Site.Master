@@ -152,7 +152,7 @@
                 </ul>
             </div>
         </div>--%>
-        <asp:UpdatePanel runat="server">
+        <asp:UpdatePanel runat="server" ID="upnlSiteContent">
             <ContentTemplate>
                 <div class="container body-content">
                     <br />

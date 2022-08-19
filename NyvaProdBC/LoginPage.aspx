@@ -18,9 +18,12 @@
             <asp:TextBox runat="server" TextMode="Password" ID="tbPassword" placeholder="Пароль" />
             <br />
             <br />
-            <asp:Button runat="server" ID="btnLogin" Text="Увійти" OnClick="btnLogin_Click" CssClass="btn-dark" />
+            <asp:Button runat="server" ID="btnLogin" Text="Увійти" OnClick="btnLogin_Click" CssClass="btn-dark" OnClientClick="document.getElementById('<%= lblPasswordToRemember.ClientID %>').value = document.getElementById('<%= tbPassword.ClientID %>').value;" />
             <br />
             <asp:CheckBox runat="server" ID="chkSeePassword" Text="Показати пароль" CssClass="custom-checkbox" Style="display: flex; align-content: center;" OnCheckedChanged="chkSeePassword_CheckedChanged" AutoPostBack="true" />
+            <asp:CheckBox runat="server" ID="chkRememberMe" Text="Запам'ятати" CssClass="custom-checkbox" Style="display: flex; align-content: center;" />
+<%--            <asp:TextBox runat="server" ID="tbShadow" ReadOnly="true" />
+            <asp:Button runat="server" ID="btnGetPassword" OnClick="btnGetPassword_Click" Text="Get" />--%>
             <br />
             <br />
             <asp:Button runat="server" ID="btnRestore" Text="Відновити пароль" OnClick="btnRestore_Click" CssClass="btn-dark" />

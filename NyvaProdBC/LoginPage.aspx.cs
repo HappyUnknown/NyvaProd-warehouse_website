@@ -13,19 +13,16 @@ namespace NyvaProdBC
         readonly string[] COOKIE_NAMES = new string[] { "user_email", "user_password" };
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
+            HttpCookie cookies = Request.Cookies[COOKIE_DEPARTMENT];
+            if (cookies != null)
             {
-                HttpCookie cookies = Request.Cookies[COOKIE_DEPARTMENT];
-                if (cookies != null)
+                if (cookies.Values[COOKIE_NAMES[0]] != null && cookies.Values[COOKIE_NAMES[1]] != null)
                 {
-                    if (cookies.Values[COOKIE_NAMES[0]] != null && cookies.Values[COOKIE_NAMES[1]] != null)
-                    {
-                        tbEmail.Text = cookies.Values[COOKIE_NAMES[0]];
-                        tbPassword.Text = cookies.Values[COOKIE_NAMES[1]];
-                    }
+                    tbEmail.Text = cookies.Values[COOKIE_NAMES[0]];
+                    tbPassword.Text = cookies.Values[COOKIE_NAMES[1]];
                 }
-                else { Response.Write("<script>alert('{NO COOKIES FOUND}')</script>"); }
             }
+            else { Response.Write("<script>alert('{NO COOKIES FOUND}')</script>"); }
         }
         Entity.NyvaUser GetUserInput(bool encode = true)
         {
@@ -41,13 +38,14 @@ namespace NyvaProdBC
                 if (users[i].Email == GetUserInput().Email && users[i].Password == GetUserInput().Password)
                 {
                     Application["user_data"] = users[i];
-
-                    HttpCookie httpCookie = new HttpCookie(COOKIE_DEPARTMENT, tbEmail.Text);
-                    httpCookie[COOKIE_NAMES[0]] = tbEmail.Text;
-                    httpCookie[COOKIE_NAMES[1]] = tbPassword.Text;
-                    httpCookie.Expires = DateTime.Now.AddSeconds(30);
-                    Response.Cookies.Add(httpCookie);
-
+                    if (chkRememberMe.Checked)
+                    {
+                        HttpCookie httpCookie = new HttpCookie(COOKIE_DEPARTMENT, tbEmail.Text);
+                        httpCookie[COOKIE_NAMES[0]] = tbEmail.Text;
+                        httpCookie[COOKIE_NAMES[1]] = tbPassword.Text;
+                        httpCookie.Expires = DateTime.Now.AddSeconds(30);
+                        Response.Cookies.Add(httpCookie);
+                    }
                     Response.Write("<script>alert('Користувач увійшов як " + users[i].Email + ": " + users[i].Password.ToString() + "==" + userInput.Password + "');</script>");
                     Response.Redirect("/Default");
                 }
@@ -66,11 +64,17 @@ namespace NyvaProdBC
 
         protected void chkSeePassword_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkSeePassword.Checked == true)
+            if (((CheckBox)sender).Checked == true)
             {
                 tbPassword.TextMode = TextBoxMode.SingleLine;
             }
             else tbPassword.TextMode = TextBoxMode.Password;
+        }
+
+        protected void btnGetPassword_Click(object sender, EventArgs e)
+        {
+            //Master.UPMaster.Update();//Can be used to set textbox value inside of update panel: https://stackoverflow.com/questions/28837838/how-to-update-textbox-onchange-without-postback
+            //tbShadow.Text = tbPassword.Text;
         }
     }
 }

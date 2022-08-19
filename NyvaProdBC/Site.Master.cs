@@ -16,6 +16,13 @@ namespace NyvaProdBC
         {
             Response.Write("<script>alert('" + text + "')</script>");
         }
+        public UpdatePanel SMMaster 
+        {
+            get 
+            {
+                return upnlSiteContent;  
+            }
+        }
         public string WebEcho
         {
             get
