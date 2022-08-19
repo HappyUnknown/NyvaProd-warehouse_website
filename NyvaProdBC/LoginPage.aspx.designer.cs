@@ -42,6 +42,15 @@ namespace NyvaProdBC
         protected global::System.Web.UI.WebControls.Button btnLogin;
 
         /// <summary>
+        /// chkSeePassword элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkSeePassword;
+
+        /// <summary>
         /// btnRestore элемент управления.
         /// </summary>
         /// <remarks>
@@ -49,5 +58,19 @@ namespace NyvaProdBC
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRestore;
+
+        /// <summary>
+        /// Master свойство.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое свойство.
+        /// </remarks>
+        public new NyvaProdBC.SiteMaster Master
+        {
+            get
+            {
+                return ((NyvaProdBC.SiteMaster)(base.Master));
+            }
+        }
     }
 }

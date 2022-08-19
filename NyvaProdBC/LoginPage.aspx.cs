@@ -63,5 +63,14 @@ namespace NyvaProdBC
         {
             Response.Redirect("/RequestRestorePassword");
         }
+
+        protected void chkSeePassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSeePassword.Checked == true)
+            {
+                tbPassword.TextMode = TextBoxMode.SingleLine;
+            }
+            else tbPassword.TextMode = TextBoxMode.Password;
+        }
     }
 }

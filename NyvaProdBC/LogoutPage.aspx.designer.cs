@@ -40,5 +40,19 @@ namespace NyvaProdBC
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogout;
+
+        /// <summary>
+        /// Master свойство.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое свойство.
+        /// </remarks>
+        public new NyvaProdBC.SiteMaster Master
+        {
+            get
+            {
+                return ((NyvaProdBC.SiteMaster)(base.Master));
+            }
+        }
     }
 }
