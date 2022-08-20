@@ -16,7 +16,7 @@ namespace NyvaProdBC
         {
             Response.Write("<script>alert('" + text + "')</script>");
         }
-        public UpdatePanel SMMaster 
+        public UpdatePanel UPMaster 
         {
             get 
             {

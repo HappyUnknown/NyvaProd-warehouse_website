@@ -7,6 +7,10 @@ namespace NyvaProdBC
 {
     public class GlobalValues
     {
+        public const string COOKIE_DEPARTMENT = "nyva_prod_web";
+        public const string ALLOW_COOKIES_NAME = "allow_cookies";
+        public const string COOKIES_REQUESTED_NAME = "cookies_requested";
+        public static readonly string[] COOKIE_NAMES = new string[] { "user_email", "user_password" };
         public enum UserRole
         {
             User = 0,

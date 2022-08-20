@@ -9,20 +9,18 @@ namespace NyvaProdBC
 {
     public partial class LoginPage : System.Web.UI.Page
     {
-        const string COOKIE_DEPARTMENT = "nyva_prod_web";
-        readonly string[] COOKIE_NAMES = new string[] { "user_email", "user_password" };
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie cookies = Request.Cookies[COOKIE_DEPARTMENT];
+            HttpCookie cookies = Request.Cookies[GlobalValues.COOKIE_DEPARTMENT];
             if (cookies != null)
             {
-                if (cookies.Values[COOKIE_NAMES[0]] != null && cookies.Values[COOKIE_NAMES[1]] != null)
+                if (cookies.Values[GlobalValues.COOKIE_NAMES[0]] != null && cookies.Values[GlobalValues.COOKIE_NAMES[1]] != null)
                 {
-                    tbEmail.Text = cookies.Values[COOKIE_NAMES[0]];
-                    tbPassword.Text = cookies.Values[COOKIE_NAMES[1]];
+                    tbEmail.Text = cookies.Values[GlobalValues.COOKIE_NAMES[0]];
+                    tbPassword.Text = cookies.Values[GlobalValues.COOKIE_NAMES[1]];
                 }
             }
-            else { Response.Write("<script>alert('{NO COOKIES FOUND}')</script>"); }
+            else { Response.Write("<script>alert('NO COOKIES FOUND')</script>"); }
         }
         Entity.NyvaUser GetUserInput(bool encode = true)
         {
@@ -40,9 +38,9 @@ namespace NyvaProdBC
                     Application["user_data"] = users[i];
                     if (chkRememberMe.Checked)
                     {
-                        HttpCookie httpCookie = new HttpCookie(COOKIE_DEPARTMENT, tbEmail.Text);
-                        httpCookie[COOKIE_NAMES[0]] = tbEmail.Text;
-                        httpCookie[COOKIE_NAMES[1]] = tbPassword.Text;
+                        HttpCookie httpCookie = new HttpCookie(GlobalValues.COOKIE_DEPARTMENT);
+                        httpCookie[GlobalValues.COOKIE_NAMES[0]] = tbEmail.Text;
+                        httpCookie[GlobalValues.COOKIE_NAMES[1]] = tbPassword.Text;
                         httpCookie.Expires = DateTime.Now.AddSeconds(30);
                         Response.Cookies.Add(httpCookie);
                     }
