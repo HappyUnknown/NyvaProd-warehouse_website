@@ -9,11 +9,23 @@ namespace NyvaProdBC
 {
     public partial class LoginPage : System.Web.UI.Page
     {
+        public bool HideCookieRequest { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie cookies = Request.Cookies[GlobalValues.COOKIE_DEPARTMENT];
             if (cookies != null)
             {
+                string cookieMsgHiddenValue = cookies.Values[GlobalValues.COOKIES_HIDDEN_NAME];
+                if (cookieMsgHiddenValue != null)
+                {
+                    if (cookieMsgHiddenValue == GlobalValues.CookieMessageState.Requested.ToString())
+                    {
+                        HideCookieRequest = true;
+                    }
+                    else HideCookieRequest = false;
+                }
+                else HideCookieRequest = false;
+
                 if (cookies.Values[GlobalValues.COOKIE_NAMES[0]] != null && cookies.Values[GlobalValues.COOKIE_NAMES[1]] != null)
                 {
                     tbEmail.Text = cookies.Values[GlobalValues.COOKIE_NAMES[0]];
@@ -38,11 +50,11 @@ namespace NyvaProdBC
                     Application["user_data"] = users[i];
                     if (chkRememberMe.Checked)
                     {
-                        HttpCookie httpCookie = new HttpCookie(GlobalValues.COOKIE_DEPARTMENT);
-                        httpCookie[GlobalValues.COOKIE_NAMES[0]] = tbEmail.Text;
-                        httpCookie[GlobalValues.COOKIE_NAMES[1]] = tbPassword.Text;
-                        httpCookie.Expires = DateTime.Now.AddSeconds(30);
-                        Response.Cookies.Add(httpCookie);
+                        HttpCookie cookies = new HttpCookie(GlobalValues.COOKIE_DEPARTMENT);
+                        cookies[GlobalValues.COOKIE_NAMES[0]] = tbEmail.Text;
+                        cookies[GlobalValues.COOKIE_NAMES[1]] = tbPassword.Text;
+                        cookies.Expires = DateTime.Now.AddSeconds(30);
+                        Response.Cookies.Add(cookies);
                     }
                     Response.Write("<script>alert('Користувач увійшов як " + users[i].Email + ": " + users[i].Password.ToString() + "==" + userInput.Password + "');</script>");
                     Response.Redirect("/Default");
@@ -73,6 +85,34 @@ namespace NyvaProdBC
         {
             //Master.UPMaster.Update();//Can be used to set textbox value inside of update panel: https://stackoverflow.com/questions/28837838/how-to-update-textbox-onchange-without-postback
             //tbShadow.Text = tbPassword.Text;
+        }
+
+        protected void btnDisallowCookies_Click(object sender, EventArgs e)
+        {
+            HttpCookie cookies = new HttpCookie(GlobalValues.COOKIE_DEPARTMENT);
+            string cookiesHiddenName = GlobalValues.COOKIES_HIDDEN_NAME;
+            string newStateValue = GlobalValues.CookieMessageState.Requested.ToString();
+            string allowCookies = GlobalValues.ALLOW_COOKIES_NAME;
+            string newAllowCookieValue = GlobalValues.CookieMode.Disallowed.ToString();
+            cookies.Values[cookiesHiddenName] = newStateValue;
+            cookies.Values[allowCookies] = newAllowCookieValue;
+            cookies.Expires = DateTime.Now.AddSeconds(30);
+            Response.Cookies.Add(cookies);
+            HideCookieRequest = true;
+        }
+
+        protected void btnAllowCookies_Click(object sender, EventArgs e)
+        {
+            HttpCookie cookies = new HttpCookie(GlobalValues.COOKIE_DEPARTMENT);
+            string cookiesHiddenName = GlobalValues.COOKIES_HIDDEN_NAME;
+            string newStateValue = GlobalValues.CookieMessageState.Requested.ToString();
+            string allowCookies = GlobalValues.ALLOW_COOKIES_NAME;
+            string newAllowCookieValue = GlobalValues.CookieMode.Allowed.ToString();
+            cookies.Values[cookiesHiddenName] = newStateValue;
+            cookies.Values[allowCookies] = newAllowCookieValue;
+            cookies.Expires = DateTime.Now.AddSeconds(30);
+            Response.Cookies.Add(cookies);
+            HideCookieRequest = true;
         }
     }
 }

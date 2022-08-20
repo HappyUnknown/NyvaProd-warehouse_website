@@ -152,8 +152,8 @@
                 </ul>
             </div>
         </div>--%>
-        <asp:UpdatePanel runat="server" ID="upnlSiteContent">
-            <ContentTemplate>
+<%--        <asp:UpdatePanel runat="server" ID="upnlSiteContent">
+            <ContentTemplate>--%>
                 <div class="container body-content">
                     <br />
                     <asp:Label runat="server" ID="lblWebEcho" />
@@ -237,8 +237,8 @@
                         </div>
                     </footer>
                 </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
+<%--            </ContentTemplate>
+        </asp:UpdatePanel>--%>
     </form>
 </body>
 </html>

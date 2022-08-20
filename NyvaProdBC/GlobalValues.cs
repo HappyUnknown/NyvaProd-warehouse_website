@@ -9,13 +9,23 @@ namespace NyvaProdBC
     {
         public const string COOKIE_DEPARTMENT = "nyva_prod_web";
         public const string ALLOW_COOKIES_NAME = "allow_cookies";
-        public const string COOKIES_REQUESTED_NAME = "cookies_requested";
+        public const string COOKIES_HIDDEN_NAME = "cookies_hidden";
         public static readonly string[] COOKIE_NAMES = new string[] { "user_email", "user_password" };
         public enum UserRole
         {
             User = 0,
             Admin = 1,
             ReadOnlyAdmin = 2
+        }
+        public enum CookieMode
+        {
+            Disallowed = 0,
+            Allowed = 1
+        }
+        public enum CookieMessageState
+        {
+            Default = 0,
+            Requested = 1
         }
         public const int USER_ROLE = 0;
         public const bool USER_BANNED = false;

@@ -10,6 +10,14 @@
     </head>
     <body runat="server">
         <div class="container">
+            <%if (!HideCookieRequest)
+                { %>
+            <asp:Panel runat="server" ID="pnlCookieRequest">
+                <asp:Label runat="server" Text="Cookies 😎🍪?" />
+                <asp:Button runat="server" ID="btnAllowCookies" Text="Allow" OnClick="btnAllowCookies_Click" />
+                <asp:Button runat="server" ID="btnDisallowCookies" Text="Disallow" OnClick="btnDisallowCookies_Click" />
+            </asp:Panel>
+            <%} %>
             <h1>Вхід</h1>
             <%--<asp:TextBox runat="server" ID="tbId" placeholder="Id" />
             <br />--%>
