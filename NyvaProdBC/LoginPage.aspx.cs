@@ -9,7 +9,8 @@ namespace NyvaProdBC
 {
     public partial class LoginPage : System.Web.UI.Page
     {
-        public bool HideCookieRequest { get; set; }
+        public static bool HideCookieRequest { get; set; }
+        public static bool CookieAllowed { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie cookies = Request.Cookies[GlobalValues.COOKIE_DEPARTMENT];
@@ -25,6 +26,18 @@ namespace NyvaProdBC
                     else HideCookieRequest = false;
                 }
                 else HideCookieRequest = false;
+
+                string cookieAllowed = cookies.Values[GlobalValues.ALLOW_COOKIES_NAME];
+                if (cookieAllowed != null)
+                {
+                    if (cookieAllowed == GlobalValues.CookieMode.Allowed.ToString())
+                    {
+                        CookieAllowed = true;
+                    }
+                    else CookieAllowed = false;
+                }
+                else CookieAllowed = false;
+                chkRememberMe.Visible = CookieAllowed;
 
                 if (cookies.Values[GlobalValues.COOKIE_NAMES[0]] != null && cookies.Values[GlobalValues.COOKIE_NAMES[1]] != null)
                 {
@@ -53,7 +66,7 @@ namespace NyvaProdBC
                         HttpCookie cookies = new HttpCookie(GlobalValues.COOKIE_DEPARTMENT);
                         cookies[GlobalValues.COOKIE_NAMES[0]] = tbEmail.Text;
                         cookies[GlobalValues.COOKIE_NAMES[1]] = tbPassword.Text;
-                        cookies.Expires = DateTime.Now.AddSeconds(30);
+                        cookies.Expires = DateTime.Now.AddSeconds(15);
                         Response.Cookies.Add(cookies);
                     }
                     Response.Write("<script>alert('Користувач увійшов як " + users[i].Email + ": " + users[i].Password.ToString() + "==" + userInput.Password + "');</script>");
@@ -89,6 +102,8 @@ namespace NyvaProdBC
 
         protected void btnDisallowCookies_Click(object sender, EventArgs e)
         {
+            chkRememberMe.DataBind();
+            chkRememberMe.Visible = CookieAllowed;
             HttpCookie cookies = new HttpCookie(GlobalValues.COOKIE_DEPARTMENT);
             string cookiesHiddenName = GlobalValues.COOKIES_HIDDEN_NAME;
             string newStateValue = GlobalValues.CookieMessageState.Requested.ToString();
@@ -96,13 +111,16 @@ namespace NyvaProdBC
             string newAllowCookieValue = GlobalValues.CookieMode.Disallowed.ToString();
             cookies.Values[cookiesHiddenName] = newStateValue;
             cookies.Values[allowCookies] = newAllowCookieValue;
-            cookies.Expires = DateTime.Now.AddSeconds(30);
+            cookies.Expires = DateTime.Now.AddSeconds(15);
             Response.Cookies.Add(cookies);
             HideCookieRequest = true;
+            Master.UPMaster.Update();
         }
 
         protected void btnAllowCookies_Click(object sender, EventArgs e)
         {
+            chkRememberMe.DataBind();
+            chkRememberMe.Visible = CookieAllowed;
             HttpCookie cookies = new HttpCookie(GlobalValues.COOKIE_DEPARTMENT);
             string cookiesHiddenName = GlobalValues.COOKIES_HIDDEN_NAME;
             string newStateValue = GlobalValues.CookieMessageState.Requested.ToString();
@@ -110,9 +128,10 @@ namespace NyvaProdBC
             string newAllowCookieValue = GlobalValues.CookieMode.Allowed.ToString();
             cookies.Values[cookiesHiddenName] = newStateValue;
             cookies.Values[allowCookies] = newAllowCookieValue;
-            cookies.Expires = DateTime.Now.AddSeconds(30);
+            cookies.Expires = DateTime.Now.AddSeconds(15);
             Response.Cookies.Add(cookies);
             HideCookieRequest = true;
+            Master.UPMaster.Update();
         }
     }
 }
