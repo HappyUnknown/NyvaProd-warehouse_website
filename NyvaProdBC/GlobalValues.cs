@@ -7,6 +7,8 @@ namespace NyvaProdBC
 {
     public class GlobalValues
     {
+        public const int TIMER_MILLIS_INTERVAL = 5000;
+        public const int COOKIE_SECONDS = 15;
         public const string COOKIE_DEPARTMENT = "nyva_prod_web";
         public const string ALLOW_COOKIES_NAME = "allow_cookies";
         public const string COOKIES_HIDDEN_NAME = "cookies_hidden";

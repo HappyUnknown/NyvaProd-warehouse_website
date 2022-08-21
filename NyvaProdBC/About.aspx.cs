@@ -19,6 +19,7 @@ namespace NyvaProdBC
                 Goods = GlobalValues.goods;
                 ImgIteraror = 0;
                 tblCarouselUI.BackImageUrl = Goods[ImgIteraror].ImagesUrl;
+                tmrSwitchCarousel.Interval = GlobalValues.TIMER_MILLIS_INTERVAL;
                 RefreshInfoUI();
             }
         }
@@ -35,13 +36,18 @@ namespace NyvaProdBC
         {
             ImgIteraror++;
             if (ImgIteraror > Goods.Count - 1) ImgIteraror = 0;
-            tblCarouselUI.BackImageUrl = Goods[ImgIteraror].ImagesUrl; 
+            tblCarouselUI.BackImageUrl = Goods[ImgIteraror].ImagesUrl;
             RefreshInfoUI();
         }
-        void RefreshInfoUI() 
+        void RefreshInfoUI()
         {
             lblUpTitle.Text = Goods[ImgIteraror].Name;
             lblDownTitle.Text = Goods[ImgIteraror].Description.ToString();
+        }
+
+        protected void tmrSwitchCarousel_Tick(object sender, EventArgs e)
+        {
+            btnNextMedia_Click(sender, e);
         }
     }
 }

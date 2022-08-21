@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Про фірму" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="NyvaProdBC.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-<%--    <storyboard x:key="animate">
+    <%--    <storyboard x:key="animate">
         <objectanimationusingkeyframes begintime="0:0:0" storyboard.targetproperty="Visibility">
             <discreteobjectkeyframe keytime="0">
                 <discreteobjectkeyframe.value>
@@ -46,6 +46,7 @@
                 </div>
                 <br />
                 <div class="container">
+                    <asp:Timer ID="tmrSwitchCarousel" runat="server" OnTick="tmrSwitchCarousel_Tick" />
                     <asp:Table ID="tblAboutUI" runat="server" Style="height: 400px; width: 100%; border-radius: 10px 10px">
                         <asp:TableRow Style="height: 100%">
                             <%--

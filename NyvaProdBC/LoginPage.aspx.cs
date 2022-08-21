@@ -66,7 +66,7 @@ namespace NyvaProdBC
                         HttpCookie cookies = new HttpCookie(GlobalValues.COOKIE_DEPARTMENT);
                         cookies[GlobalValues.COOKIE_NAMES[0]] = tbEmail.Text;
                         cookies[GlobalValues.COOKIE_NAMES[1]] = tbPassword.Text;
-                        cookies.Expires = DateTime.Now.AddSeconds(15);
+                        cookies.Expires = DateTime.Now.AddSeconds(GlobalValues.COOKIE_SECONDS);
                         Response.Cookies.Add(cookies);
                     }
                     Response.Write("<script>alert('Користувач увійшов як " + users[i].Email + ": " + users[i].Password.ToString() + "==" + userInput.Password + "');</script>");
@@ -111,7 +111,7 @@ namespace NyvaProdBC
             string newAllowCookieValue = GlobalValues.CookieMode.Disallowed.ToString();
             cookies.Values[cookiesHiddenName] = newStateValue;
             cookies.Values[allowCookies] = newAllowCookieValue;
-            cookies.Expires = DateTime.Now.AddSeconds(15);
+            cookies.Expires = DateTime.Now.AddSeconds(GlobalValues.COOKIE_SECONDS);
             Response.Cookies.Add(cookies);
             HideCookieRequest = true;
             Master.UPMaster.Update();
@@ -128,7 +128,7 @@ namespace NyvaProdBC
             string newAllowCookieValue = GlobalValues.CookieMode.Allowed.ToString();
             cookies.Values[cookiesHiddenName] = newStateValue;
             cookies.Values[allowCookies] = newAllowCookieValue;
-            cookies.Expires = DateTime.Now.AddSeconds(15);
+            cookies.Expires = DateTime.Now.AddSeconds(GlobalValues.COOKIE_SECONDS);
             Response.Cookies.Add(cookies);
             HideCookieRequest = true;
             Master.UPMaster.Update();

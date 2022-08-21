@@ -13,6 +13,16 @@ namespace NyvaProdBC
 
     public partial class About
     {
+
+        /// <summary>
+        /// tmrSwitchCarousel элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.Timer tmrSwitchCarousel;
+
         /// <summary>
         /// tblAboutUI элемент управления.
         /// </summary>
