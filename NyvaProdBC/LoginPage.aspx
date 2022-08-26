@@ -10,14 +10,6 @@
     </head>
     <body runat="server">
         <div class="container">
-            <%if (!HideCookieRequest)
-                { %>
-            <asp:Panel runat="server" ID="pnlCookieRequest">
-                <asp:Label runat="server" Text="Cookies 😎🍪?" />
-                <asp:Button runat="server" ID="btnAllowCookies" Text="Allow" OnClick="btnAllowCookies_Click" />
-                <asp:Button runat="server" ID="btnDisallowCookies" Text="Disallow" OnClick="btnDisallowCookies_Click" />
-            </asp:Panel>
-            <%} %>
             <h1>Вхід</h1>
             <%--<asp:TextBox runat="server" ID="tbId" placeholder="Id" />
             <br />--%>
@@ -29,8 +21,15 @@
             <asp:Button runat="server" ID="btnLogin" Text="Увійти" OnClick="btnLogin_Click" CssClass="btn-dark" OnClientClick="document.getElementById('<%= lblPasswordToRemember.ClientID %>').value = document.getElementById('<%= tbPassword.ClientID %>').value;" />
             <br />
             <asp:CheckBox runat="server" ID="chkSeePassword" Text="Показати пароль" CssClass="custom-checkbox" Style="display: flex; align-content: center;" OnCheckedChanged="chkSeePassword_CheckedChanged" AutoPostBack="true" />
+            <%
+                if (Master.CookiesAllowed())
+                {
+            %>
             <asp:CheckBox runat="server" ID="chkRememberMe" Text="Запам'ятати" CssClass="custom-checkbox" Style="display: flex; align-content: center;" />
-<%--            <asp:TextBox runat="server" ID="tbShadow" ReadOnly="true" />
+            <%
+                }
+            %>
+            <%--            <asp:TextBox runat="server" ID="tbShadow" ReadOnly="true" />
             <asp:Button runat="server" ID="btnGetPassword" OnClick="btnGetPassword_Click" Text="Get" />--%>
             <br />
             <br />

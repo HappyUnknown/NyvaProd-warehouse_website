@@ -15,33 +15,6 @@ namespace NyvaProdBC
     {
 
         /// <summary>
-        /// pnlCookieRequest элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlCookieRequest;
-
-        /// <summary>
-        /// btnAllowCookies элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAllowCookies;
-
-        /// <summary>
-        /// btnDisallowCookies элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDisallowCookies;
-
-        /// <summary>
         /// tbEmail элемент управления.
         /// </summary>
         /// <remarks>

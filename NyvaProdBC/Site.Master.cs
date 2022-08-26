@@ -12,6 +12,80 @@ namespace NyvaProdBC
 {
     public partial class SiteMaster : MasterPage
     {
+        public static bool HideCookieRequest { get; set; }
+        public static bool CookieAllowed { get; set; }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            HttpCookie cookies = Request.Cookies[GlobalValues.COOKIE_DEPARTMENT];
+            if (cookies != null)
+            {
+                //string cookieMsgHiddenValue = cookies.Values[GlobalValues.COOKIES_HIDDEN_NAME];
+                //if (cookieMsgHiddenValue != null)
+                //{
+                //    if (cookieMsgHiddenValue == GlobalValues.CookieMessageState.Requested.ToString())
+                //    {
+                //        HideCookieRequest = true;
+                //    }
+                //    else HideCookieRequest = false;
+                //}
+                //else HideCookieRequest = false;
+
+                //string cookieAllowed = cookies.Values[GlobalValues.ALLOW_COOKIES_NAME];
+                //if (cookieAllowed != null)
+                //{
+                //    if (cookieAllowed == GlobalValues.CookieMode.Allowed.ToString())
+                //    {
+                //        CookieAllowed = true;
+                //    }
+                //    else CookieAllowed = false;
+                //}
+                //else CookieAllowed = false;
+            }
+            else { WebEcho = "COOKIES? ???"; }
+
+            NyvaUser currentUser = (NyvaUser)Application["user_data"];
+            if (currentUser != null)
+            {
+                UserRole = currentUser.UserRole;
+                CurrentEmail = currentUser.Email;
+            }
+            else
+            {
+                UserRole = (int)GlobalValues.UserRole.User;
+                CurrentEmail = string.Empty;
+            }
+            RefreshBasketUI();//In order to display everywhere
+        }
+        public bool CookiesAllowed()
+        {
+            HttpCookie cookies = Request.Cookies[GlobalValues.COOKIE_DEPARTMENT];
+            if (cookies != null)
+            {
+                string cookieAllowed = cookies.Values[GlobalValues.ALLOW_COOKIES_NAME];
+                if (cookieAllowed != null)
+                {
+                    if (cookieAllowed == GlobalValues.CookieMode.Allowed.ToString())
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        public bool CookiesRequested()
+        {
+            HttpCookie cookies = Request.Cookies[GlobalValues.COOKIE_DEPARTMENT];
+            string cookieMsgHiddenValue = cookies.Values[GlobalValues.COOKIES_HIDDEN_NAME];
+            if (cookieMsgHiddenValue != null)
+            {
+                if (cookieMsgHiddenValue == GlobalValues.CookieMessageState.Requested.ToString())
+                {
+                    return true;
+                }
+                else return false;
+            }
+            else return false;
+        }
         void ResponseAlert(string text)
         {
             Response.Write("<script>alert('" + text + "')</script>");
@@ -115,21 +189,6 @@ namespace NyvaProdBC
         {
             liBasket.Items.Clear();
         }
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            NyvaUser currentUser = (NyvaUser)Application["user_data"];
-            if (currentUser != null)
-            {
-                UserRole = currentUser.UserRole;
-                CurrentEmail = currentUser.Email;
-            }
-            else
-            {
-                UserRole = (int)GlobalValues.UserRole.User;
-                CurrentEmail = string.Empty;
-            }
-            RefreshBasketUI();//In order to display everywhere
-        }
         public string FormedOrder()
         {
             var basketItems = liBasket.Items;
@@ -161,6 +220,33 @@ namespace NyvaProdBC
                 Response.Redirect("/Warehouse.aspx?order=yes");
             }
             else ResponseAlert("Спершу зареєструйтесь.");
+        }
+        protected void btnDisallowCookies_Click(object sender, EventArgs e)
+        {
+            HttpCookie cookies = new HttpCookie(GlobalValues.COOKIE_DEPARTMENT);
+            string cookiesHiddenName = GlobalValues.COOKIES_HIDDEN_NAME;
+            string newStateValue = GlobalValues.CookieMessageState.Requested.ToString();
+            string allowCookies = GlobalValues.ALLOW_COOKIES_NAME;
+            string newAllowCookieValue = GlobalValues.CookieMode.Disallowed.ToString();
+            cookies.Values[cookiesHiddenName] = newStateValue;
+            cookies.Values[allowCookies] = newAllowCookieValue;
+            cookies.Expires = DateTime.Now.AddSeconds(GlobalValues.COOKIE_SECONDS);
+            Response.Cookies.Add(cookies);
+            HideCookieRequest = true;
+        }
+
+        protected void btnAllowCookies_Click(object sender, EventArgs e)
+        {
+            HttpCookie cookies = new HttpCookie(GlobalValues.COOKIE_DEPARTMENT);
+            string cookiesHiddenName = GlobalValues.COOKIES_HIDDEN_NAME;
+            string newStateValue = GlobalValues.CookieMessageState.Requested.ToString();
+            string allowCookies = GlobalValues.ALLOW_COOKIES_NAME;
+            string newAllowCookieValue = GlobalValues.CookieMode.Allowed.ToString();
+            cookies.Values[cookiesHiddenName] = newStateValue;
+            cookies.Values[allowCookies] = newAllowCookieValue;
+            cookies.Expires = DateTime.Now.AddSeconds(GlobalValues.COOKIE_SECONDS);
+            Response.Cookies.Add(cookies);
+            HideCookieRequest = true;
         }
     }
 }

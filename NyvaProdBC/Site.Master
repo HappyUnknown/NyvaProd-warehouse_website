@@ -152,6 +152,18 @@
                 </ul>
             </div>
         </div>--%>
+        <%
+            if (!HideCookieRequest)
+            {
+        %>
+        <asp:Panel runat="server" ID="pnlCookieRequest">
+            <asp:Label runat="server" Text="Cookies 😎🍪?" />
+            <asp:Button runat="server" ID="btnAllowCookies" Text="Allow" OnClick="btnAllowCookies_Click" />
+            <asp:Button runat="server" ID="btnDisallowCookies" Text="Disallow" OnClick="btnDisallowCookies_Click" />
+        </asp:Panel>
+        <%
+            }
+        %>
         <asp:UpdatePanel runat="server" ID="upnlSiteContent">
             <ContentTemplate>
                 <div class="container body-content">
