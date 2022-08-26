@@ -35,6 +35,58 @@
                             color: whitesmoke;
                             background-color: #343a40;
                         }
+
+                    #animation {
+                        -webkit-animation: scaling 1s 4 ease;
+                        -webkit-animation-iteration-count: infinite;
+                        -webkit-animation-direction: alternate;
+                    }
+
+                    @-webkit-keyframes scaling {
+
+                        from {
+                            -webkit-transform: scale(0.2);
+                        }
+
+                        to {
+                            -webkit-transform: scale(1);
+                        }
+                    }
+
+                    .elem {
+                        background: orange;
+                        width: 250px;
+                        height: 250px;
+                        border-radius: 10px;
+                        animation: moveToLeft 5s linear infinite;
+                        animation-delay: 1000ms;
+                    }
+
+                    @keyframes moveToLeft {
+                        0% {
+                            transform: translateX(0px);
+                            background: linear-gradient( to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100% );
+                        }
+
+                        25% {
+                            transform: translateX(400px);
+                            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+                        }
+
+                        50% {
+                            transform: translateY(200px) translateX(400px);
+                            background: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+                        }
+
+                        75% {
+                            transform: translateX(0px) translateY(200px);
+                            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+                        }
+
+                        100% {
+                            transform: translateY(0px);
+                        }
+                    }
                 </style>
             </head>
             <body>
@@ -46,6 +98,7 @@
                 </div>
                 <br />
                 <div class="container">
+                    <img id="animation" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Izidor_Papo%2C_family_photo.jpg/400px-Izidor_Papo%2C_family_photo.jpg" />
                     <asp:Timer ID="tmrSwitchCarousel" runat="server" OnTick="tmrSwitchCarousel_Tick" />
                     <asp:Table ID="tblAboutUI" runat="server" Style="height: 400px; width: 100%; border-radius: 10px 10px">
                         <asp:TableRow Style="height: 100%">
@@ -71,7 +124,7 @@
                                                         <asp:Button runat="server" ID="btnPrev" OnClick="btnPrevMedia_Click" CssClass="btn btn-carousel" Style="height: 400px; width: 100%" Text="<" />
                                                     </asp:TableCell>
                                                     <asp:TableCell Style="width: 80%;">
-                                                        <asp:Image runat="server" ID="imgCarousel" CssClass="image" Style="height: 400px;" />
+                                                        <asp:Image runat="server" ID="imgCarousel" CssClass="image elem" Style="height: 400px;" />
                                                     </asp:TableCell>
                                                     <asp:TableCell Style="width: 10%;">
                                                         <asp:Button runat="server" ID="btnNext" OnClick="btnNextMedia_Click" CssClass="btn btn-carousel" Style="height: 400px; width: 100%" Text=">" />
