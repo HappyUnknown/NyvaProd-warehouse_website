@@ -36,10 +36,29 @@
                             background-color: #343a40;
                         }
 
-                    #animation {
+                    #animation1 {
+                        -webkit-animation: fadeIn 1s 4 ease;
+                        -webkit-animation-iteration-count: infinite;
+                        -webkit-animation-direction: alternate;
+                    }
+
+                    #animation2 {
                         -webkit-animation: scaling 1s 4 ease;
                         -webkit-animation-iteration-count: infinite;
                         -webkit-animation-direction: alternate;
+                        width: 100%;
+                    }
+
+                    @keyframes fadeIn {
+                        0% {
+                            opacity: 1;
+                            animation-play-state: running;
+                        }
+
+                        100% {
+                            opacity: 0;
+                            animation-play-state: paused;
+                        }
                     }
 
                     @-webkit-keyframes scaling {
@@ -53,13 +72,29 @@
                         }
                     }
 
-                    .elem {
+                    /*https://www.neerajcodesolutions.com/2017/04/animation-image-using-css-in-mvc.html*/
+                    .fader {
+                        background: whitesmoke;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 10px;
+                        animation: fadeIn;
+                        animation-duration: 1s;
+                        animation-delay: 1000ms;
+                        animation-fill-mode: forwards;
+                        animation-timing-function: ease-in-out;
+                    }
+
+                    .raver {
                         background: orange;
                         width: 250px;
                         height: 250px;
                         border-radius: 10px;
-                        animation: moveToLeft 5s linear infinite;
+                        animation: moveToLeft;
+                        animation-duration: 1s;
                         animation-delay: 1000ms;
+                        animation-fill-mode: forwards;
+                        animation-timing-function: ease-in-out;
                     }
 
                     @keyframes moveToLeft {
@@ -87,6 +122,7 @@
                             transform: translateY(0px);
                         }
                     }
+                    /*https://www.neerajcodesolutions.com/2017/04/animation-image-using-css-in-mvc.html*/
                 </style>
             </head>
             <body>
@@ -98,7 +134,10 @@
                 </div>
                 <br />
                 <div class="container">
-                    <img id="animation" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Izidor_Papo%2C_family_photo.jpg/400px-Izidor_Papo%2C_family_photo.jpg" />
+                    <%--                   
+                        <img id="animation2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Izidor_Papo%2C_family_photo.jpg/400px-Izidor_Papo%2C_family_photo.jpg" />
+                        <img class="raver" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Izidor_Papo%2C_family_photo.jpg/400px-Izidor_Papo%2C_family_photo.jpg" />
+                    --%>
                     <asp:Timer ID="tmrSwitchCarousel" runat="server" OnTick="tmrSwitchCarousel_Tick" />
                     <asp:Table ID="tblAboutUI" runat="server" Style="height: 400px; width: 100%; border-radius: 10px 10px">
                         <asp:TableRow Style="height: 100%">
@@ -124,7 +163,7 @@
                                                         <asp:Button runat="server" ID="btnPrev" OnClick="btnPrevMedia_Click" CssClass="btn btn-carousel" Style="height: 400px; width: 100%" Text="<" />
                                                     </asp:TableCell>
                                                     <asp:TableCell Style="width: 80%;">
-                                                        <asp:Image runat="server" ID="imgCarousel" CssClass="image elem" Style="height: 400px;" />
+                                                        <asp:Image runat="server" ID="imgCarousel" CssClass="image fader" Style="height: 400px;" />
                                                     </asp:TableCell>
                                                     <asp:TableCell Style="width: 10%;">
                                                         <asp:Button runat="server" ID="btnNext" OnClick="btnNextMedia_Click" CssClass="btn btn-carousel" Style="height: 400px; width: 100%" Text=">" />
